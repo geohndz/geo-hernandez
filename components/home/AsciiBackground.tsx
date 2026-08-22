@@ -8,10 +8,11 @@ export function AsciiBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const node = canvasRef.current;
+    const graphics = node?.getContext("2d");
+    if (!node || !graphics) return;
+    const canvas: HTMLCanvasElement = node;
+    const ctx: CanvasRenderingContext2D = graphics;
 
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const pointer = { x: 0.5, y: 0.4, tx: 0.5, ty: 0.4 };
