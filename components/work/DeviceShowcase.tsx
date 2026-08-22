@@ -27,11 +27,13 @@ export function DeviceShowcase({
   className,
   deviceOnly = false,
   controls,
+  compact = false,
 }: {
   study: CaseStudyMeta;
   className?: string;
   deviceOnly?: boolean;
   controls?: "card" | "device";
+  compact?: boolean;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -99,7 +101,7 @@ export function DeviceShowcase({
   ) : null;
 
   const device = (
-    <div className={cn("relative", deviceOnly ? "mx-auto w-full max-w-[720px]" : "w-[84%] max-w-[720px]")}>
+    <div className={cn("relative", deviceOnly ? "mx-auto w-full max-w-[720px]" : "w-[76%] max-w-[680px]")}>
       <span className="absolute -left-[3px] top-[20%] h-7 w-[3px] rounded-l-[1px] bg-[#cfcfcf]" />
       <span className="absolute -left-[3px] top-[30%] h-10 w-[3px] rounded-l-[1px] bg-[#cfcfcf]" />
       <div className="rounded-[14px] bg-[linear-gradient(160deg,#f3f3f3_0%,#c8c8c8_42%,#8f8f8f_100%)] p-[2px] shadow-[0_22px_70px_rgba(0,0,0,0.58)]">
@@ -178,7 +180,11 @@ export function DeviceShowcase({
   return (
     <div
       ref={rootRef}
-      className={cn("pointer-events-none relative z-[2] h-[400px] overflow-hidden md:h-[560px]", className)}
+      className={cn(
+        "pointer-events-none relative z-[2] overflow-hidden",
+        compact ? "h-[300px] md:h-[420px]" : "h-[480px] md:h-[720px]",
+        className,
+      )}
     >
       {study.carousel ? (
         <div className="absolute inset-0 flex items-center">
@@ -201,7 +207,8 @@ export function DeviceShowcase({
       ) : null}
 
       <div className={cn(
-        "pointer-events-none absolute inset-0 flex items-center justify-center px-6 py-7 md:px-10 md:py-9",
+        "pointer-events-none absolute inset-0 flex items-center justify-center",
+        compact ? "px-5 py-9 md:px-8 md:py-14" : "px-8 py-12 md:px-14 md:py-16",
         hasVideo && placement === "device" && !isVisor && "pr-20 md:pr-24",
       )}>
         {isVisor ? (

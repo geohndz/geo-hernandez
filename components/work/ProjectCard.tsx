@@ -36,7 +36,7 @@ export function ProjectCard({ project }: { project: GalleryProject }) {
   const body = (
     <>
       {project.kicker || project.meta ? (
-        <p className="text-[12px] uppercase tracking-[0.14em] text-dim">
+        <p className="text-[12px] text-dim">
           {project.kicker ?? project.meta}
         </p>
       ) : null}

@@ -27,10 +27,20 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default: site.title,
-    template: `%s — ${site.name}`,
+    template: `%s | ${site.name}`,
   },
   description: site.description,
   authors: [{ name: site.legalName }],
+  keywords: [
+    "product designer",
+    "interaction designer",
+    "UX design",
+    "prototypes",
+    "design systems",
+    "AI",
+    "accessibility",
+    "visual design",
+  ],
   openGraph: {
     title: site.title,
     description: site.description,

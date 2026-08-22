@@ -15,9 +15,7 @@ export function AwardsTeaser() {
           Featured Achievements
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-[15px] leading-relaxed text-muted">
-          My work has been recognized through national and regional design competitions,
-          including multiple ADDY Awards, Communication Arts, and collegiate interaction
-          design competitions.
+          National and regional recognition for interaction design and visual craft, including ADDY Awards, Communication Arts, and collegiate competitions.
         </p>
       </Reveal>
       <div className="mt-8">

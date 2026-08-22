@@ -14,8 +14,7 @@ export function KeepExploring({ exclude }: { exclude: string }) {
           Keep Exploring
         </h2>
         <p className="mx-auto mt-2 max-w-lg text-[15px] text-muted">
-          Every project tells a different story. Explore more of my work across
-          applications, websites, and creative explorations.
+          More work across product design, brand sites, and AI-powered prototypes.
         </p>
       </Reveal>
       <div className="mt-8 flex flex-wrap justify-center gap-5 pt-4">

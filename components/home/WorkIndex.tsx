@@ -13,8 +13,7 @@ export function WorkIndex({ items }: { items: FolderItem[] }) {
           Designing, Building, Exploring
         </p>
         <p className="mx-auto mt-3 max-w-lg text-[15px] leading-relaxed text-muted">
-          A mix of product design, web experiences, and experimental projects driven by
-          curiosity and craft.
+          A mix of product design, interaction design, and prototypes across applications, websites, and experiments.
         </p>
       </Reveal>
       <div className="mt-10 flex flex-wrap justify-center gap-5 pt-4">

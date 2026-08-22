@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "About",
-  description: about.paragraphs[0],
+  description: about.seo,
 };
 
 export default function AboutPage() {

@@ -1,9 +1,9 @@
 export const site = {
   name: "Geo Hernandez",
   legalName: "Geovany Hernandez",
-  title: "Geo Hernandez — Portfolio",
+  title: "Geo Hernandez | Product & Interaction Designer",
   description:
-    "I'm Geo, a product designer who codes, creating accessible digital experiences across learning, XR, and the web.",
+    "I'm Geo, a product and interaction designer who codes. I prototype accessible experiences across learning, XR, and the web.",
   email: "geovanyhernandezb@gmail.com",
   url: "https://geo-hernandez.vercel.app",
   year: 2026,
@@ -14,7 +14,7 @@ export const site = {
     github: "https://github.com/geohndz",
   },
   portrait: "/framer/HxB0bRtVAFQDCK2uViIzt8757g.jpg",
-  tags: ["Product Designer", "Front-End Developer", "XR", "Ed Tech"],
+  tags: ["Interaction Designer", "Product Designer", "Prototypes", "AI"],
 } as const;
 
 export const nav = {
@@ -40,17 +40,18 @@ export const nav = {
 
 export const about = {
   kicker: "About",
+  seo: "Geovany Hernandez is a product and interaction designer who prototypes accessible digital experiences, design systems, and AI-powered tools.",
   paragraphs: [
-    "I'm Geovany Hernandez, a product designer from Tegucigalpa, Honduras.",
-    "I enjoy turning complex problems into simple, intuitive experiences. With a background that spans both design and development, I think beyond screens and consider how ideas move from concept to production.",
-    "I'm particularly interested in interaction design, design systems, and the growing intersection of design, AI, and code. Whether I'm designing a product, building a prototype, or exploring a new technology, I'm always looking for ways to make digital experiences more useful, accessible, and enjoyable.",
+    "I'm Geovany Hernandez, a product and interaction designer from Tegucigalpa, Honduras.",
+    "I turn complex workflows into simple, intuitive experiences. I design and build, so ideas move from user flows to high-fidelity prototypes to production.",
+    "I care about interaction design, visual craft, design systems, and accessibility. I use AI to move faster without lowering the work, and I collaborate with engineering and product from concept to handoff.",
     "Outside of work, you'll usually find me drinking iced lattes, running, or building side projects.",
   ],
 };
 
 export const awards = [
   {
-    title: "1st Place — Interaction Design Award",
+    title: "1st Place, Interaction Design Award",
     org: "Pensacola Christian College",
     date: "Apr 2026",
     featured: true,
@@ -70,31 +71,31 @@ export const awards = [
     mark: "/framer/8bO0mkvX6zeRyukYSsV6afcYMQ.png",
   },
   {
-    title: "Silver Student Addy Award — Single",
+    title: "Silver Student Addy Award, Single",
     org: "American Advertising Federation",
     date: "Mar 2025",
     featured: false,
   },
   {
-    title: "1st Place — Interaction Design Award",
+    title: "1st Place, Interaction Design Award",
     org: "Pensacola Christian College",
     date: "Apr 2024",
     featured: true,
   },
   {
-    title: "Silver Student Addy Award — Online/Interactive (District)",
+    title: "Silver Student Addy Award, Online/Interactive (District)",
     org: "American Advertising Federation",
     date: "Apr 2024",
     featured: false,
   },
   {
-    title: "Gold Student Addy Award — Online/Interactive (Local)",
+    title: "Gold Student Addy Award, Online/Interactive (Local)",
     org: "American Advertising Federation",
     date: "Dec 2023",
     featured: false,
   },
   {
-    title: "1st Place — Web Design Award",
+    title: "1st Place, Web Design Award",
     org: "Pensacola Christian College",
     date: "Apr 2023",
     featured: false,
@@ -119,6 +120,6 @@ export const testimonials = [
 
 export const cta = {
   title: "Interested in working together?",
-  body: "I'm seeking product design opportunities where I can drive measurable outcomes and collaborate with cross-functional teams.",
+  body: "I'm looking for product and interaction design roles where I can prototype, ship, and work closely with engineering and product.",
   prompt: "Let's connect.",
 };

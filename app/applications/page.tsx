@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { applications, pageIntros } from "@/content/projects";
+import { ApplicationArtifactCard } from "@/components/work/ApplicationArtifactCard";
 import { ProjectCard } from "@/components/work/ProjectCard";
 import { KeepExploring } from "@/components/work/KeepExploring";
 import { FooterCta } from "@/components/layout/FooterCta";
@@ -7,11 +8,14 @@ import { PageWidth } from "@/components/layout/PageWidth";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
-  title: "Applications",
+  title: "Product Design Applications",
   description: pageIntros.applications.body,
 };
 
 export default function ApplicationsPage() {
+  const featured = applications.filter((project) => project.sequence);
+  const rest = applications.filter((project) => !project.sequence);
+
   return (
     <>
       <section className="px-6 pb-10 pt-16 md:px-12 md:pt-24 lg:px-16">
@@ -27,8 +31,13 @@ export default function ApplicationsPage() {
         </PageWidth>
       </section>
       <div className="px-6 md:px-12 lg:px-16">
-        <PageWidth className="space-y-6">
-          {applications.map((project) => (
+        <PageWidth className="space-y-12 md:space-y-16">
+          {featured.map((project) => (
+            <Reveal key={project.slug}>
+              <ApplicationArtifactCard project={project} />
+            </Reveal>
+          ))}
+          {rest.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
         </PageWidth>

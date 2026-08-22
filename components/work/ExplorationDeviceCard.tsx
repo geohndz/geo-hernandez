@@ -1,0 +1,120 @@
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import type { CaseStudyMeta, GalleryProject } from "@/content/projects";
+import { DeviceShowcase } from "@/components/work/DeviceShowcase";
+import { cn } from "@/lib/cn";
+
+const hoverWashes = {
+  purple:
+    "hover:[background-image:linear-gradient(145deg,rgba(112,64,196,0.30)_0%,rgba(62,28,118,0.16)_46%,transparent_100%)]",
+  green:
+    "hover:[background-image:linear-gradient(145deg,rgba(32,150,78,0.42)_0%,rgba(14,78,42,0.18)_46%,transparent_100%)]",
+  yellow:
+    "hover:[background-image:linear-gradient(145deg,rgba(234,186,36,0.46)_0%,rgba(150,96,12,0.18)_46%,transparent_100%)]",
+  blue: "hover:[background-image:linear-gradient(145deg,rgba(48,92,210,0.42)_0%,rgba(24,48,130,0.18)_46%,transparent_100%)]",
+};
+
+export function ExplorationDeviceCard({
+  project,
+  compact = false,
+  hoverWash = "purple",
+}: {
+  project: GalleryProject;
+  compact?: boolean;
+  hoverWash?: keyof typeof hoverWashes;
+}) {
+  const study: CaseStudyMeta = {
+    slug: project.slug,
+    href: project.href ?? "/creative-explorations",
+    title: project.title,
+    category: project.category ?? project.kicker ?? "Exploration",
+    summary: project.description,
+    tags: project.tools ?? project.tags ?? [],
+    video: project.video,
+    poster: project.image,
+  };
+  const linked = Boolean(project.href);
+
+  return (
+    <article
+      className={cn(
+        "relative overflow-hidden rounded-[24px] border border-line bg-card",
+        linked &&
+          cn(
+            "group transition-[border-color,transform,background] duration-500 hover:-translate-y-0.5 hover:border-line-strong",
+            hoverWashes[hoverWash],
+          ),
+      )}
+    >
+      {project.href ? (
+        <a
+          href={project.href}
+          target="_blank"
+          rel="noreferrer"
+          className="absolute inset-0 z-[1]"
+          aria-label={`Open ${study.title}`}
+        />
+      ) : null}
+      <header
+        className={cn(
+          "relative z-0 flex flex-col gap-4 px-6 pt-6 md:flex-row md:items-start md:justify-between",
+          compact ? "md:px-6 md:pt-6" : "md:px-8 md:pt-8",
+        )}
+      >
+        <div className="max-w-2xl">
+          <div className="flex items-start gap-2">
+            <h2 className="font-display text-[23px] font-medium tracking-[-0.03em] md:text-[27px]">
+              {study.title}
+            </h2>
+            {linked ? <ArrowUpRight className="mt-1.5 h-4 w-4 shrink-0 text-dim" /> : null}
+          </div>
+          <p className="mt-2 text-[15px] leading-relaxed text-muted">{study.summary}</p>
+          {study.tags.length ? (
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {study.tags.map((tag) => (
+                <li
+                  key={tag}
+                  className="rounded-full border border-line px-2.5 py-1 text-[11px] text-dim"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+        <p className="shrink-0 self-start rounded-full border border-line px-3 py-1 text-[12px] text-muted">
+          {study.category}
+        </p>
+      </header>
+
+      <div className="relative">
+        <DeviceShowcase
+          study={study}
+          className="mt-6"
+          controls="card"
+          compact={compact}
+        />
+        {project.award ? (
+          <a
+            href={project.award.href}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(
+              "absolute z-10 drop-shadow-[0_8px_18px_rgba(0,0,0,0.45)]",
+              compact ? "right-3 top-2 w-[88px]" : "right-5 top-3 w-[110px]",
+            )}
+            aria-label={project.award.label}
+          >
+            <Image
+              src={project.award.src}
+              alt={project.award.label}
+              width={220}
+              height={220}
+              className="h-auto w-full"
+            />
+          </a>
+        ) : null}
+      </div>
+    </article>
+  );
+}

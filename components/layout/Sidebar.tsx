@@ -14,7 +14,7 @@ import {
   Globe,
   Mail,
 } from "lucide-react";
-import { Logo } from "./Logo";
+import { BrandLockup } from "./BrandLockup";
 import { nav, site } from "@/content/site";
 import { cn } from "@/lib/cn";
 
@@ -38,10 +38,9 @@ export function Sidebar({ onNavigate, layoutPrefix = "desktop" }: SidebarProps) 
       <Link
         href="/"
         onClick={onNavigate}
-        className="flex items-center gap-2.5 text-[15px] font-medium tracking-tight text-fg"
+        className="flex items-center text-[15px] font-medium tracking-tight text-fg"
       >
-        <Logo className="h-[22px] w-[16px] text-fg" />
-        {site.name}
+        <BrandLockup />
       </Link>
 
       <nav className="mt-10 flex min-h-0 flex-1 flex-col gap-8 overflow-y-auto pr-1">

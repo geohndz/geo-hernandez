@@ -12,6 +12,8 @@ export type FolderItem = {
   description: string;
   image?: string;
   video?: string;
+  kind?: "phone" | "desktop";
+  sheets?: Array<{ image?: string; video?: string }>;
 };
 
 function unitFromSeed(seed: string, salt: number) {
@@ -66,33 +68,60 @@ export function FolderCard({
         )}
       />
 
-      <div className="absolute left-[22%] right-[22%] top-[2%] z-10 h-[52%]">
-        <Sheet rotate={rotations[0]} hoverRotate={rotations[0] - 9} hoverX="-12px" hoverY="-10px" />
-        <Sheet rotate={rotations[1]} hoverRotate={rotations[1] - 1} hoverX="0px" hoverY="-14px" />
+      <div
+        className={cn(
+          "absolute top-[2%] z-10",
+          item.kind === "phone"
+            ? "left-1/2 h-[72%] w-[26%] -translate-x-1/2"
+            : "left-[22%] right-[22%] h-[52%]",
+        )}
+      >
+        <Sheet
+          rotate={rotations[0]}
+          hoverRotate={rotations[0] - 9}
+          hoverX="-12px"
+          hoverY="-10px"
+          className={item.sheets?.[0] ? cn("overflow-hidden bg-black", item.kind === "phone" && "rounded-[18px]") : undefined}
+        >
+          {item.sheets?.[0] ? <SheetMedia media={item.sheets[0]} /> : null}
+        </Sheet>
+        <Sheet
+          rotate={rotations[1]}
+          hoverRotate={rotations[1] - 1}
+          hoverX="0px"
+          hoverY="-14px"
+          className={item.sheets?.[1] ? cn("overflow-hidden bg-black", item.kind === "phone" && "rounded-[18px]") : undefined}
+        >
+          {item.sheets?.[1] ? <SheetMedia media={item.sheets[1]} /> : null}
+        </Sheet>
         <Sheet
           rotate={rotations[2]}
           hoverRotate={rotations[2] + 9}
           hoverX="12px"
           hoverY="-10px"
-          className="overflow-hidden rounded-[12px] bg-white shadow-[0_12px_28px_rgba(0,0,0,0.35)]"
+          className={cn(
+            "overflow-hidden shadow-[0_12px_28px_rgba(0,0,0,0.35)]",
+            item.kind === "phone" ? "rounded-[18px] bg-black" : "rounded-[12px] bg-white",
+          )}
         >
-          {item.image ? (
+          {item.video ? (
+            <video
+              className="h-full w-full object-cover object-top"
+              src={item.video}
+              poster={item.image}
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-hidden
+            />
+          ) : item.image ? (
             <Image
               src={item.image}
               alt=""
               fill
               sizes="(min-width: 768px) 18vw, 60vw"
               className="object-cover object-top"
-            />
-          ) : item.video ? (
-            <video
-              className="h-full w-full object-cover object-top"
-              src={item.video}
-              autoPlay
-              muted
-              loop
-              playsInline
-              aria-hidden
             />
           ) : null}
         </Sheet>
@@ -168,7 +197,8 @@ function Sheet({
   return (
     <div
       className={cn(
-        "absolute inset-0 origin-bottom rounded-[14px] bg-[#e8e8e8] shadow-[0_10px_24px_rgba(0,0,0,0.28)] transition-transform duration-500 ease-out [transform:rotate(var(--r))] group-hover:[transform:translate(var(--hx),var(--hy))_rotate(var(--hr))]",
+        "absolute inset-0 origin-bottom rounded-[14px] shadow-[0_10px_24px_rgba(0,0,0,0.28)] transition-transform duration-500 ease-out [transform:rotate(var(--r))] group-hover:[transform:translate(var(--hx),var(--hy))_rotate(var(--hr))]",
+        !children && "bg-[#e8e8e8]",
         className,
       )}
       style={
@@ -189,4 +219,34 @@ function Sheet({
       )}
     </div>
   );
+}
+
+function SheetMedia({ media }: { media: { image?: string; video?: string } }) {
+  if (media.video) {
+    return (
+      <video
+        className="h-full w-full object-cover object-top"
+        src={media.video}
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden
+      />
+    );
+  }
+
+  if (media.image) {
+    return (
+      <Image
+        src={media.image}
+        alt=""
+        fill
+        sizes="(min-width: 768px) 18vw, 60vw"
+        className="object-cover object-top"
+      />
+    );
+  }
+
+  return null;
 }
