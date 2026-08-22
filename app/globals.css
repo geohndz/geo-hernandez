@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0a0a;
+  --sidebar: #111111;
+  --card: #141414;
+  --fg: #f5f5f5;
+  --muted: #b3b3b3;
+  --dim: #8e8e8e;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --sidebar-w: 272px;
+  --content-max: 1200px;
+  --folder-max: calc((var(--content-max) - 2.5rem) / 3);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-sidebar: var(--sidebar);
+  --color-card: var(--card);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --font-sans: var(--font-dm);
+  --font-display: var(--font-sparkling);
+  --font-pixel: var(--font-pixelify);
+  --max-width-content: var(--content-max);
+  --max-width-folder: var(--folder-max);
+}
+
+html {
+  background: var(--bg);
+  color: var(--fg);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-dm), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01" on, "cv11" on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-sparkling), ui-serif, ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: #f5f5f5;
+  color: #0a0a0a;
+}
+
+:focus-visible {
+  outline: 1.5px solid #f5f5f5;
+  outline-offset: 3px;
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .geo-marquee-track {
+    animation: none !important;
+  }
+}
+
+@keyframes geo-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.geo-marquee-track {
+  animation: geo-marquee var(--geo-duration, 42s) linear infinite;
+  will-change: transform;
+}
+
+@keyframes evolution-fill {
+  from {
+    clip-path: inset(0% 0 100% 0);
+  }
+  to {
+    clip-path: inset(0% 0 0% 0);
+  }
+}
+
+.evolution-fill {
+  animation: evolution-fill var(--evolution-duration, 10s) linear forwards;
+}
+
+.evolution-fill.is-paused {
+  animation-play-state: paused;
+}
+
+.study-body .study-text {
+  width: 100%;
+  margin-inline: auto;
+  text-align: left;
+}
+
+.study-card {
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+
+@media (min-width: 768px) {
+  .study-body .study-text {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .study-body .study-text {
+    width: 70%;
+  }
+}
+
+.study-cinematic .study-heading {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.study-cinematic .study-heading::after {
+  content: "";
+  flex: 1 1 auto;
+  min-width: 2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.18;
+}
+
+.study-body h3.study-text {
+  margin-top: 2.5rem;
+}
+
+.study-body h2 + h3 {
+  margin-top: 0;
+}
+
+.edge-blur-bottom {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 45;
+  height: 7.5rem;
+  pointer-events: none;
+}
+
+.edge-blur-bottom span {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+}
+
+.edge-blur-bottom .l1 {
+  height: 100%;
+  backdrop-filter: blur(6px) saturate(1.5);
+  -webkit-backdrop-filter: blur(6px) saturate(1.5);
+  mask-image: linear-gradient(to top, black, transparent);
+  -webkit-mask-image: linear-gradient(to top, black, transparent);
+}
+
+.edge-blur-bottom .l2 {
+  height: 70%;
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  mask-image: linear-gradient(to top, black, transparent);
+  -webkit-mask-image: linear-gradient(to top, black, transparent);
+}
+
+.edge-blur-bottom .l3 {
+  height: 40%;
+  backdrop-filter: blur(28px) saturate(1.8);
+  -webkit-backdrop-filter: blur(28px) saturate(1.8);
+  mask-image: linear-gradient(to top, black 20%, transparent);
+  -webkit-mask-image: linear-gradient(to top, black 20%, transparent);
+}
+
+.edge-blur-bottom .frost {
+  height: 45%;
+  background: linear-gradient(
+    to top,
+    rgb(255 255 255 / 0.07),
+    rgb(255 255 255 / 0.02) 50%,
+    transparent
+  );
+}
+
+@media (min-width: 768px) {
+  .edge-blur-bottom {
+    height: 9rem;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .edge-blur-bottom .l1,
+  .edge-blur-bottom .l2,
+  .edge-blur-bottom .l3 {
+    display: none;
+  }
+}
+
