@@ -8,7 +8,6 @@ import { PageWidth } from "@/components/layout/PageWidth";
 import { FeaturedStudyCard } from "@/components/home/FeaturedStudyCard";
 import { CaseStudyHero } from "./CaseStudyHero";
 import { DeviceShowcase } from "./DeviceShowcase";
-import { VisorVideo } from "./VisorVideo";
 import { cn } from "@/lib/cn";
 
 const overviewItems = [
@@ -40,24 +39,30 @@ export function CaseStudyView({
         image={study?.heroImage ?? study?.poster}
       />
 
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,var(--content-max))_minmax(0,1fr)]">
-        <aside className="sticky top-24 hidden w-[180px] justify-self-end self-start pt-16 pr-8 lg:block">
-          <PageNav items={frontmatter.toc} />
-        </aside>
-        <div className="study-body study-cinematic px-6 pb-16 pt-10 md:px-12">
-          <Overview className="study-text" frontmatter={frontmatter} layout="rows" />
-          {slug === "formula-1" && study?.video ? (
-            <VisorVideo
-              src={study.video}
-              poster={study.poster}
-              className="mt-10"
-            />
-          ) : study?.deviceImage || study?.video ? (
-            <DeviceShowcase study={study} deviceOnly className="mt-10" />
-          ) : null}
-          {children}
+      <div className="px-6 pb-16 pt-10 md:px-12">
+        <div className="mx-auto grid w-full grid-cols-1 xl:grid-cols-[10.5rem_minmax(0,72rem)_1fr]">
+          {frontmatter.toc.length > 0 ? (
+            <aside className="hidden xl:block">
+              <div className="sticky top-24 pr-6">
+                <PageNav items={frontmatter.toc} />
+              </div>
+            </aside>
+          ) : (
+            <div className="hidden xl:block" aria-hidden />
+          )}
+          <div className="study-body study-cinematic min-w-0">
+            <Overview className="study-text" frontmatter={frontmatter} layout="rows" />
+            {study?.video || study?.deviceImage ? (
+              <DeviceShowcase
+                study={study}
+                deviceOnly
+                controls="device"
+                className="mt-10"
+              />
+            ) : null}
+            {children}
+          </div>
         </div>
-        <div className="hidden lg:block" aria-hidden />
       </div>
 
       <section className="px-6 py-16 md:px-12 lg:px-16">

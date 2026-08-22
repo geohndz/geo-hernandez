@@ -40,7 +40,7 @@ export function FeaturedDeviceCard({ study }: { study: CaseStudyMeta }) {
         </p>
       </header>
 
-      <DeviceShowcase study={study} className="mt-6" />
+      <DeviceShowcase study={study} className="mt-6" controls="card" />
     </article>
   );
 }

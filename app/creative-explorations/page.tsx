@@ -27,9 +27,15 @@ export default function ExplorationsPage() {
         </PageWidth>
       </section>
       <div className="px-6 md:px-12 lg:px-16">
-        <PageWidth className="space-y-6">
-          {explorations.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+        <PageWidth className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+          {[0, 1].map((column) => (
+            <div key={column} className="flex flex-col gap-6">
+              {explorations
+                .filter((_, index) => index % 2 === column)
+                .map((project) => (
+                  <ProjectCard key={project.slug} project={project} />
+                ))}
+            </div>
           ))}
         </PageWidth>
       </div>

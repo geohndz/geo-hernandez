@@ -204,7 +204,7 @@ function GateFlow() {
           }
           setProgress(0);
           setTarget(sequence.length);
-        }, 3000);
+        }, 1000);
       },
       { threshold: [0, 0.25, 0.5, 1], rootMargin: "-12% 0px" },
     );

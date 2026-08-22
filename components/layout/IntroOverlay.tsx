@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Logo } from "./Logo";
+import { IntroAsciiMark } from "./IntroAsciiMark";
 import { springSoft } from "@/lib/motion";
 
 export function IntroOverlay() {
@@ -11,14 +11,14 @@ export function IntroOverlay() {
 
   useEffect(() => {
     if (reduce) return;
-    const seen = sessionStorage.getItem("geo-intro");
+    const seen = sessionStorage.getItem("geo-intro-ascii-v2");
     if (seen) return;
 
     const show = window.requestAnimationFrame(() => setVisible(true));
     const hide = window.setTimeout(() => {
       setVisible(false);
-      sessionStorage.setItem("geo-intro", "1");
-    }, 1400);
+      sessionStorage.setItem("geo-intro-ascii-v2", "1");
+    }, 2400);
 
     return () => {
       window.cancelAnimationFrame(show);
@@ -35,11 +35,11 @@ export function IntroOverlay() {
           exit={{ opacity: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.82, filter: "blur(8px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={springSoft}
           >
-            <Logo className="h-16 w-12 text-[#d4d4d4] md:h-20 md:w-[60px]" animated />
+            <IntroAsciiMark />
           </motion.div>
         </motion.div>
       ) : null}

@@ -10,60 +10,63 @@ import { VisorVideo } from "./VisorVideo";
 export function DeviceCarousel() {
   const study = caseStudies.find((item) => item.slug === "world-geography");
   if (!study?.video) return null;
-  return <DeviceShowcase study={study} className="mt-12" />;
+  return <DeviceShowcase study={study} className="mt-12" controls="device" />;
 }
 
 export function F1Visor() {
   const study = caseStudies.find((item) => item.slug === "formula-1");
   if (!study?.video) return null;
-  return <DeviceShowcase study={study} className="mt-12" />;
+  return <DeviceShowcase study={study} className="mt-12" controls="device" />;
 }
+
+const playButtonClass =
+  "pointer-events-auto z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[var(--line)] text-white backdrop-blur-[6px] transition-[transform,background-color] duration-200 hover:scale-105 hover:bg-[var(--line-strong)]";
 
 export function DeviceShowcase({
   study,
   className,
   deviceOnly = false,
+  controls,
 }: {
   study: CaseStudyMeta;
   className?: string;
   deviceOnly?: boolean;
+  controls?: "card" | "device";
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
   const isVisor = study.slug === "formula-1" && Boolean(study.video);
-  const hasVideo = Boolean(study.video) && !study.deviceImage && !isVisor;
-  const [playing, setPlaying] = useState(() => Boolean(study.deviceImage));
+  const hasVideo = Boolean(study.video);
+  const placement = controls ?? (deviceOnly || isVisor ? "device" : "card");
+  const [playing, setPlaying] = useState(false);
   const userPaused = useRef(false);
   const aspect = study.deviceAspect ?? "80 / 49";
   const top = study.carousel?.top ?? [];
   const bottom = study.carousel?.bottom ?? [];
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    const el = rootRef.current;
+    if (!el || !hasVideo) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry) return;
         if (isReallyVisible(entry) && !userPaused.current) setPlaying(true);
-        else setPlaying(false);
+        else if (!userPaused.current) setPlaying(false);
       },
       { threshold: [0, 0.25, 0.5, 1], rootMargin: "-12% 0px" },
     );
 
-    observer.observe(video);
+    observer.observe(el);
     return () => observer.disconnect();
   }, [hasVideo]);
 
   function togglePlayback(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     event.stopPropagation();
-    const video = videoRef.current;
     const next = !playing;
     userPaused.current = !next;
     setPlaying(next);
-    if (!video) return;
-    if (next) void video.play();
-    else video.pause();
   }
 
   useEffect(() => {
@@ -71,7 +74,29 @@ export function DeviceShowcase({
     if (!video) return;
     if (playing) void video.play();
     else video.pause();
-  }, [playing, hasVideo]);
+  }, [playing]);
+
+  const playToggle = (
+    <button
+      type="button"
+      onClick={togglePlayback}
+      aria-label={playing ? "Pause" : "Play"}
+      className={cn(playButtonClass, "absolute bottom-4 right-4")}
+    >
+      {playing ? <PauseIcon /> : <PlayIcon />}
+    </button>
+  );
+
+  const deviceToggle = !isVisor ? (
+    <button
+      type="button"
+      onClick={togglePlayback}
+      aria-label={playing ? "Pause" : "Play"}
+      className={cn(playButtonClass, "absolute bottom-3 left-[calc(100%+12px)]")}
+    >
+      {playing ? <PauseIcon /> : <PlayIcon />}
+    </button>
+  ) : null;
 
   const device = (
     <div className={cn("relative", deviceOnly ? "mx-auto w-full max-w-[720px]" : "w-[84%] max-w-[720px]")}>
@@ -97,26 +122,22 @@ export function DeviceShowcase({
                 <source src={study.video} type="video/mp4" />
               </video>
             ) : null}
-            {hasVideo && deviceOnly ? (
-              <button
-                type="button"
-                onClick={togglePlayback}
-                aria-label={playing ? "Pause" : "Play"}
-                className="pointer-events-auto absolute bottom-3 right-3 z-[2] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[var(--line)] text-white backdrop-blur-[6px] transition-[transform,background-color] duration-200 hover:scale-105 hover:bg-[var(--line-strong)]"
-              >
-                {playing ? <PauseIcon /> : <PlayIcon />}
-              </button>
-            ) : null}
           </div>
         </div>
       </div>
+      {hasVideo && placement === "device" ? deviceToggle : null}
     </div>
   );
 
   if (deviceOnly && isVisor) {
     return (
-      <div className={cn("relative mt-10", className)}>
-        <VisorVideo src={study.video!} poster={study.poster} />
+      <div ref={rootRef} className={cn("relative mt-10", className)}>
+        <VisorVideo
+          src={study.video!}
+          poster={study.poster}
+          playing={playing}
+          onToggle={togglePlayback}
+        />
       </div>
     );
   }
@@ -140,11 +161,25 @@ export function DeviceShowcase({
   }
 
   if (deviceOnly) {
-    return <div className={cn("relative mt-10", className)}>{device}</div>;
+    return (
+      <div
+        ref={rootRef}
+        className={cn(
+          "relative mt-10",
+          hasVideo && placement === "device" && "pr-14",
+          className,
+        )}
+      >
+        {device}
+      </div>
+    );
   }
 
   return (
-    <div className={cn("pointer-events-none relative z-[2] h-[400px] overflow-hidden md:h-[560px]", className)}>
+    <div
+      ref={rootRef}
+      className={cn("pointer-events-none relative z-[2] h-[400px] overflow-hidden md:h-[560px]", className)}
+    >
       {study.carousel ? (
         <div className="absolute inset-0 flex items-center">
           <div className="grid h-[52%] w-full grid-rows-2 gap-2.5">
@@ -165,10 +200,19 @@ export function DeviceShowcase({
         />
       ) : null}
 
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6 py-7 md:px-10 md:py-9">
+      <div className={cn(
+        "pointer-events-none absolute inset-0 flex items-center justify-center px-6 py-7 md:px-10 md:py-9",
+        hasVideo && placement === "device" && !isVisor && "pr-20 md:pr-24",
+      )}>
         {isVisor ? (
           <div className="w-[84%] max-w-[720px]">
-            <VisorVideo src={study.video!} poster={study.poster} />
+            <VisorVideo
+              src={study.video!}
+              poster={study.poster}
+              playing={playing}
+              onToggle={togglePlayback}
+              controls={placement === "device"}
+            />
           </div>
         ) : study.deviceImage ? (
           <div className="relative w-[84%] max-w-[720px]" style={{ aspectRatio: aspect }}>
@@ -184,16 +228,7 @@ export function DeviceShowcase({
         )}
       </div>
 
-      {hasVideo ? (
-        <button
-          type="button"
-          onClick={togglePlayback}
-          aria-label={playing ? "Pause" : "Play"}
-          className="pointer-events-auto absolute bottom-4 right-4 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[var(--line)] text-white backdrop-blur-[6px] transition-[transform,background-color] duration-200 hover:scale-105 hover:bg-[var(--line-strong)]"
-        >
-          {playing ? <PauseIcon /> : <PlayIcon />}
-        </button>
-      ) : null}
+      {hasVideo && placement === "card" ? playToggle : null}
     </div>
   );
 }

@@ -52,33 +52,42 @@ export function VisorVideo({
   src,
   poster,
   className,
+  playing: playingProp,
+  onToggle,
+  controls = true,
 }: {
   src: string;
   poster?: string;
   className?: string;
+  playing?: boolean;
+  onToggle?: (event: MouseEvent<HTMLButtonElement>) => void;
+  controls?: boolean;
 }) {
   const clipId = useId().replace(/:/g, "");
   const metalId = `${clipId}-metal`;
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
+  const [internalPlaying, setInternalPlaying] = useState(false);
   const userPaused = useRef(false);
+  const controlled = playingProp !== undefined;
+  const playing = controlled ? playingProp : internalPlaying;
 
   useEffect(() => {
+    if (controlled) return;
     const video = videoRef.current;
     if (!video) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry) return;
-        if (isReallyVisible(entry) && !userPaused.current) setPlaying(true);
-        else setPlaying(false);
+        if (isReallyVisible(entry) && !userPaused.current) setInternalPlaying(true);
+        else if (!userPaused.current) setInternalPlaying(false);
       },
       { threshold: [0, 0.25, 0.5, 1], rootMargin: "-12% 0px" },
     );
 
     observer.observe(video);
     return () => observer.disconnect();
-  }, [src]);
+  }, [src, controlled]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -90,9 +99,13 @@ export function VisorVideo({
   function togglePlayback(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     event.stopPropagation();
+    if (onToggle) {
+      onToggle(event);
+      return;
+    }
     const next = !playing;
     userPaused.current = !next;
-    setPlaying(next);
+    setInternalPlaying(next);
   }
 
   const visorLeft = `${(STRAP_W / FRAME_W) * 100}%`;
@@ -183,15 +196,17 @@ export function VisorVideo({
           />
         </g>
       </svg>
-      <button
-        type="button"
-        onClick={togglePlayback}
-        aria-label={playing ? "Pause" : "Play"}
-        className="pointer-events-auto absolute z-[2] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[var(--line)] text-white backdrop-blur-[6px] transition-[transform,background-color] duration-200 hover:scale-105 hover:bg-[var(--line-strong)]"
-        style={{ right: visorLeft, bottom: visorBottom }}
-      >
-        {playing ? <PauseIcon /> : <PlayIcon />}
-      </button>
+      {controls ? (
+        <button
+          type="button"
+          onClick={togglePlayback}
+          aria-label={playing ? "Pause" : "Play"}
+          className="pointer-events-auto absolute z-[2] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[var(--line)] text-white backdrop-blur-[6px] transition-[transform,background-color] duration-200 hover:scale-105 hover:bg-[var(--line-strong)]"
+          style={{ right: visorLeft, bottom: visorBottom }}
+        >
+          {playing ? <PauseIcon /> : <PlayIcon />}
+        </button>
+      ) : null}
     </div>
   );
 }

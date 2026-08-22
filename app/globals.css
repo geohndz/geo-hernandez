@@ -95,6 +95,10 @@ a {
   will-change: transform;
 }
 
+.geo-marquee-track.is-paused {
+  animation-play-state: paused;
+}
+
 @keyframes evolution-fill {
   from {
     clip-path: inset(0% 0 100% 0);
@@ -112,8 +116,14 @@ a {
   animation-play-state: paused;
 }
 
+.study-body {
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
 .study-body .study-text {
   width: 100%;
+  max-width: 52.5rem;
   margin-inline: auto;
   text-align: left;
 }
@@ -122,18 +132,6 @@ a {
   border-radius: 20px;
   border: 1px solid var(--line);
   background: var(--card);
-}
-
-@media (min-width: 768px) {
-  .study-body .study-text {
-    width: 90%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .study-body .study-text {
-    width: 70%;
-  }
 }
 
 .study-cinematic .study-heading {
