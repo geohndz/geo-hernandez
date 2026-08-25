@@ -32,25 +32,25 @@ export function CaseStudyView({
   const study = caseStudies.find((item) => item.slug === slug);
 
   return (
-    <article className="overflow-x-clip">
+    <article>
       <CaseStudyHero
         frontmatter={frontmatter}
         readingMinutes={readingMinutes}
         image={study?.heroImage ?? study?.poster}
       />
 
-      <div className="px-6 pb-16 pt-10 md:px-12">
-        <div className="mx-auto grid w-full grid-cols-1 xl:grid-cols-[10.5rem_minmax(0,72rem)_1fr]">
+      <div className="px-6 pb-16 pt-10 md:px-12 lg:px-16">
+        <div className="mx-auto grid w-full grid-cols-1 xl:grid-cols-[1fr_minmax(0,72rem)_1fr]">
           {frontmatter.toc.length > 0 ? (
-            <aside className="hidden xl:block">
-              <div className="sticky top-24 pr-6">
+            <aside className="relative hidden xl:block pr-8">
+              <div className="sticky top-24 ml-auto w-[10.5rem]">
                 <PageNav items={frontmatter.toc} />
               </div>
             </aside>
           ) : (
             <div className="hidden xl:block" aria-hidden />
           )}
-          <div className="study-body study-cinematic min-w-0">
+          <div className="study-body study-cinematic w-full min-w-0 justify-self-center">
             <Overview className="study-text" frontmatter={frontmatter} layout="rows" />
             {study?.video || study?.deviceImage ? (
               <DeviceShowcase

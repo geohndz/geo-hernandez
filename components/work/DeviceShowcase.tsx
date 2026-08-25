@@ -20,7 +20,7 @@ export function F1Visor() {
 }
 
 const playButtonClass =
-  "pointer-events-auto z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[var(--line)] text-white backdrop-blur-[6px] transition-[transform,background-color] duration-200 hover:scale-105 hover:bg-[var(--line-strong)]";
+  "pointer-events-auto z-10 flex cursor-pointer items-center justify-center bg-[var(--line)] text-white backdrop-blur-[6px] transition-[transform,background-color] duration-200 hover:bg-[var(--line-strong)]";
 
 export function DeviceShowcase({
   study,
@@ -83,7 +83,18 @@ export function DeviceShowcase({
       type="button"
       onClick={togglePlayback}
       aria-label={playing ? "Pause" : "Play"}
-      className={cn(playButtonClass, "absolute bottom-4 right-4")}
+      className={cn(playButtonClass, "absolute bottom-4 right-4 h-10 w-10 rounded-full hover:scale-105")}
+    >
+      {playing ? <PauseIcon /> : <PlayIcon />}
+    </button>
+  );
+
+  const mobilePlayBar = (
+    <button
+      type="button"
+      onClick={togglePlayback}
+      aria-label={playing ? "Pause" : "Play"}
+      className={cn(playButtonClass, "absolute inset-x-3 bottom-3 h-12 rounded-full md:hidden")}
     >
       {playing ? <PauseIcon /> : <PlayIcon />}
     </button>
@@ -94,21 +105,24 @@ export function DeviceShowcase({
       type="button"
       onClick={togglePlayback}
       aria-label={playing ? "Pause" : "Play"}
-      className={cn(playButtonClass, "absolute bottom-3 left-[calc(100%+12px)]")}
+      className={cn(
+        playButtonClass,
+        "absolute bottom-3 left-[calc(100%+12px)] hidden h-10 w-10 rounded-full hover:scale-105 md:flex",
+      )}
     >
       {playing ? <PauseIcon /> : <PlayIcon />}
     </button>
   ) : null;
 
   const device = (
-    <div className={cn("relative", deviceOnly ? "mx-auto w-full max-w-[720px]" : "w-[76%] max-w-[680px]")}>
-      <span className="absolute -left-[3px] top-[20%] h-7 w-[3px] rounded-l-[1px] bg-[#cfcfcf]" />
-      <span className="absolute -left-[3px] top-[30%] h-10 w-[3px] rounded-l-[1px] bg-[#cfcfcf]" />
-      <div className="rounded-[14px] bg-[linear-gradient(160deg,#f3f3f3_0%,#c8c8c8_42%,#8f8f8f_100%)] p-[2px] shadow-[0_22px_70px_rgba(0,0,0,0.58)]">
-        <div className="relative rounded-[12px] bg-black p-[10px] md:p-[13px]">
-          <span className="absolute left-1/2 top-[4px] h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-[#2a2a2a] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]" />
+    <div className={cn("relative", deviceOnly ? "mx-auto w-full max-w-[720px]" : "w-[94%] max-w-[680px] md:w-[76%]")}>
+      <span className="absolute -left-1 top-[20%] h-8 w-1 rounded-l-[2px] bg-[#cfcfcf] md:-left-[3px] md:h-7 md:w-[3px] md:rounded-l-[1px]" />
+      <span className="absolute -left-1 top-[30%] h-11 w-1 rounded-l-[2px] bg-[#cfcfcf] md:-left-[3px] md:h-10 md:w-[3px] md:rounded-l-[1px]" />
+      <div className="rounded-[18px] bg-[linear-gradient(160deg,#f3f3f3_0%,#c8c8c8_42%,#8f8f8f_100%)] p-[4px] shadow-[0_22px_70px_rgba(0,0,0,0.58)] md:rounded-[14px] md:p-[2px]">
+        <div className="relative rounded-[14px] bg-black p-[18px] md:rounded-[12px] md:p-[13px]">
+          <span className="absolute left-1/2 top-[6px] h-[7px] w-[7px] -translate-x-1/2 rounded-full bg-[#2a2a2a] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] md:top-[4px] md:h-[5px] md:w-[5px]" />
           <div
-            className="relative overflow-hidden rounded-[6px] bg-black"
+            className="relative overflow-hidden rounded-[8px] bg-black md:rounded-[6px]"
             style={{ aspectRatio: aspect }}
           >
             {study.video ? (
@@ -168,11 +182,12 @@ export function DeviceShowcase({
         ref={rootRef}
         className={cn(
           "relative mt-10",
-          hasVideo && placement === "device" && "pr-14",
+          hasVideo && placement === "device" && "pb-16 md:pb-0 md:pr-14",
           className,
         )}
       >
         {device}
+        {hasVideo && placement === "device" && !isVisor ? mobilePlayBar : null}
       </div>
     );
   }
@@ -182,7 +197,11 @@ export function DeviceShowcase({
       ref={rootRef}
       className={cn(
         "pointer-events-none relative z-[2] overflow-hidden",
-        compact ? "h-[300px] md:h-[420px]" : "h-[480px] md:h-[720px]",
+        compact
+          ? "h-[260px] md:h-[420px]"
+          : study.carousel
+            ? "h-[420px] md:h-[720px]"
+            : "h-[280px] md:h-[720px]",
         className,
       )}
     >
@@ -208,11 +227,11 @@ export function DeviceShowcase({
 
       <div className={cn(
         "pointer-events-none absolute inset-0 flex items-center justify-center",
-        compact ? "px-5 py-9 md:px-8 md:py-14" : "px-8 py-12 md:px-14 md:py-16",
-        hasVideo && placement === "device" && !isVisor && "pr-20 md:pr-24",
+        compact ? "px-3 py-6 md:px-8 md:py-14" : "px-3 py-6 md:px-14 md:py-16",
+        hasVideo && placement === "device" && !isVisor && "md:pr-24",
       )}>
         {isVisor ? (
-          <div className="w-[84%] max-w-[720px]">
+          <div className="w-[94%] max-w-[720px] md:w-[84%]">
             <VisorVideo
               src={study.video!}
               poster={study.poster}
@@ -222,7 +241,7 @@ export function DeviceShowcase({
             />
           </div>
         ) : study.deviceImage ? (
-          <div className="relative w-[84%] max-w-[720px]" style={{ aspectRatio: aspect }}>
+          <div className="relative w-[94%] max-w-[720px] md:w-[84%]" style={{ aspectRatio: aspect }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={study.deviceImage}
@@ -236,8 +255,16 @@ export function DeviceShowcase({
       </div>
 
       {hasVideo && placement === "card" ? playToggle : null}
+      {hasVideo && placement === "device" && !isVisor ? mobilePlayBar : null}
     </div>
   );
+}
+
+function tileImages(images: string[], minCount: number) {
+  if (images.length === 0) return images;
+  const tiled = [...images];
+  while (tiled.length < minCount) tiled.push(...images);
+  return tiled;
 }
 
 function MarqueeRow({
@@ -249,13 +276,16 @@ function MarqueeRow({
   duration: string;
   paused: boolean;
 }) {
-  const copies = [images, images];
+  const tiled = tileImages(images, 10);
+  const copies = [tiled, tiled];
+  const scale = tiled.length / Math.max(images.length, 1);
+  const seconds = `${Number.parseFloat(duration) * scale}s`;
 
   return (
     <div className="pointer-events-none min-h-0 overflow-hidden">
       <div
         className={cn("geo-marquee-track flex h-full w-max", paused && "is-paused")}
-        style={{ ["--geo-duration" as string]: duration }}
+        style={{ ["--geo-duration" as string]: seconds }}
       >
         {copies.map((set, copy) => (
           <div key={copy} className="flex h-full shrink-0 gap-3 pr-3">

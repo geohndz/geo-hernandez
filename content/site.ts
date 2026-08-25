@@ -14,14 +14,14 @@ export const site = {
     github: "https://github.com/geohndz",
   },
   portrait: "/framer/HxB0bRtVAFQDCK2uViIzt8757g.jpg",
-  tags: ["Interaction Designer", "Product Designer", "Prototypes", "AI"],
+  tags: ["Product Design", "Interaction Design", "Prototyping", "UX Engineering"],
 } as const;
 
 export const nav = {
   about: { href: "/about", label: "About" },
   groups: [
     {
-      label: "Interface Design",
+      label: "Product & Interaction",
       items: [
         { href: "/#case-studies", label: "Case Studies", icon: "layers" },
         { href: "/applications", label: "Applications", icon: "app" },
@@ -42,10 +42,11 @@ export const about = {
   kicker: "About",
   seo: "Geovany Hernandez is a product and interaction designer who prototypes accessible digital experiences, design systems, and AI-powered tools.",
   paragraphs: [
-    "I'm Geovany Hernandez, a product and interaction designer from Tegucigalpa, Honduras.",
-    "I turn complex workflows into simple, intuitive experiences. I design and build, so ideas move from user flows to high-fidelity prototypes to production.",
-    "I care about interaction design, visual craft, design systems, and accessibility. I use AI to move faster without lowering the work, and I collaborate with engineering and product from concept to handoff.",
-    "Outside of work, you'll usually find me drinking iced lattes, running, or building side projects.",
+    "I'm Geo, a product and interaction designer who likes figuring out how things work, and how they could work better.",
+    "My background started in graphic design, where I learned to think about composition, typography, visual systems, and the details that make an experience feel intentional. Over time, that curiosity pulled me toward UX and product design, where I could apply those same principles to more complex problems and interactive experiences.",
+    "Today, I work across product design, interaction design, prototyping, and front-end development. I enjoy moving between the abstract and the tangible: understanding a problem, mapping out a system, designing the interaction, and then building enough of it to see whether the idea actually works.",
+    "I'm particularly drawn to projects involving complex information, learning, emerging technology, and new ways of interacting with digital products. Whether it's a classroom map, a spatial interface, or a small web experiment, I'm interested in making complicated things feel clear, approachable, and engaging.",
+    "I also like to explore outside of client and product work. I build experiments, play with new technologies, and occasionally make things simply because I'm curious about what happens when I try.",
   ],
 };
 

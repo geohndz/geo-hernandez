@@ -73,15 +73,15 @@ export function PhoneShowcase({
   }
 
   const phone = (
-    <div className="relative w-[42%] max-w-[240px]">
-      <span className="absolute -left-[3px] top-[18%] h-8 w-[3px] rounded-l-[1px] bg-[#cfcfcf]" />
-      <span className="absolute -left-[3px] top-[28%] h-12 w-[3px] rounded-l-[1px] bg-[#cfcfcf]" />
-      <span className="absolute -right-[3px] top-[24%] h-16 w-[3px] rounded-r-[1px] bg-[#cfcfcf]" />
-      <div className="rounded-[34px] bg-[linear-gradient(160deg,#f3f3f3_0%,#c8c8c8_42%,#8f8f8f_100%)] p-[2px] shadow-[0_22px_70px_rgba(0,0,0,0.58)]">
-        <div className="relative rounded-[32px] bg-black p-[9px]">
-          <span className="absolute left-1/2 top-[11px] z-[2] h-[18px] w-[72px] -translate-x-1/2 rounded-full bg-[#1a1a1a] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
+    <div className="relative w-[72%] max-w-[280px] md:w-[42%] md:max-w-[240px]">
+      <span className="absolute -left-1 top-[18%] h-9 w-1 rounded-l-[2px] bg-[#cfcfcf] md:-left-[3px] md:h-8 md:w-[3px] md:rounded-l-[1px]" />
+      <span className="absolute -left-1 top-[28%] h-14 w-1 rounded-l-[2px] bg-[#cfcfcf] md:-left-[3px] md:h-12 md:w-[3px] md:rounded-l-[1px]" />
+      <span className="absolute -right-1 top-[24%] h-[72px] w-1 rounded-r-[2px] bg-[#cfcfcf] md:-right-[3px] md:h-16 md:w-[3px] md:rounded-r-[1px]" />
+      <div className="rounded-[36px] bg-[linear-gradient(160deg,#f3f3f3_0%,#c8c8c8_42%,#8f8f8f_100%)] p-[4px] shadow-[0_22px_70px_rgba(0,0,0,0.58)] md:rounded-[34px] md:p-[2px]">
+        <div className="relative rounded-[32px] bg-black p-[14px] md:rounded-[32px] md:p-[9px]">
+          <span className="absolute left-1/2 top-[14px] z-[2] h-[22px] w-[86px] -translate-x-1/2 rounded-full bg-[#1a1a1a] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)] md:top-[11px] md:h-[18px] md:w-[72px]" />
           <div
-            className="relative overflow-hidden rounded-[24px] bg-black"
+            className="relative overflow-hidden rounded-[22px] bg-black md:rounded-[24px]"
             style={{ aspectRatio: "9 / 19.5" }}
           >
             {sequence.map((src, i) => (
@@ -116,7 +116,7 @@ export function PhoneShowcase({
     <div
       ref={rootRef}
       className={cn(
-        "pointer-events-none relative z-[2] h-[440px] overflow-hidden md:h-[600px]",
+        "pointer-events-none relative z-[2] h-[580px] overflow-hidden md:h-[600px]",
         className,
       )}
     >
@@ -146,7 +146,7 @@ export function PhoneShowcase({
         }}
       />
 
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6 py-7 md:px-10 md:py-9">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-3 py-6 md:px-10 md:py-9">
         {phone}
       </div>
 

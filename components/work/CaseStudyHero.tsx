@@ -14,7 +14,7 @@ export function CaseStudyHero({
   image?: string;
 }) {
   return (
-    <header className="relative flex h-[80vh] flex-col justify-end overflow-hidden border-b border-line">
+    <header className="relative flex min-h-dvh flex-col justify-end overflow-hidden border-b border-line md:h-[80vh] md:min-h-0">
       <div className="absolute inset-0 bg-card">
         {image ? (
           <Image
@@ -30,7 +30,7 @@ export function CaseStudyHero({
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
       </div>
 
-      <div className="relative z-10 px-6 pb-10 pt-40 md:px-12 md:pb-14 lg:px-16">
+      <div className="relative z-10 px-6 pb-10 pt-16 md:px-12 md:pb-14 md:pt-40 lg:px-16">
         <div className="mx-auto w-full max-w-content">
         <Reveal>
           <h1 className="max-w-4xl font-display text-[38px] font-medium tracking-[-0.05em] md:text-[55px]">

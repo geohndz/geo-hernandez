@@ -24,6 +24,28 @@ export function ApplicationArtifactCard({ project }: { project: GalleryProject }
             {project.title}
           </h2>
           <p className="mt-2 text-[15px] leading-relaxed text-muted">{project.description}</p>
+          {project.challenge || project.focus || project.contribution ? (
+            <dl className="mt-5 space-y-3 text-[13.5px] leading-relaxed">
+              {project.challenge ? (
+                <div>
+                  <dt className="font-medium text-fg">Challenge</dt>
+                  <dd className="mt-0.5 text-muted">{project.challenge}</dd>
+                </div>
+              ) : null}
+              {project.focus ? (
+                <div>
+                  <dt className="font-medium text-fg">Design focus</dt>
+                  <dd className="mt-0.5 text-muted">{project.focus}</dd>
+                </div>
+              ) : null}
+              {project.contribution ? (
+                <div>
+                  <dt className="font-medium text-fg">Contribution</dt>
+                  <dd className="mt-0.5 text-muted">{project.contribution}</dd>
+                </div>
+              ) : null}
+            </dl>
+          ) : null}
           {project.tags ? (
             <ul className="mt-4 flex flex-wrap gap-2">
               {project.tags.map((tag) => (

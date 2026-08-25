@@ -137,6 +137,9 @@ export type GalleryProject = {
     href: string;
     label: string;
   };
+  challenge?: string;
+  focus?: string;
+  contribution?: string;
   sequence?: string[];
   carousel?: {
     top: string[];
@@ -151,6 +154,10 @@ export const applications: GalleryProject[] = [
     category: "Community App",
     description:
       "A community sports app with a clear path from splash to session. Users find nearby games and join in a few taps.",
+    challenge:
+      "Finding local pickup games required searching across disconnected platforms.",
+    focus: "Discovery, joining, session management",
+    contribution: "Product strategy · UX/UI · interaction design",
     image: "/media/sunset-sports/home.png",
     sequence: [
       "/media/sunset-sports/splash.png",
@@ -199,6 +206,10 @@ export const applications: GalleryProject[] = [
     category: "Health App",
     description:
       "A product redesign of Beurer's weight tracking app. I simplified navigation and made body metrics easier to scan for daily check-ins.",
+    challenge:
+      "Daily body metrics were buried in cluttered navigation that made check-ins feel like work.",
+    focus: "Navigation, metric scanning, daily check-ins",
+    contribution: "Product redesign · UX/UI · data visualization",
     image: "/media/health-coach/onboarding.png",
     sequence: [
       "/media/health-coach/onboarding.png",
@@ -237,6 +248,10 @@ export const applications: GalleryProject[] = [
     category: "Resort App",
     description:
       "A ski resort companion that puts lift passes, lessons, trail maps, and activity tracking in one product. Designed for complex workflows on mobile.",
+    challenge:
+      "Guests juggled lift passes, lessons, maps, and activity tracking across separate touchpoints.",
+    focus: "Passes, lessons, trail maps, activity tracking",
+    contribution: "Product strategy · complex workflows · mobile UX",
     image: "/media/mount-blanco/home.png",
     sequence: [
       "/media/mount-blanco/home.png",
@@ -270,6 +285,10 @@ export const applications: GalleryProject[] = [
     category: "Campus App",
     description:
       "A campus ordering redesign focused on speed, visual hierarchy, and a clearer pickup flow from home to scan to cart.",
+    challenge:
+      "Campus ordering was slow to scan, with a pickup flow that buried the next step.",
+    focus: "Speed, visual hierarchy, pickup flow",
+    contribution: "Visual design · interaction design · mobile UX",
     image: "/media/mobile-order/home.png",
     sequence: [
       "/media/mobile-order/splash.png",
