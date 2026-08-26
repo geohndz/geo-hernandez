@@ -65,16 +65,16 @@ export function CaseStudyView({
         </div>
       </div>
 
-      <section className="px-6 py-16 md:px-12 lg:px-16">
-        <PageWidth>
-          <p className="text-[12px] uppercase tracking-[0.16em] text-dim">
-            Next Project
-          </p>
-          <div className="mt-6">
-            <FeaturedStudyCard study={next} />
-          </div>
-        </PageWidth>
-      </section>
+      {next ? (
+        <section className="px-6 py-16 md:px-12 lg:px-16">
+          <PageWidth>
+            <p className="text-[15px] text-muted">Next project</p>
+            <div className="mt-6">
+              <FeaturedStudyCard study={next} />
+            </div>
+          </PageWidth>
+        </section>
+      ) : null}
 
       <FooterCta />
     </article>

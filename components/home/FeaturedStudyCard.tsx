@@ -7,6 +7,7 @@ import {
   chipBase,
   chipCategoryAccents,
   chipCategoryBase,
+  chipCategoryHover,
 } from "@/lib/chip-accents";
 import { cn } from "@/lib/cn";
 
@@ -32,7 +33,14 @@ export function FeaturedStudyCard({ study }: { study: CaseStudyMeta }) {
             <h2 className="order-2 min-w-0 font-display text-[23px] font-medium tracking-[-0.03em] md:order-1 md:text-[27px]">
               {study.title}
             </h2>
-            <p className={cn(chipCategoryBase, chipCategoryAccents.purple, "order-1 md:order-2")}>
+            <p
+              className={cn(
+                chipCategoryBase,
+                chipCategoryAccents.purple,
+                chipCategoryHover.purple,
+                "order-1 md:order-2",
+              )}
+            >
               {study.category}
             </p>
           </div>

@@ -7,6 +7,7 @@ import {
   chipBase,
   chipCategoryAccents,
   chipCategoryBase,
+  chipCategoryHover,
   type ChipAccent,
 } from "@/lib/chip-accents";
 import { cn } from "@/lib/cn";
@@ -45,10 +46,10 @@ export function ExplorationDeviceCard({
   return (
     <article
       className={cn(
-        "group relative overflow-hidden rounded-[24px] border border-line bg-card transition-[border-color,transform,background] duration-500",
+        "relative overflow-hidden rounded-[24px] border border-line bg-card",
         linked &&
           cn(
-            "hover:-translate-y-0.5 hover:border-line-strong",
+            "group transition-[border-color,transform,background] duration-500 hover:-translate-y-0.5 hover:border-line-strong",
             hoverWashes[hoverWash],
           ),
       )}
@@ -75,7 +76,14 @@ export function ExplorationDeviceCard({
             </h2>
             {linked ? <ArrowUpRight className="mt-1.5 h-4 w-4 shrink-0 text-dim" /> : null}
           </div>
-          <p className={cn(chipCategoryBase, chipCategoryAccents[hoverWash], "order-1 md:order-2")}>
+          <p
+            className={cn(
+              chipCategoryBase,
+              chipCategoryAccents[hoverWash],
+              linked && chipCategoryHover[hoverWash],
+              "order-1 md:order-2",
+            )}
+          >
             {study.category}
           </p>
         </div>
@@ -85,7 +93,10 @@ export function ExplorationDeviceCard({
         {study.tags.length ? (
           <ul className="mt-4 flex flex-wrap gap-2">
             {study.tags.map((tag) => (
-              <li key={tag} className={cn(chipBase, chipAccents[hoverWash])}>
+              <li
+                key={tag}
+                className={cn(chipBase, linked && chipAccents[hoverWash])}
+              >
                 {tag}
               </li>
             ))}

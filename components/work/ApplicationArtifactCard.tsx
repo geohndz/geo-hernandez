@@ -1,7 +1,6 @@
 import type { GalleryProject } from "@/content/projects";
 import { PhoneShowcase } from "@/components/work/PhoneShowcase";
 import {
-  chipAccents,
   chipBase,
   chipCategoryAccents,
   chipCategoryBase,
@@ -22,7 +21,7 @@ export function ApplicationArtifactCard({ project }: { project: GalleryProject }
   return (
     <article
       className={cn(
-        "group relative overflow-hidden rounded-[24px] border border-line-strong bg-card",
+        "relative overflow-hidden rounded-[24px] border border-line-strong bg-card",
         washes[wash],
       )}
     >
@@ -65,7 +64,7 @@ export function ApplicationArtifactCard({ project }: { project: GalleryProject }
         {project.tags ? (
           <ul className="mt-4 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
-              <li key={tag} className={cn(chipBase, chipAccents[wash])}>
+              <li key={tag} className={chipBase}>
                 {tag}
               </li>
             ))}

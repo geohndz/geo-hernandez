@@ -89,16 +89,19 @@ export function DeviceShowcase({
     </button>
   );
 
-  const mobilePlayBar = (
-    <button
-      type="button"
-      onClick={togglePlayback}
-      aria-label={playing ? "Pause" : "Play"}
-      className={cn(playButtonClass, "absolute inset-x-3 bottom-3 h-12 rounded-full md:hidden")}
-    >
-      {playing ? <PauseIcon /> : <PlayIcon />}
-    </button>
-  );
+  const mobilePlayToggle =
+    hasVideo && placement === "device" && !isVisor ? (
+      <div className="mt-5 flex justify-center md:hidden">
+        <button
+          type="button"
+          onClick={togglePlayback}
+          aria-label={playing ? "Pause" : "Play"}
+          className={cn(playButtonClass, "pointer-events-auto h-12 w-12 rounded-full")}
+        >
+          {playing ? <PauseIcon /> : <PlayIcon />}
+        </button>
+      </div>
+    ) : null;
 
   const deviceToggle = !isVisor ? (
     <button
@@ -182,80 +185,82 @@ export function DeviceShowcase({
         ref={rootRef}
         className={cn(
           "relative mt-10",
-          hasVideo && placement === "device" && "pb-16 md:pb-0 md:pr-14",
+          hasVideo && placement === "device" && "md:pr-14",
           className,
         )}
       >
         {device}
-        {hasVideo && placement === "device" && !isVisor ? mobilePlayBar : null}
+        {mobilePlayToggle}
       </div>
     );
   }
 
   return (
-    <div
-      ref={rootRef}
-      className={cn(
-        "pointer-events-none relative z-[2] overflow-hidden",
-        compact
-          ? "h-[260px] md:h-[420px]"
-          : study.carousel
-            ? "h-[300px] md:h-[720px]"
-            : "h-[240px] md:h-[720px]",
-        className,
-      )}
-    >
-      {study.carousel ? (
-        <div className="absolute inset-0 flex items-center">
-          <div className="grid h-[52%] w-full grid-rows-2 gap-2.5">
-            <MarqueeRow images={top} duration="55.2s" paused={!playing} />
-            <MarqueeRow images={[...bottom].reverse()} duration="32.2s" paused={!playing} />
-          </div>
-        </div>
-      ) : null}
-
-      {study.deviceImage ? (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 58% 52% at 50% 48%, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.42) 38%, transparent 72%)",
-          }}
-        />
-      ) : null}
-
-      <div className={cn(
-        "pointer-events-none absolute inset-0 flex items-center justify-center",
-        compact ? "px-3 py-4 md:px-8 md:py-14" : "px-3 py-3 md:px-14 md:py-16",
-        hasVideo && placement === "device" && !isVisor && "md:pr-24",
-      )}>
-        {isVisor ? (
-          <div className="w-[94%] max-w-[720px] md:w-[84%]">
-            <VisorVideo
-              src={study.video!}
-              poster={study.poster}
-              playing={playing}
-              onToggle={togglePlayback}
-              controls={placement === "device"}
-            />
-          </div>
-        ) : study.deviceImage ? (
-          <div className="relative w-[94%] max-w-[720px] md:w-[84%]" style={{ aspectRatio: aspect }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={study.deviceImage}
-              alt=""
-              className="h-full w-full object-contain drop-shadow-[0_16px_48px_rgba(0,0,0,0.45)]"
-            />
-          </div>
-        ) : (
-          device
+    <div ref={rootRef} className={cn("relative z-[2]", className)}>
+      <div
+        className={cn(
+          "pointer-events-none relative overflow-hidden",
+          compact
+            ? "h-[260px] md:h-[420px]"
+            : study.carousel
+              ? "h-[300px] md:h-[720px]"
+              : "h-[240px] md:h-[720px]",
         )}
-      </div>
+      >
+        {study.carousel ? (
+          <div className="absolute inset-0 flex items-center">
+            <div className="grid h-[52%] w-full grid-rows-2 gap-2.5">
+              <MarqueeRow images={top} duration="55.2s" paused={!playing} />
+              <MarqueeRow images={[...bottom].reverse()} duration="32.2s" paused={!playing} />
+            </div>
+          </div>
+        ) : null}
 
-      {hasVideo && placement === "card" ? playToggle : null}
-      {hasVideo && placement === "device" && !isVisor ? mobilePlayBar : null}
+        {study.deviceImage ? (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 58% 52% at 50% 48%, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.42) 38%, transparent 72%)",
+            }}
+          />
+        ) : null}
+
+        <div
+          className={cn(
+            "pointer-events-none absolute inset-0 flex items-center justify-center",
+            compact ? "px-3 py-4 md:px-8 md:py-14" : "px-3 py-3 md:px-14 md:py-16",
+            hasVideo && placement === "device" && !isVisor && "md:pr-24",
+          )}
+        >
+          {isVisor ? (
+            <div className="w-[94%] max-w-[720px] md:w-[84%]">
+              <VisorVideo
+                src={study.video!}
+                poster={study.poster}
+                playing={playing}
+                onToggle={togglePlayback}
+                controls={placement === "device"}
+              />
+            </div>
+          ) : study.deviceImage ? (
+            <div className="relative w-[94%] max-w-[720px] md:w-[84%]" style={{ aspectRatio: aspect }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={study.deviceImage}
+                alt=""
+                className="h-full w-full object-contain drop-shadow-[0_16px_48px_rgba(0,0,0,0.45)]"
+              />
+            </div>
+          ) : (
+            device
+          )}
+        </div>
+
+        {hasVideo && placement === "card" ? playToggle : null}
+      </div>
+      {mobilePlayToggle}
     </div>
   );
 }

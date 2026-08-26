@@ -199,7 +199,7 @@ export function ResearchClusters() {
 
   return (
     <div className="study-text mt-8">
-      <p className="text-center text-[16px] leading-[1.75] text-muted">
+      <p className="text-[16px] leading-[1.75] text-muted">
         Those activities weren&apos;t random. They kept falling into the same
         four jobs.
       </p>
