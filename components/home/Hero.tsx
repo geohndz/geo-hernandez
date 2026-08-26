@@ -36,11 +36,11 @@ export function Hero() {
         >
           {site.description}
         </motion.p>
-        <motion.ul variants={fadeUp} className="mt-7 flex flex-wrap justify-center gap-2">
+        <motion.ul variants={fadeUp} className="mt-7 flex flex-wrap justify-center gap-2.5">
           {site.tags.map((tag) => (
             <li
               key={tag}
-              className="rounded-full border border-line bg-white/[0.03] px-3 py-1 text-[12px] text-muted"
+              className="rounded-full border border-line bg-card px-3.5 py-1.5 text-[12px] text-muted"
             >
               {tag}
             </li>

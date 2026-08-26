@@ -118,11 +118,11 @@ export function DeviceShowcase({
     <div className={cn("relative", deviceOnly ? "mx-auto w-full max-w-[720px]" : "w-[94%] max-w-[680px] md:w-[76%]")}>
       <span className="absolute -left-1 top-[20%] h-8 w-1 rounded-l-[2px] bg-[#cfcfcf] md:-left-[3px] md:h-7 md:w-[3px] md:rounded-l-[1px]" />
       <span className="absolute -left-1 top-[30%] h-11 w-1 rounded-l-[2px] bg-[#cfcfcf] md:-left-[3px] md:h-10 md:w-[3px] md:rounded-l-[1px]" />
-      <div className="rounded-[18px] bg-[linear-gradient(160deg,#f3f3f3_0%,#c8c8c8_42%,#8f8f8f_100%)] p-[4px] shadow-[0_22px_70px_rgba(0,0,0,0.58)] md:rounded-[14px] md:p-[2px]">
-        <div className="relative rounded-[14px] bg-black p-[18px] md:rounded-[12px] md:p-[13px]">
-          <span className="absolute left-1/2 top-[6px] h-[7px] w-[7px] -translate-x-1/2 rounded-full bg-[#2a2a2a] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] md:top-[4px] md:h-[5px] md:w-[5px]" />
+      <div className="rounded-[16px] bg-[linear-gradient(160deg,#f3f3f3_0%,#c8c8c8_42%,#8f8f8f_100%)] p-[2px] shadow-[0_22px_70px_rgba(0,0,0,0.58)] md:rounded-[14px]">
+        <div className="relative rounded-[14px] bg-black p-[8px] md:rounded-[12px] md:p-[13px]">
+          <span className="absolute left-1/2 top-[4px] h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-[#2a2a2a] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]" />
           <div
-            className="relative overflow-hidden rounded-[8px] bg-black md:rounded-[6px]"
+            className="relative overflow-hidden rounded-[6px] bg-black"
             style={{ aspectRatio: aspect }}
           >
             {study.video ? (
@@ -200,8 +200,8 @@ export function DeviceShowcase({
         compact
           ? "h-[260px] md:h-[420px]"
           : study.carousel
-            ? "h-[420px] md:h-[720px]"
-            : "h-[280px] md:h-[720px]",
+            ? "h-[300px] md:h-[720px]"
+            : "h-[240px] md:h-[720px]",
         className,
       )}
     >
@@ -227,7 +227,7 @@ export function DeviceShowcase({
 
       <div className={cn(
         "pointer-events-none absolute inset-0 flex items-center justify-center",
-        compact ? "px-3 py-6 md:px-8 md:py-14" : "px-3 py-6 md:px-14 md:py-16",
+        compact ? "px-3 py-4 md:px-8 md:py-14" : "px-3 py-3 md:px-14 md:py-16",
         hasVideo && placement === "device" && !isVisor && "md:pr-24",
       )}>
         {isVisor ? (

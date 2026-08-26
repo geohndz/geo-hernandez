@@ -62,20 +62,19 @@ export const awards = [
     org: "Communication Arts",
     date: "Nov 2025",
     featured: true,
-    mark: "/framer/NX2cziCzlMzFrWJhVRGpXaxaBXY.png",
+    mark: "/media/awards/ca-award-of-excellence.png",
   },
   {
     title: "Gold Student Addy Award",
     org: "American Advertising Federation",
     date: "Mar 2025",
     featured: true,
-    mark: "/framer/8bO0mkvX6zeRyukYSsV6afcYMQ.png",
   },
   {
     title: "Silver Student Addy Award, Single",
     org: "American Advertising Federation",
     date: "Mar 2025",
-    featured: false,
+    featured: true,
   },
   {
     title: "1st Place, Interaction Design Award",

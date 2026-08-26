@@ -5,6 +5,8 @@ import { ArrowUpRight } from "lucide-react";
 import type { GalleryProject } from "@/content/projects";
 import { Reveal } from "@/components/motion/Reveal";
 import { CardVideo } from "@/components/work/CardVideo";
+import { chipAccents, chipBase } from "@/lib/chip-accents";
+import { cn } from "@/lib/cn";
 
 export function ProjectCard({ project }: { project: GalleryProject }) {
   const media = (
@@ -54,10 +56,7 @@ export function ProjectCard({ project }: { project: GalleryProject }) {
       {project.tools ? (
         <ul className="mt-4 flex flex-wrap gap-2">
           {project.tools.map((tool) => (
-            <li
-              key={tool}
-              className="rounded-full border border-line px-2.5 py-1 text-[11px] text-dim"
-            >
+            <li key={tool} className={cn(chipBase, chipAccents.purple)}>
               {tool}
             </li>
           ))}
@@ -67,7 +66,7 @@ export function ProjectCard({ project }: { project: GalleryProject }) {
   );
 
   const card = (
-    <article className="group overflow-hidden rounded-[24px] border border-line bg-card transition-[border-color,transform] duration-500 hover:-translate-y-0.5 hover:border-white/20">
+    <article className="group overflow-hidden rounded-[24px] border border-line bg-card transition-[border-color,transform,background] duration-500 hover:-translate-y-0.5 hover:border-white/20 hover:[background-image:linear-gradient(145deg,rgba(112,64,196,0.22)_0%,rgba(62,28,118,0.12)_46%,transparent_100%)]">
       {project.kind === "phone" ? (
         <div className="grid items-center gap-8 px-6 py-8 md:grid-cols-[1fr_auto] md:px-10 md:py-10">
           <div>{body}</div>
