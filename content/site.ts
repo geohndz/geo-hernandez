@@ -50,6 +50,30 @@ export const about = {
   ],
 };
 
+export const aboutStickers = [
+  {
+    src: "/media/about/matcha-v3.png",
+    label: "iced matcha for life",
+    width: 438,
+    height: 748,
+    framed: false,
+  },
+  {
+    src: "/media/about/got.jpg",
+    label: "ASoIaF brainrot",
+    width: 240,
+    height: 360,
+    framed: true,
+  },
+  {
+    src: "/media/about/adizero-v3.png",
+    label: "zone 2 gang",
+    width: 500,
+    height: 242,
+    framed: false,
+  },
+] as const;
+
 export const awards = [
   {
     title: "1st Place, Interaction Design Award",
