@@ -44,7 +44,7 @@ export function FeaturedStudyCard({ study }: { study: CaseStudyMeta }) {
               {study.category}
             </p>
           </div>
-          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
+          <p className="mt-3 w-full text-[15px] leading-relaxed text-muted md:w-4/5">
             {study.summary}
           </p>
           <ul className="mt-4 flex flex-wrap gap-2">

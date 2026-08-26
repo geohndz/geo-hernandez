@@ -118,12 +118,11 @@ export function DeviceShowcase({
   ) : null;
 
   const device = (
-    <div className={cn("relative", deviceOnly ? "mx-auto w-full max-w-[720px]" : "w-[94%] max-w-[680px] md:w-[76%]")}>
+    <div className={cn("relative mx-auto w-full", deviceOnly ? "max-w-[720px]" : "max-w-[520px]")}>
       <span className="absolute -left-1 top-[20%] h-8 w-1 rounded-l-[2px] bg-[#cfcfcf] md:-left-[3px] md:h-7 md:w-[3px] md:rounded-l-[1px]" />
       <span className="absolute -left-1 top-[30%] h-11 w-1 rounded-l-[2px] bg-[#cfcfcf] md:-left-[3px] md:h-10 md:w-[3px] md:rounded-l-[1px]" />
       <div className="rounded-[16px] bg-[linear-gradient(160deg,#f3f3f3_0%,#c8c8c8_42%,#8f8f8f_100%)] p-[2px] shadow-[0_22px_70px_rgba(0,0,0,0.58)] md:rounded-[14px]">
         <div className="relative rounded-[14px] bg-black p-[8px] md:rounded-[12px] md:p-[13px]">
-          <span className="absolute left-1/2 top-[4px] h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-[#2a2a2a] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]" />
           <div
             className="relative overflow-hidden rounded-[6px] bg-black"
             style={{ aspectRatio: aspect }}
@@ -148,15 +147,21 @@ export function DeviceShowcase({
     </div>
   );
 
-  if (deviceOnly && isVisor) {
+  const visor = isVisor ? (
+    <VisorVideo
+      src={study.video!}
+      poster={study.poster}
+      playing={playing}
+      onToggle={togglePlayback}
+      controls={placement === "device"}
+      className={deviceOnly ? "max-w-[720px]" : "max-w-[520px]"}
+    />
+  ) : null;
+
+  if (deviceOnly && visor) {
     return (
       <div ref={rootRef} className={cn("relative mt-10", className)}>
-        <VisorVideo
-          src={study.video!}
-          poster={study.poster}
-          playing={playing}
-          onToggle={togglePlayback}
-        />
+        {visor}
       </div>
     );
   }
@@ -197,55 +202,38 @@ export function DeviceShowcase({
 
   return (
     <div ref={rootRef} className={cn("relative z-[2]", className)}>
-      <div
-        className={cn(
-          "pointer-events-none relative overflow-hidden",
-          compact
-            ? "h-[260px] md:h-[420px]"
-            : study.carousel
-              ? "h-[300px] md:h-[720px]"
-              : "h-[240px] md:h-[720px]",
-        )}
-      >
-        {study.carousel ? (
+      {study.carousel ? (
+        <div
+          className={cn(
+            "pointer-events-none relative overflow-hidden",
+            compact ? "h-[300px] md:h-[440px]" : "h-[300px] md:h-[720px]",
+          )}
+        >
           <div className="absolute inset-0 flex items-center">
             <div className="grid h-[52%] w-full grid-rows-2 gap-2.5">
               <MarqueeRow images={top} duration="55.2s" paused={!playing} />
               <MarqueeRow images={[...bottom].reverse()} duration="32.2s" paused={!playing} />
             </div>
           </div>
-        ) : null}
-
-        {study.deviceImage ? (
           <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse 58% 52% at 50% 48%, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.42) 38%, transparent 72%)",
-            }}
-          />
-        ) : null}
-
-        <div
-          className={cn(
-            "pointer-events-none absolute inset-0 flex items-center justify-center",
-            compact ? "px-3 py-4 md:px-8 md:py-14" : "px-3 py-3 md:px-14 md:py-16",
-            hasVideo && placement === "device" && !isVisor && "md:pr-24",
-          )}
-        >
-          {isVisor ? (
-            <div className="w-[94%] max-w-[720px] md:w-[84%]">
-              <VisorVideo
-                src={study.video!}
-                poster={study.poster}
-                playing={playing}
-                onToggle={togglePlayback}
-                controls={placement === "device"}
-              />
-            </div>
+            className={cn(
+              "pointer-events-none absolute inset-0 flex items-center justify-center",
+              compact ? "px-6 pb-10 pt-6 md:px-10 md:pb-16 md:pt-12" : "px-6 pb-10 pt-6 md:px-14 md:py-16",
+            )}
+          >
+            {visor ?? device}
+          </div>
+          {hasVideo && placement === "card" ? playToggle : null}
+        </div>
+      ) : (
+        <div className="relative px-6 pb-8 pt-4 md:px-10 md:pb-10 md:pt-6">
+          {visor ? (
+            visor
           ) : study.deviceImage ? (
-            <div className="relative w-[94%] max-w-[720px] md:w-[84%]" style={{ aspectRatio: aspect }}>
+            <div
+              className="relative mx-auto w-full max-w-[520px]"
+              style={{ aspectRatio: aspect }}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={study.deviceImage}
@@ -256,10 +244,9 @@ export function DeviceShowcase({
           ) : (
             device
           )}
+          {hasVideo && placement === "card" ? playToggle : null}
         </div>
-
-        {hasVideo && placement === "card" ? playToggle : null}
-      </div>
+      )}
       {mobilePlayToggle}
     </div>
   );

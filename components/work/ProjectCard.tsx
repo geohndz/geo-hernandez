@@ -50,7 +50,7 @@ export function ProjectCard({ project }: { project: GalleryProject }) {
           <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-dim" />
         ) : null}
       </div>
-      <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
+      <p className="mt-3 w-full text-[15px] leading-relaxed text-muted md:w-4/5">
         {project.description}
       </p>
       {project.tools ? (

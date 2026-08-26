@@ -8,6 +8,7 @@ import {
   chipCategoryAccents,
   chipCategoryBase,
   chipCategoryHover,
+  chipCategoryWhiteOutline,
   type ChipAccent,
 } from "@/lib/chip-accents";
 import { cn } from "@/lib/cn";
@@ -79,7 +80,7 @@ export function ExplorationDeviceCard({
           <p
             className={cn(
               chipCategoryBase,
-              chipCategoryAccents[hoverWash],
+              linked ? chipCategoryAccents[hoverWash] : chipCategoryWhiteOutline,
               linked && chipCategoryHover[hoverWash],
               "order-1 md:order-2",
             )}
@@ -87,16 +88,13 @@ export function ExplorationDeviceCard({
             {study.category}
           </p>
         </div>
-        <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-muted">
+        <p className="mt-2 w-full text-[15px] leading-relaxed text-muted md:w-4/5">
           {study.summary}
         </p>
         {study.tags.length ? (
           <ul className="mt-4 flex flex-wrap gap-2">
             {study.tags.map((tag) => (
-              <li
-                key={tag}
-                className={cn(chipBase, linked && chipAccents[hoverWash])}
-              >
+              <li key={tag} className={cn(chipBase, linked && chipAccents[hoverWash])}>
                 {tag}
               </li>
             ))}

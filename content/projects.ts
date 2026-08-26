@@ -139,7 +139,6 @@ export type GalleryProject = {
   };
   challenge?: string;
   focus?: string;
-  contribution?: string;
   sequence?: string[];
   carousel?: {
     top: string[];
@@ -157,7 +156,6 @@ export const applications: GalleryProject[] = [
     challenge:
       "Finding local pickup games required searching across disconnected platforms.",
     focus: "Discovery, joining, session management",
-    contribution: "Product strategy · UX/UI · interaction design",
     image: "/media/sunset-sports/home.png",
     sequence: [
       "/media/sunset-sports/splash.png",
@@ -209,7 +207,6 @@ export const applications: GalleryProject[] = [
     challenge:
       "Daily body metrics were buried in cluttered navigation that made check-ins feel like work.",
     focus: "Navigation, metric scanning, daily check-ins",
-    contribution: "Product redesign · UX/UI · data visualization",
     image: "/media/health-coach/onboarding.png",
     sequence: [
       "/media/health-coach/onboarding.png",
@@ -251,7 +248,6 @@ export const applications: GalleryProject[] = [
     challenge:
       "Guests juggled lift passes, lessons, maps, and activity tracking across separate touchpoints.",
     focus: "Passes, lessons, trail maps, activity tracking",
-    contribution: "Product strategy · complex workflows · mobile UX",
     image: "/media/mount-blanco/home.png",
     sequence: [
       "/media/mount-blanco/home.png",
@@ -288,7 +284,6 @@ export const applications: GalleryProject[] = [
     challenge:
       "Campus ordering was slow to scan, with a pickup flow that buried the next step.",
     focus: "Speed, visual hierarchy, pickup flow",
-    contribution: "Visual design · interaction design · mobile UX",
     image: "/media/mobile-order/home.png",
     sequence: [
       "/media/mobile-order/splash.png",
@@ -332,8 +327,8 @@ export const websites: GalleryProject[] = [
     tools: ["Visual Design", "Brand", "Responsive"],
   },
   {
-    slug: "colle-days",
-    title: "Colle Days",
+    slug: "college-days",
+    title: "College Days",
     kicker: "Landing Page",
     description:
       "A College Days site for Pensacola Christian College. I designed and built it in a student studio, collapsing five pages into one promotional experience in four weeks.",

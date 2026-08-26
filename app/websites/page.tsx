@@ -8,7 +8,7 @@ import { Reveal } from "@/components/motion/Reveal";
 
 const websiteWashes: Record<string, "yellow" | "blue" | "green"> = {
   "automotive-alternative": "yellow",
-  "colle-days": "blue",
+  "college-days": "blue",
   "christina-kline": "green",
 };
 

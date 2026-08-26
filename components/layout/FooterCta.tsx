@@ -1,6 +1,7 @@
 import { cta, site } from "@/content/site";
 import { PageWidth } from "@/components/layout/PageWidth";
 import { Reveal } from "@/components/motion/Reveal";
+import { DinoGame } from "@/components/play/DinoGame";
 
 export function FooterCta() {
   return (
@@ -29,6 +30,11 @@ export function FooterCta() {
               LinkedIn
             </a>
           </div>
+          <p className="mt-8 text-[16px] leading-relaxed text-muted">{cta.aside}</p>
+        </div>
+
+        <div className="mx-auto mt-16 max-w-[960px]">
+          <DinoGame />
         </div>
       </Reveal>
       </PageWidth>

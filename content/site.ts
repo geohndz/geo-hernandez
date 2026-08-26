@@ -146,4 +146,5 @@ export const cta = {
   title: "Interested in working together?",
   body: "I'm looking for product and interaction design roles where I can prototype, ship, and work closely with engineering and product.",
   prompt: "Let's connect.",
+  aside: "Or stay a while and run.",
 };

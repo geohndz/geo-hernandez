@@ -1,9 +1,10 @@
 import type { GalleryProject } from "@/content/projects";
 import { PhoneShowcase } from "@/components/work/PhoneShowcase";
 import {
-  chipBase,
-  chipCategoryAccents,
+  chipAccentsActive,
   chipCategoryBase,
+  chipCategoryFilled,
+  chipTagBase,
 } from "@/lib/chip-accents";
 import { cn } from "@/lib/cn";
 
@@ -31,16 +32,16 @@ export function ApplicationArtifactCard({ project }: { project: GalleryProject }
             {project.title}
           </h2>
           {project.category ? (
-            <p className={cn(chipCategoryBase, chipCategoryAccents[wash], "order-1 md:order-2")}>
+            <p className={cn(chipCategoryBase, chipCategoryFilled[wash], "order-1 md:order-2")}>
               {project.category}
             </p>
           ) : null}
         </div>
-        <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-muted">
+        <p className="mt-2 w-full text-[15px] leading-relaxed text-muted md:w-4/5">
           {project.description}
         </p>
-        {project.challenge || project.focus || project.contribution ? (
-          <dl className="mt-5 max-w-2xl space-y-3 text-[13.5px] leading-relaxed">
+        {project.challenge || project.focus ? (
+          <dl className="mt-5 w-full space-y-3 text-[13.5px] leading-relaxed md:w-4/5">
             {project.challenge ? (
               <div>
                 <dt className="font-medium text-fg">Challenge</dt>
@@ -53,18 +54,12 @@ export function ApplicationArtifactCard({ project }: { project: GalleryProject }
                 <dd className="mt-0.5 text-muted">{project.focus}</dd>
               </div>
             ) : null}
-            {project.contribution ? (
-              <div>
-                <dt className="font-medium text-fg">Contribution</dt>
-                <dd className="mt-0.5 text-muted">{project.contribution}</dd>
-              </div>
-            ) : null}
           </dl>
         ) : null}
         {project.tags ? (
           <ul className="mt-4 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
-              <li key={tag} className={chipBase}>
+              <li key={tag} className={cn(chipTagBase, chipAccentsActive[wash])}>
                 {tag}
               </li>
             ))}
