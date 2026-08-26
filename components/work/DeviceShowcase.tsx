@@ -201,7 +201,7 @@ export function DeviceShowcase({
   }
 
   return (
-    <div ref={rootRef} className={cn("relative z-[2]", className)}>
+    <div ref={rootRef} className={cn("pointer-events-none relative z-[2]", className)}>
       {study.carousel ? (
         <div
           className={cn(
