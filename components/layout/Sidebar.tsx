@@ -55,7 +55,7 @@ export function Sidebar({ onNavigate, layoutPrefix = "desktop" }: SidebarProps) 
             <img
               src={site.portrait}
               alt=""
-              className="h-full w-full object-cover object-[50%_18%] grayscale"
+              className="h-full w-full object-cover object-[50%_22%]"
             />
           </span>
           {nav.about.label}

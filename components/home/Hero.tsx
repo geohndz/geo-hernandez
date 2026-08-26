@@ -25,7 +25,7 @@ export function Hero() {
               alt={site.legalName}
               fill
               sizes="128px"
-              className="object-cover object-[50%_18%] grayscale"
+              className="object-cover object-[50%_22%]"
               priority
             />
           </div>

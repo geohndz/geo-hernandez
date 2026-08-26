@@ -13,7 +13,7 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/geovany-hernandez-a517471ba/",
     github: "https://github.com/geohndz",
   },
-  portrait: "/framer/HxB0bRtVAFQDCK2uViIzt8757g.jpg",
+  portrait: "/media/geo.jpg",
   tags: ["Product Design", "Interaction Design", "Prototyping", "UX Engineering"],
 } as const;
 

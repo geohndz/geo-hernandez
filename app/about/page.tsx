@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { about, awards, testimonials } from "@/content/site";
+import Image from "next/image";
+import { about, awards, site, testimonials } from "@/content/site";
 import { AwardList } from "@/components/work/AwardList";
 import { FooterCta } from "@/components/layout/FooterCta";
 import { PageWidth } from "@/components/layout/PageWidth";
@@ -10,22 +11,69 @@ export const metadata: Metadata = {
   description: about.seo,
 };
 
+const [lead, ...rest] = about.paragraphs;
+
 export default function AboutPage() {
   return (
     <>
       <section className="px-6 pb-8 pt-16 md:px-12 md:pt-24 lg:px-16">
         <PageWidth>
-          <Reveal className="text-center">
-            <h1 className="font-display text-[42px] font-medium tracking-[-0.05em] md:text-[55px]">
-              About
-            </h1>
-          </Reveal>
-          <div className="mx-auto mt-10 max-w-2xl space-y-5 text-[17px] leading-[1.7] text-muted">
-            {about.paragraphs.map((p) => (
-              <Reveal key={p}>
-                <p className="first:text-fg">{p}</p>
+          <div className="grid gap-10 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-12 lg:gap-16">
+            <div className="min-w-0">
+              <Reveal>
+                <h1 className="max-w-xl font-display text-[34px] font-medium leading-[1.15] tracking-[-0.04em] md:text-[46px]">
+                  {lead}
+                </h1>
               </Reveal>
-            ))}
+
+              <div className="mt-8 space-y-5 text-[16px] leading-[1.75] text-muted md:mt-10 md:text-[17px]">
+                {rest.map((p) => (
+                  <Reveal key={p}>
+                    <p>{p}</p>
+                  </Reveal>
+                ))}
+              </div>
+
+              <Reveal className="mt-10 flex flex-wrap gap-3">
+                <a
+                  href={site.links.resume}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-line px-4 py-2 text-[13px] text-muted transition-colors hover:border-line-strong hover:text-fg"
+                >
+                  Resume
+                </a>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="rounded-full border border-line px-4 py-2 text-[13px] text-muted transition-colors hover:border-line-strong hover:text-fg"
+                >
+                  Email
+                </a>
+                <a
+                  href={site.links.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-line px-4 py-2 text-[13px] text-muted transition-colors hover:border-line-strong hover:text-fg"
+                >
+                  LinkedIn
+                </a>
+              </Reveal>
+            </div>
+
+            <div className="relative order-first mx-auto w-full max-w-[420px] self-stretch md:order-none md:mx-0 md:max-w-none">
+              <div className="md:sticky md:top-24">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-line bg-card shadow-[0_24px_60px_rgba(0,0,0,0.45)] md:rounded-[32px]">
+                  <Image
+                    src={site.portrait}
+                    alt={site.legalName}
+                    fill
+                    sizes="(min-width: 768px) 40vw, 90vw"
+                    className="object-cover object-[50%_18%]"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </PageWidth>
       </section>
@@ -33,7 +81,7 @@ export default function AboutPage() {
       <section className="px-6 py-16 md:px-12 lg:px-16">
         <PageWidth>
           <Reveal>
-            <h2 className="mb-8 text-center font-display text-[29px] tracking-[-0.03em]">
+            <h2 className="mb-8 font-display text-[29px] tracking-[-0.03em] md:text-[34px]">
               Achievements
             </h2>
           </Reveal>
@@ -44,7 +92,7 @@ export default function AboutPage() {
       <section className="px-6 py-8 md:px-12 lg:px-16">
         <PageWidth>
           <Reveal>
-            <h2 className="mb-8 text-center font-display text-[29px] tracking-[-0.03em]">
+            <h2 className="mb-8 font-display text-[29px] tracking-[-0.03em] md:text-[34px]">
               Words from Leadership
             </h2>
           </Reveal>

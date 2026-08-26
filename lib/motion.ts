@@ -36,6 +36,7 @@ export const pageFade = {
     opacity: 1,
     y: 0,
     transition: { duration: 0.5, ease: easeOutExpo },
+    transitionEnd: { y: 0, transform: "none" },
   },
   exit: { opacity: 0, transition: { duration: 0.2 } },
 };
