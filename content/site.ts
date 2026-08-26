@@ -9,7 +9,7 @@ export const site = {
   year: 2026,
   links: {
     resume:
-      "https://drive.google.com/file/d/1n21aQYfOGDPCGElkCeVmpxXU86hpj_be/view?usp=sharing",
+      "https://drive.google.com/file/d/1k80I14P1EY1aAHVBna9LdYbiGln2Lq5w/view?usp=sharing",
     linkedin: "https://www.linkedin.com/in/geovany-hernandez-a517471ba/",
     github: "https://github.com/geohndz",
   },
