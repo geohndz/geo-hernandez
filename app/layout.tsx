@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { DM_Sans, Pixelify_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/content/site";
 import { AppShell } from "@/components/layout/AppShell";
 import "./globals.css";
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full bg-bg text-fg">
         <AppShell>{children}</AppShell>
+        <Analytics />
       </body>
     </html>
   );
