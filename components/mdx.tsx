@@ -13,13 +13,18 @@ import {
   F1Opportunity,
   F1Solution,
   F1Constraints,
-  F1Decisions,
   F1Exploration,
   F1Direction,
   F1Validation,
   F1Reflection,
 } from "@/components/work/F1Study";
 import { F1VisualDirections } from "@/components/work/F1Directions";
+import {
+  F1SpatialDecision,
+  F1SpatialModel,
+} from "@/components/work/F1SpatialModel";
+import { F1Modules } from "@/components/work/F1Modules";
+import { F1Research } from "@/components/work/F1Research";
 
 function slugify(value: string) {
   return value
@@ -42,6 +47,10 @@ function headingId(children: React.ReactNode) {
   return slugify(textOf(children));
 }
 
+export function StudyGroup({ children }: { children: React.ReactNode }) {
+  return <div className="study-group">{children}</div>;
+}
+
 export function Figure({
   src,
   alt,
@@ -52,15 +61,13 @@ export function Figure({
   caption?: string;
 }) {
   return (
-    <figure className="mt-8">
-      <div className="overflow-hidden rounded-[20px] border border-line bg-card">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={src}
-          alt={alt}
-          className="mx-auto block h-auto max-h-[min(720px,80vh)] w-auto max-w-full object-contain"
-        />
-      </div>
+    <figure className="mt-12">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt}
+        className="mx-auto block h-auto max-h-[min(720px,80vh)] w-auto max-w-full object-contain"
+      />
       {caption ? (
         <figcaption className="mt-3 text-center text-[15px] text-muted">
           {caption}
@@ -107,7 +114,7 @@ export function MapTypes() {
               className="h-auto w-full"
             />
           </div>
-          <figcaption className="mt-3 text-[15px] text-muted">{item.label}</figcaption>
+          <figcaption className="mt-3 text-center text-[15px] text-muted">{item.label}</figcaption>
         </figure>
       ))}
     </div>
@@ -131,7 +138,8 @@ export function WhyBuildIt() {
         <p className="mt-3 text-[16px] leading-[1.75] text-muted">
           The project started when Abeka&apos;s HESS team (History, English, and
           Social Studies) brought us a new World Geography curriculum and a
-          big ask: make it feel digital.
+          big ask: make it feel digital. The temptation was spectacle. The job
+          was a class period.
         </p>
       </div>
       <p className="mt-10 text-center text-[16px] leading-[1.75] text-muted">They imagined:</p>
@@ -149,7 +157,8 @@ export function WhyBuildIt() {
         Meanwhile, teachers were already stuck. A geography period meant a pile
         of paper maps: political, physical, borders, latitude and longitude.
         They could swap them. They could not stack them. Whatever the last map
-        had shown disappeared the moment the next one went up.
+        had shown disappeared the moment the next one went up. That is the
+        interaction they needed: keep the map, shuffle what sits on top.
       </p>
     </div>
   );
@@ -171,7 +180,8 @@ export function Opportunity() {
       </p>
       <p className="mt-4 text-[16px] leading-[1.75] text-muted">
         A few even sketched it as transparent overlays: keep the map, shuffle
-        what sits on top. That was the opening. Not a new globe. A stack.
+        what sits on top. That was the opening. Not a new globe. A stack
+        teachers already knew how to teach from, rebuilt as a system.
       </p>
     </div>
   );
@@ -201,7 +211,8 @@ export function ResearchClusters() {
     <div className="study-text mt-8">
       <p className="text-[16px] leading-[1.75] text-muted">
         Those activities weren&apos;t random. They kept falling into the same
-        four jobs.
+        four jobs, which is what let me design a small set of tools instead of
+        a feature for every request.
       </p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {clusters.map((item) => (
@@ -234,7 +245,8 @@ export function Pause() {
       </p>
       <p className="mt-3 text-[16px] leading-[1.75] text-muted">
         When it came back, I was the only designer on it, which meant I also
-        owned what it should become.
+        owned what it should become: not a more impressive map, but a system a
+        teacher could run a period with, and a team could still update next year.
       </p>
     </div>
   );
@@ -252,7 +264,7 @@ export function VisualRefinements() {
     },
     {
       title: "More Flexible Layout",
-      body: "Room for a pen, a pin, and whatever teaching tool came next, without redrawing the product.",
+      body: "Room for a pen, a pin, and whatever teaching tool came next, without redrawing the product. The layout had to behave like a system, not a mockup of a map.",
     },
     {
       title: "Stronger Visual Identity",
@@ -415,6 +427,7 @@ export function Metric({
 }
 
 export const mdxComponents: MDXComponents = {
+  StudyGroup,
   Figure,
   MapTypes,
   WhyBuildIt,
@@ -439,10 +452,13 @@ export const mdxComponents: MDXComponents = {
   F1Opportunity,
   F1Solution,
   F1Constraints,
-  F1Decisions,
   F1Exploration,
   F1VisualDirections,
   F1Direction,
+  F1SpatialDecision,
+  F1SpatialModel,
+  F1Research,
+  F1Modules,
   F1Validation,
   F1Reflection,
   Steps,
@@ -454,7 +470,7 @@ export const mdxComponents: MDXComponents = {
   h2: ({ children }) => (
     <h2
       id={headingId(children)}
-      className="study-heading study-text mt-20 mb-8 scroll-mt-28 font-display text-[29px] font-medium tracking-[-0.03em] md:text-[34px]"
+      className="study-heading study-text mt-28 mb-10 scroll-mt-28 font-display text-[29px] font-medium tracking-[-0.03em] md:text-[34px]"
     >
       {children}
     </h2>

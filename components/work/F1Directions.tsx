@@ -37,11 +37,11 @@ export function F1VisualDirections() {
   const direction = directions[index];
 
   return (
-    <div className="mt-8">
+    <div>
       <div
         role="tablist"
         aria-label="Visual directions"
-        className="mx-auto mb-6 flex w-fit max-w-full flex-wrap justify-center rounded-lg border border-line bg-card p-1"
+        className="mx-auto mb-4 grid w-max max-w-full grid-flow-col auto-cols-fr rounded-lg border border-line bg-card p-1"
       >
         {directions.map((item, i) => {
           const active = i === index;
@@ -53,7 +53,7 @@ export function F1VisualDirections() {
               aria-selected={active}
               onClick={() => setIndex(i)}
               className={cn(
-                "relative rounded-lg px-3 py-1.5 text-[13px] font-medium transition-colors md:px-4",
+                "relative rounded-lg px-3 py-1.5 text-center text-[13px] font-medium transition-colors md:px-4",
                 active ? "text-fg" : "text-muted hover:text-fg",
               )}
             >
@@ -64,23 +64,29 @@ export function F1VisualDirections() {
                   transition={{ type: "spring", stiffness: 420, damping: 34 }}
                 />
               ) : null}
-              <span className="relative z-10">{item.tab}</span>
+              <span className="relative z-10 whitespace-nowrap">{item.tab}</span>
             </button>
           );
         })}
       </div>
 
-      <div className="overflow-hidden rounded-[20px] border border-line bg-black">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          key={direction.src}
-          src={direction.src}
-          alt={direction.alt}
-          className="block h-auto w-full"
-        />
+      <div className="relative aspect-[1024/484] w-full">
+        {directions.map((item, i) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={item.src}
+            src={item.src}
+            alt={item.alt}
+            aria-hidden={i !== index}
+            className={cn(
+              "pointer-events-none absolute inset-0 h-full w-full object-contain transition-opacity duration-500 ease-out",
+              i === index ? "opacity-100" : "opacity-0",
+            )}
+          />
+        ))}
       </div>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      <div className="mt-3 grid gap-3 sm:grid-cols-2">
         <div className="rounded-[14px] bg-emerald-950/45 px-4 py-4">
           <ul className="space-y-2.5">
             {direction.pros.map((item) => (

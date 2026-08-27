@@ -49,7 +49,7 @@ function ToolkitGallery() {
       <div
         role="tablist"
         aria-label="Annotation tools"
-        className="mx-auto mb-6 flex w-fit max-w-full flex-wrap justify-center rounded-lg border border-line bg-card p-1"
+        className="mx-auto mb-6 grid w-max max-w-full grid-flow-col auto-cols-fr rounded-lg border border-line bg-card p-1"
       >
         {tools.map((item, i) => {
           const active = i === index;
@@ -61,7 +61,7 @@ function ToolkitGallery() {
               aria-selected={active}
               onClick={() => setIndex(i)}
               className={cn(
-                "relative rounded-lg px-3 py-1.5 text-[13px] font-medium transition-colors md:px-4",
+                "relative rounded-lg px-3 py-1.5 text-center text-[13px] font-medium transition-colors md:px-4",
                 active ? "text-fg" : "text-muted hover:text-fg",
               )}
             >
@@ -72,7 +72,7 @@ function ToolkitGallery() {
                   transition={{ type: "spring", stiffness: 420, damping: 34 }}
                 />
               ) : null}
-              <span className="relative z-10">{item.tab}</span>
+              <span className="relative z-10 whitespace-nowrap">{item.tab}</span>
             </button>
           );
         })}
@@ -99,7 +99,8 @@ export function TeacherTools() {
   return (
     <div className="mt-2">
       <p className="study-text text-center text-[16px] leading-[1.75] text-muted">
-        After the year off, I came back asking a different question.
+        After the year off, I came back asking a different question. The map
+        was no longer the product. The period was.
       </p>
 
       <div className="study-text study-card mt-8 px-6 py-6 md:px-8 md:py-7">
@@ -114,9 +115,9 @@ export function TeacherTools() {
           Annotation Toolkit
         </h3>
         <p className="mt-4 text-[16px] leading-[1.75] text-muted">
-          I borrowed the spirit of Figma and FigJam: a small set of tools you
-          don&apos;t have to think about, aimed at a lesson instead of a design
-          file.
+          I borrowed the spirit of Figma and FigJam: a small, reusable set of
+          tools you don&apos;t have to think about, aimed at a lesson instead of
+          a design file. One anatomy. Four jobs.
         </p>
       </div>
 

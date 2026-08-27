@@ -50,14 +50,19 @@ export function CaseStudyView({
           ) : (
             <div className="hidden xl:block" aria-hidden />
           )}
-          <div className="study-body study-cinematic w-full min-w-0 justify-self-center">
+          <div
+            className={cn(
+              "study-body study-cinematic w-full min-w-0 justify-self-center",
+              slug === "formula-1" && "study-formula-1",
+            )}
+          >
             <Overview className="study-text" frontmatter={frontmatter} layout="rows" />
             {study?.video || study?.deviceImage ? (
               <DeviceShowcase
                 study={study}
                 deviceOnly
                 controls="device"
-                className="mt-10"
+                className="mt-16"
               />
             ) : null}
             {children}
@@ -69,7 +74,7 @@ export function CaseStudyView({
         <section className="px-6 py-16 md:px-12 lg:px-16">
           <PageWidth>
             <p className="text-[15px] text-muted">Next project</p>
-            <div className="mt-6">
+            <div className="mt-10">
               <FeaturedStudyCard study={next} />
             </div>
           </PageWidth>

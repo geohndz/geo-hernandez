@@ -222,7 +222,7 @@ export function ResearchBoard() {
       <div
         role="tablist"
         aria-label="Research board view"
-        className="mx-auto mb-4 flex w-fit rounded-lg border border-line bg-card p-1"
+        className="mx-auto mb-4 grid w-max max-w-full grid-flow-col auto-cols-fr rounded-lg border border-line bg-card p-1"
       >
         {(
           [
@@ -239,7 +239,7 @@ export function ResearchBoard() {
               aria-selected={active}
               onClick={() => selectSorted(value)}
               className={cn(
-                "relative rounded-lg px-4 py-1.5 text-[13px] font-medium transition-colors",
+                "relative rounded-lg px-4 py-1.5 text-center text-[13px] font-medium transition-colors",
                 active ? "text-fg" : "text-muted hover:text-fg",
               )}
             >
@@ -250,7 +250,7 @@ export function ResearchBoard() {
                   transition={{ type: "spring", stiffness: 420, damping: 34 }}
                 />
               ) : null}
-              <span className="relative z-10">{label}</span>
+              <span className="relative z-10 whitespace-nowrap">{label}</span>
             </button>
           );
         })}
@@ -307,7 +307,7 @@ export function ResearchBoard() {
           </div>
         </LayoutGroup>
       </div>
-      <figcaption className="mt-3 text-[13px] text-muted">
+      <figcaption className="mt-3 text-center text-[13px] text-muted">
         I grouped classroom activities from those conversations into the themes
         that kept repeating.
       </figcaption>

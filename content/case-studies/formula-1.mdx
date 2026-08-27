@@ -3,7 +3,7 @@ slug: formula-1
 kicker: Formula 1
 title: F1 VR Experience
 eyebrow: Immersive Data Visualization
-subtitle: A spatial companion for live Formula 1 that keeps the race in front of you and the data around you.
+subtitle: A spatial viewing system for live Formula 1 that keeps the race in front of you and the data around you.
 description: Formula 1 fans already juggle a broadcast, onboard cameras, radio, and a leaderboard. None of that was designed for a headset. I designed a VR viewing system that treats the race like a HUD, not a TV dragged into 3D.
 role: UX/UI Designer
 timeline: Fall 2026, 4 weeks
@@ -14,15 +14,17 @@ tools:
   - Meta Quest 3S
   - Cursor
 overview:
-  background: Formula 1 is one of the world's fastest-growing sports. The way people watch it has barely moved.
-  problem: A race dumps more information than a flat screen can hold, and the director chooses what you see.
-  solution: Keep the live stream fixed in front of you, then place cameras, standings, and driver info in spatial zones around it.
-  outcome: A modular VR layout that stays readable and comfortable across a two-hour race.
+  background: Formula 1 already produces more live information than a rectangle can hold. The way people watch it has barely moved.
+  problem: During a race, a fan stitches a broadcast, cameras, radio, and a leaderboard by hand, and the director still chooses the picture.
+  solution: Keep the live stream fixed as a spatial anchor, then place cameras, standings, and driver info in reusable zones around it.
+  outcome: A modular viewing system that stays readable across a two-hour Grand Prix, checked with fans on a Quest.
 toc:
   - { id: overview, label: Overview }
   - { id: problem, label: Problem }
+  - { id: research, label: Research }
   - { id: solution, label: Solution }
   - { id: design-evolution, label: Design Evolution }
+  - { id: spatial-system, label: Spatial System }
   - { id: final-design, label: Final Design }
   - { id: validation, label: Validation }
   - { id: reflection, label: Reflection }
@@ -30,60 +32,108 @@ toc:
 
 ## Problem
 
+<StudyGroup>
 <F1Why />
+</StudyGroup>
 
+<StudyGroup>
 <F1Opportunity />
+</StudyGroup>
+
+## Research
+
+<StudyGroup>
+Hardcore Formula 1 fans already know how to watch a race. What they do not know is how a two-hour Grand Prix feels in a headset: neck, battery, attention, and the second the car leaves the middle of the view.
+
+I wrote the brief before I drew the layout. If you cannot last the race, find the board, and still watch the car, the interface has already failed.
+
+<F1Research />
+</StudyGroup>
 
 ## Solution
 
+<StudyGroup>
 ### Core Concept
 
-Rather than recreating a television inside VR, I approached the experience as a racing game HUD. Instead of replacing the broadcast:
+Recreating a television inside VR would have been the obvious move. It would also have ignored the platform.
 
-**The platform augments it.**
+I treated the experience the way a racing game treats a HUD. The broadcast stays in charge. Everything else is spatial: reachable, ranked, and allowed to recede.
 
-The live race stream remains the primary experience while supporting information becomes spatially distributed around the viewer.
+**The platform augments the stream. It does not replace it.**
 
 <F1Solution />
+</StudyGroup>
 
 ## Design Evolution
 
+<StudyGroup>
 ### Constraints
 
-Quest-class headsets were the honest test. Largest consumer install base, limited battery, and a field of view that punishes anything you have to hunt for.
+Quest-class headsets were the honest test. Largest consumer install base, limited battery, and a field of view that punishes anything you have to hunt for. Those were not limitations to work around later. They were the design strategy.
 
 <F1Constraints />
+</StudyGroup>
 
-### Key Decisions
-
-<F1Decisions />
-
+<StudyGroup>
 ### Iterations
 
-<F1Exploration />
+I started on paper: who the layout was for, what a fan reaches for during a stint, and how a window should behave once you can put it anywhere. That sketch is the system in miniature. A fixed center, modular sides, and a rule that content can move without the layout moving.
 
-I tried three visual directions. Some of them wanted to be a livery more than an interface. Familiar F1 color and type helped. Unchecked, they also fought the stream for attention.
+<F1Exploration />
+</StudyGroup>
+
+<StudyGroup>
+From paper I took three visual directions to screen. Familiar F1 color and type helped people recognize the sport. Unchecked, they also fought the stream for attention. Some of the work wanted to be a livery more than an interface.
 
 <F1VisualDirections />
 
 <F1Direction />
+</StudyGroup>
+
+<StudyGroup>
+The window itself went through the same pass. Early chrome performed identity. The version that shipped is a quieter shell the content can live in: one anatomy, reused across every module.
+
+<Figure src="/media/formula-1/process/window-chrome.png" alt="Four leaderboard chrome iterations, from a sharp navy frame to a rounded window with a top bar and inset content" caption="The leaderboard, four chrome passes in. Identity stayed. The frame got out of the way." />
 
 The hybrid that shipped kept the identity, borrowed the logic of a racing HUD, and followed the rules of spatial computing: one anchor, quieter chrome, supporting information that knows it is supporting.
+</StudyGroup>
+
+## Spatial System
+
+<StudyGroup>
+<F1SpatialDecision />
+
+A layout that can take a new module without a new frame needs a vocabulary first. Zones decide where things may land. Windows are the shells. Components are the content. Those three stay independent so the interface can change without the system changing underneath it.
+
+<F1SpatialModel />
+</StudyGroup>
 
 ## Final Design
 
-Secondary modules handle the things you reach for during a stint: team radio and commentary, a live leaderboard, persistent driver information, and a camera browser for the broadcast, onboards, track cameras, and aerial views.
+<StudyGroup>
+Each module is a job a fan already does during a stint: watch the race, check the board, switch an onboard, read a driver, listen to radio. Support sits further out on purpose. Race-control notifications and a world-anchored track map can interrupt you without rearranging the layout you already learned.
 
-Support sits further out. Race-control notifications (yellow flags, red flags, safety cars, fastest laps) and a world-anchored track map you can glance at without steering the whole layout.
+<Figure src="/media/formula-1/process/shapesxr.jpg" alt="ShapesXR scene of the F1 layout around a seated viewer, with the leaderboard and radio on the left, the cockpit stream in the center, and driver information on the right" caption="The layout in ShapesXR, built around a seated viewer. Left and right stay narrow so the stream can keep the middle." />
 
-<Figure src="/framer/FB3mw0KfV5p67WgWoIFfvKZSa8.png" alt="Spatial F1 viewing concept with modular windows" caption="Spatial viewing concept with modular windows" />
+<F1Modules />
+</StudyGroup>
+
+<StudyGroup>
+Most of the class did not own a headset. I built the same spatial model as a working prototype so they could collapse a panel, switch a camera, and fire a flag instead of watching a recording of me doing it.
+</StudyGroup>
 
 ## Validation
 
+<StudyGroup>
 <F1Validation />
+</StudyGroup>
 
+<StudyGroup>
 <F1Visor />
+</StudyGroup>
 
 ## Reflection
 
+<StudyGroup>
 <F1Reflection />
+</StudyGroup>

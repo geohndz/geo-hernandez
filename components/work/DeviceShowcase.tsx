@@ -16,7 +16,7 @@ export function DeviceCarousel() {
 export function F1Visor() {
   const study = caseStudies.find((item) => item.slug === "formula-1");
   if (!study?.video) return null;
-  return <DeviceShowcase study={study} className="mt-12" controls="device" />;
+  return <DeviceShowcase study={study} controls="device" />;
 }
 
 const playButtonClass =

@@ -1,5 +1,3 @@
-import { Lightbulb, Puzzle } from "lucide-react";
-
 function F1ProblemStill({
   src,
   alt,
@@ -15,7 +13,7 @@ function F1ProblemStill({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} alt={alt} className="h-auto w-full" />
       </div>
-      <figcaption className="mt-3 text-[15px] text-muted">{label}</figcaption>
+      <figcaption className="mt-3 text-center text-[15px] text-muted">{label}</figcaption>
     </figure>
   );
 }
@@ -64,31 +62,33 @@ export function F1Why() {
             Why This Project?
           </h3>
           <p className="mt-3 text-[16px] leading-[1.75] text-muted">
-            Unlike most projects, this did not start with a complaint. It started
-            with a gap.
+            This did not start with a complaint. It started with a gap. The sport
+            already produces more live information than a rectangle can hold, and
+            there is still no native way to watch it in a headset.
           </p>
         </div>
-        <p className="mt-10 text-center text-[16px] leading-[1.75] text-muted">
-          A Formula 1 fan already lives inside:
+        <p className="mt-12 text-center text-[16px] leading-[1.75] text-muted">
+          During a Grand Prix a fan already lives inside:
         </p>
       </div>
-      <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2">
-        <div className="space-y-8">
+      <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2">
+        <div className="space-y-10">
           {left.map((item) => (
             <F1ProblemStill key={item.label} {...item} />
           ))}
         </div>
-        <div className="space-y-8">
+        <div className="space-y-10">
           {right.map((item) => (
             <F1ProblemStill key={item.label} {...item} />
           ))}
         </div>
       </div>
-      <p className="study-text mt-10 text-center text-[16px] leading-[1.75] text-muted">
+      <p className="study-text mt-12 text-center text-[16px] leading-[1.75] text-muted">
         All of it lands on a rectangle someone else is cutting. There is no
-        native Formula 1 experience for a headset. If you want the race in VR,
-        you are mirroring a desktop or sitting in a virtual cinema, watching
-        television with extra steps.
+        native Formula 1 experience for a headset. If you want the race in VR
+        today, you are mirroring a desktop or sitting in a virtual cinema:
+        television with extra steps, and none of the spatial advantages the
+        hardware actually has.
       </p>
     </>
   );
@@ -96,19 +96,23 @@ export function F1Why() {
 
 export function F1Opportunity() {
   return (
-    <div className="study-text study-card mt-10 px-6 py-6 md:px-8 md:py-7">
+    <div className="study-text study-card px-6 py-6 md:px-8 md:py-7">
       <h3 className="font-display text-[20px] font-medium tracking-tight text-fg md:text-[22px]">
         Opportunity
       </h3>
       <p className="mt-3 text-[16px] leading-[1.75] text-muted">
-        The data already exists. The screen is the bottleneck.
+        The data already exists. The screen is the bottleneck. Fans are already
+        doing the work of stitching a race together. The opening was to stop
+        asking a television to hold it.
       </p>
       <p className="mt-4 border-l border-white/80 pl-5 text-[16px] leading-relaxed text-fg">
         What if Formula 1 viewing was designed for the space around you, not
         for a television that happens to be in a headset?
       </p>
       <p className="mt-4 text-[16px] leading-[1.75] text-muted">
-        That was the opening. Not a floating TV. A HUD.
+        That question is about attention before it is about visuals: where it
+        lives, what is allowed to move, and how much of the body the interface
+        is allowed to spend.
       </p>
     </div>
   );
@@ -124,9 +128,9 @@ export function F1Solution() {
   ];
 
   return (
-    <div className="study-text mt-8">
+    <div className="study-text">
       <p className="text-center text-[16px] leading-[1.75] text-muted">
-        This allows fans to:
+        From a seated position, without leaving the broadcast, a fan can:
       </p>
       <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
         {items.map((item) => (
@@ -143,8 +147,8 @@ export function F1Solution() {
           </li>
         ))}
       </ul>
-      <p className="mt-8 text-center text-[16px] leading-[1.75] text-muted">
-        without leaving the broadcast
+      <p className="mt-10 text-center text-[16px] leading-[1.75] text-muted">
+        Those are the jobs. The system is how they stay in reach.
       </p>
     </div>
   );
@@ -175,8 +179,8 @@ export function F1Constraints() {
   ];
 
   return (
-    <div className="study-text mt-8">
-      <div className="grid gap-4 sm:grid-cols-2">
+    <div className="study-text">
+      <div className="grid gap-5 sm:grid-cols-2">
         {items.map((item) => (
           <div key={item.number} className="study-card p-5 md:px-6 md:py-5">
             <p className="text-[13px] text-muted">{item.number}</p>
@@ -192,7 +196,7 @@ export function F1Constraints() {
         <p className="mt-3 text-[16px] leading-[1.75] text-muted">
           I designed for Meta Quest-class headsets because that is what people
           actually own. Comfort beat spectacle. If it only looks right for thirty
-          seconds, it is not a viewing system.
+          seconds, it is not a viewing system, and it is not a product.
         </p>
         <p className="mt-4 border-l border-[#c4a574]/80 pl-5 text-[16px] leading-relaxed text-fg">
           Two hours in a headset only works if you barely have to look around.
@@ -202,178 +206,34 @@ export function F1Constraints() {
   );
 }
 
-export function F1Decisions() {
-  return (
-    <div className="mt-2 space-y-4">
-      <F1DecisionCard
-        number={1}
-        title="Fixed Central Stream"
-        problem="Users should never lose the race"
-        solution="The live broadcast remains anchored in a fixed central position"
-        figure="/media/formula-1/decisions/fixed-central-stream.png"
-        figureAlt="Live cockpit stream locked in the center with supporting panels faded at the edges"
-        why={[
-          "Reduces head steering",
-          "Creates a consistent focal point",
-          "Mimics familiar television behavior",
-          "Improves comfort during long sessions",
-        ]}
-        outcome="Users can quickly glance at supporting information and immediately return to the race."
-      />
-      <F1DecisionCard
-        number={2}
-        title="Spatial Zones"
-        problem="Race information competes for attention."
-        solution="The interface is divided into three spatial zones: Left, Center, Right. Each zone serves a distinct purpose."
-        figure="/media/formula-1/decisions/spatial-zones.png"
-        figureAlt="Three spatial zones: leaderboard and radio on the left, race stream in the center, driver information on the right"
-        outcome="Users spend less time searching for information and more time watching the race."
-      />
-      <F1DecisionCard
-        number={3}
-        title="Window Hierarchy"
-        problem="Not every piece of information deserves equal prominence."
-        solution="Created a hierarchy of windows: Primary, Secondary, and Support."
-        figure="/media/formula-1/decisions/window-hierarchy.png"
-        figureAlt="Window hierarchy diagram with primary, secondary, and support regions"
-        outcome="Clear visual hierarchy reduces cognitive load."
-      />
-      <F1DecisionCard
-        number={4}
-        title="Modular Window System"
-        problem="Future race experiences may require new information modules"
-        solution="Windows were designed as reusable system components"
-        figure="/media/formula-1/decisions/modular-window.png"
-        figureAlt="Annotated module with title, top bar, action icon, and content regions"
-        caption="Each module can be added, removed, resized, or repositioned without redesigning the interface."
-        outcome="The system can scale as new race features are introduced."
-      />
-    </div>
-  );
-}
-
-function F1DecisionCard({
-  number,
-  title,
-  problem,
-  solution,
-  figure,
-  figureAlt,
-  why,
-  caption,
-  outcome,
-}: {
-  number: number;
-  title: string;
-  problem: string;
-  solution: string;
-  figure: string;
-  figureAlt: string;
-  why?: string[];
-  caption?: string;
-  outcome: string;
-}) {
-  return (
-    <article className="study-text study-card px-6 py-6 md:px-8 md:py-7">
-      <p className="text-[13px] text-muted">Decision #{number}</p>
-      <h3 className="mt-2 font-display text-[20px] font-medium tracking-tight text-fg md:text-[22px]">
-        {title}
-      </h3>
-
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <div>
-          <p className="mb-2 text-[13px] text-muted">Problem</p>
-          <div className="flex gap-3 rounded-[14px] bg-red-950/45 px-4 py-4 text-[15px] leading-relaxed text-red-200">
-            <Puzzle className="mt-0.5 h-4 w-4 shrink-0 text-red-300" />
-            <p>{problem}</p>
-          </div>
-        </div>
-        <div>
-          <p className="mb-2 text-[13px] text-muted">Solution</p>
-          <div className="flex gap-3 rounded-[14px] bg-emerald-950/45 px-4 py-4 text-[15px] leading-relaxed text-emerald-200">
-            <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300" />
-            <p>{solution}</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-6 overflow-hidden rounded-[14px] bg-black">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={figure} alt={figureAlt} className="h-auto w-full" />
-      </div>
-
-      {why ? (
-        <>
-          <p className="mt-6 text-[16px] font-medium text-fg">Why?</p>
-          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[16px] leading-[1.75] text-muted">
-            {why.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </>
-      ) : null}
-
-      {caption ? (
-        <p className="mt-6 text-[16px] leading-[1.75] text-muted">{caption}</p>
-      ) : null}
-
-      <p className="mt-6 text-[16px] font-medium text-fg">Outcome</p>
-      <p className="mt-3 border-l border-white/80 pl-5 text-[16px] leading-relaxed text-fg">
-        {outcome}
-      </p>
-    </article>
-  );
-}
-
 export function F1Exploration() {
-  const pages = [
-    {
-      src: "/media/formula-1/iterations/01.jpg",
-      alt: "Notebook sketch of a core layout centered on a fixed broadcast window",
-    },
-    {
-      src: "/media/formula-1/iterations/02.jpg",
-      alt: "Notebook notes for an F1 VR dashboard, target audience, and content needs",
-    },
-    {
-      src: "/media/formula-1/iterations/03.jpg",
-      alt: "Notebook comparison of F1-branded, VisionOS, and general racing visual directions",
-    },
-    {
-      src: "/media/formula-1/iterations/04.jpg",
-      alt: "Notebook sketches of modular windows, handles, and spatial interaction",
-    },
-  ];
-
   return (
-    <div className="mt-2">
-      <h3 className="text-center font-display text-[22px] font-medium tracking-tight text-fg md:text-[26px]">
-        Early Exploration
-      </h3>
-      <p className="mt-3 text-center text-[16px] leading-[1.75] text-muted">
-        I explored three visual directions
-      </p>
-      <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
-        {pages.map((page) => (
-          <div key={page.src} className="overflow-hidden rounded-[10px] bg-card">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={page.src} alt={page.alt} className="h-auto w-full" />
-          </div>
-        ))}
-      </div>
-    </div>
+    <figure>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/media/formula-1/iterations/notebook.jpg"
+        alt="Notebook pages working out the core layout, the target audience and content needs, a comparison of the F1-branded, VisionOS, and general racing directions, and sketches of modular windows and spatial interaction"
+        className="h-auto w-full"
+      />
+      <figcaption className="mt-3 text-center text-[13px] text-muted">
+        The core layout, who it was for and what they needed within reach, the
+        three visual directions side by side, and how a module should behave
+        once you can put it anywhere.
+      </figcaption>
+    </figure>
   );
 }
 
 export function F1Direction() {
   return (
-    <div className="study-text study-card mt-8 px-6 py-6 md:px-8 md:py-7">
+    <div className="study-text study-card px-6 py-6 md:px-8 md:py-7">
       <h3 className="font-display text-[20px] font-medium tracking-tight text-fg md:text-[22px]">
         The Turn
       </h3>
       <p className="mt-3 text-[16px] leading-[1.75] text-muted">
         Three looks in, some of the work was trying to win a beauty contest. A
-        livery is not an interface.
+        livery is not an interface, and a headset is not a more expensive
+        television.
       </p>
       <p className="mt-4 border-l border-white/80 pl-5 text-[16px] leading-relaxed text-fg">
         Keep the stream in charge, quiet everything else down, and borrow from
@@ -391,13 +251,25 @@ export function F1Validation() {
   ];
 
   return (
-    <div className="mt-2">
+    <div>
       <p className="study-text text-[16px] leading-[1.75] text-muted">
         I put the concept on a Quest with people who already watch Formula 1.
-        The questions were simple: could they stay comfortable, could they find
-        things, and did they still watch the race.
+        The questions were the ones I had written down as success: could they
+        stay comfortable, could they find things without hunting, and did they
+        still watch the race.
       </p>
-      <div className="study-text mt-8 rounded-[20px] border border-[#a855f7]/80 bg-[rgba(112,64,196,0.16)] px-6 py-6 md:px-8 md:py-7">
+      <figure className="study-text mt-12">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/media/formula-1/process/user-testing.jpg"
+          alt="A classmate wearing a Meta Quest headset and holding controllers during a user test of the F1 VR layout"
+          className="mx-auto block h-auto max-h-[min(640px,80vh)] w-auto max-w-full object-contain"
+        />
+        <figcaption className="mt-3 text-center text-[15px] text-muted">
+          Testing the layout on a Quest with someone who already watches the sport.
+        </figcaption>
+      </figure>
+      <div className="study-text mt-12 rounded-[20px] border border-[#a855f7]/80 bg-[rgba(112,64,196,0.16)] px-6 py-6 md:px-8 md:py-7">
         <h3 className="font-display text-[20px] font-medium tracking-tight text-fg md:text-[22px]">
           From the headset
         </h3>
@@ -408,10 +280,10 @@ export function F1Validation() {
           &ldquo;Don&apos;t make me look for the race.&rdquo;
         </p>
       </div>
-      <h3 className="mt-12 text-center font-display text-[22px] font-medium tracking-tight text-fg md:text-[26px]">
+      <h3 className="mt-16 text-center font-display text-[22px] font-medium tracking-tight text-fg md:text-[26px]">
         Key Findings
       </h3>
-      <div className="study-text mt-6 space-y-4">
+      <div className="study-text mt-8 space-y-4">
         {findings.map((finding, i) => (
           <div key={finding} className="study-card px-6 py-5 md:px-7 md:py-6">
             <p className="text-[13px] text-muted">Finding {i + 1}</p>
@@ -427,7 +299,7 @@ export function F1Validation() {
 
 export function F1Reflection() {
   return (
-    <div className="study-text mt-2">
+    <div className="study-text">
       <h3 className="font-display text-[20px] font-medium tracking-tight text-fg md:text-[22px]">
         Spatial Design Is Not Floating Screens
       </h3>
@@ -438,9 +310,10 @@ export function F1Reflection() {
         less searching, less deciding where to look.
       </p>
       <p className="mt-5 text-[16px] leading-[1.75] text-muted">
-        What I learned: design for the length of a race, not the first thirty
-        seconds. Build a system you can add a module to, not a one-off overlay.
-        Translate a broadcast instead of copying one.{" "}
+        Design for the length of a session, not the first thirty seconds. Build
+        a system you can add a module to, not a one-off overlay. Translate a
+        platform instead of copying a screen. Prototype the interaction, then
+        test it with the people who already know the job.{" "}
         <strong className="font-medium text-fg">
           Keep the race in front of you, and the data around you,
         </strong>{" "}

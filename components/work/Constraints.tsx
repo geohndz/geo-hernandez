@@ -255,7 +255,7 @@ function GateFlow() {
       <div
         role="tablist"
         aria-label="Constraint board view"
-        className="mx-auto mb-6 flex w-fit rounded-lg border border-line bg-card p-1"
+        className="mx-auto mb-6 grid w-max max-w-full grid-flow-col auto-cols-fr rounded-lg border border-line bg-card p-1"
       >
         {(
           [
@@ -272,7 +272,7 @@ function GateFlow() {
               aria-selected={active}
               onClick={() => selectFiltered(value)}
               className={cn(
-                "relative rounded-lg px-4 py-1.5 text-[13px] font-medium transition-colors",
+                "relative rounded-lg px-4 py-1.5 text-center text-[13px] font-medium transition-colors",
                 active ? "text-fg" : "text-muted hover:text-fg",
               )}
             >
@@ -283,7 +283,7 @@ function GateFlow() {
                   transition={{ type: "spring", stiffness: 420, damping: 34 }}
                 />
               ) : null}
-              <span className="relative z-10">{label}</span>
+              <span className="relative z-10 whitespace-nowrap">{label}</span>
             </button>
           );
         })}
@@ -382,10 +382,8 @@ export function Constraints() {
   return (
     <div className="mt-2">
       <p className="study-text text-[16px] leading-[1.75] text-muted">
-        The original vision had to survive three filters. Classrooms needed
-        something that would still work offline, match the textbook, and
-        survive the next curriculum revision. User needs and business needs had
-        to clear the same gates.
+        I ran the original vision through those gates. Most of it did not pass.
+        Layered maps did.
       </p>
       <div className="mt-8">
         <GateFlow />

@@ -16,8 +16,8 @@ export function InternalTools() {
       <p className="study-text text-[16px] leading-[1.75] text-muted">
         The classroom was only half the problem. Making a new interactive still
         meant a designer and a developer passing files around for twenty minutes
-        at a time. That workflow had to get simpler if the product was going to
-        scale with the curriculum.
+        at a time. If the classroom system was going to scale with the
+        curriculum, the internal one had to get simpler too.
       </p>
 
       <div className="mt-12">
@@ -52,7 +52,8 @@ export function InternalTools() {
         <p className="mt-3 text-[16px] leading-[1.75] text-muted">
           I pulled the legend out of the artwork and into the interface: a
           panel that sits on the map, stays sharp when you zoom, and updates
-          without a new export.
+          without a new export. The legend became a component instead of a
+          picture of a legend.
         </p>
         <div className="mt-8 space-y-6">
           <div className="overflow-hidden rounded-[16px] bg-[#d0eaf5]">
@@ -89,7 +90,9 @@ export function InternalTools() {
         <p className="mt-4 text-[16px] leading-[1.75] text-muted">
           Then I built a map builder so content teams could upload layers,
           rename them, add or remove one, set the legend, and update titles
-          without waiting on engineering.
+          without waiting on engineering. The classroom product and the builder
+          share the same layer model, so a new region is a new set of files, not
+          a new interface.
         </p>
         <div className="mt-8 overflow-hidden rounded-[16px] border border-line bg-black">
           <InViewVideo

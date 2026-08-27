@@ -57,10 +57,12 @@ const COMPONENT_COPY: Record<string, string[]> = {
   F1Opportunity: ["components/work/F1Study.tsx"],
   F1Solution: ["components/work/F1Study.tsx"],
   F1Constraints: ["components/work/F1Study.tsx"],
-  F1Decisions: ["components/work/F1Study.tsx"],
   F1Direction: ["components/work/F1Study.tsx"],
   F1Validation: ["components/work/F1Study.tsx"],
   F1Reflection: ["components/work/F1Study.tsx"],
+  F1Research: ["components/work/F1Research.tsx"],
+  F1SpatialModel: ["components/work/F1SpatialModel.tsx"],
+  F1Modules: ["components/work/F1Modules.tsx"],
 };
 
 function wordCount(text: string) {

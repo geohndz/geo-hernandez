@@ -13,7 +13,8 @@ export function DecisionGlobe() {
         The HESS team wanted the new World Geography curriculum to feel like a
         leap from paper maps: a 3D globe with live geographic data and
         immersive interaction. That vision treated the product as a digital
-        spectacle. It did not start from how teachers actually ran a lesson.
+        spectacle. It did not start from how teachers actually ran a lesson,
+        and it would not have survived the constraints we already knew.
       </p>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2">

@@ -29,7 +29,8 @@ export function Validation() {
     <div className="mt-2">
       <p className="study-text text-[16px] leading-[1.75] text-muted">
         Teachers sat with prototypes throughout. They didn&apos;t hedge. The
-        feedback went straight back into the next pass.
+        feedback went straight back into the next pass, which is how a side
+        toolbar replaced a bottom one that had been covering the coastline.
       </p>
       <div className="study-text mt-8 rounded-[20px] border border-[#a855f7]/80 bg-[rgba(112,64,196,0.16)] px-6 py-6 md:px-8 md:py-7">
         <h3 className="font-display text-[20px] font-medium tracking-tight text-fg md:text-[22px]">
@@ -113,7 +114,8 @@ export function Reflection() {
       <p className="mt-5 text-[16px] leading-[1.75] text-muted">
         I spent a long time assuming a better geography product meant more
         technology: a globe, live data, interactions that felt expensive.
-        Talking to teachers was the correction.
+        Talking to teachers was the correction. Constraints were not the thing
+        in the way of the vision. They were how I knew which vision was real.
       </p>
       <p className="mt-5 text-[16px] leading-[1.75] text-muted">
         They needed to rearrange what they already taught, not replace it.{" "}
@@ -121,7 +123,9 @@ export function Reflection() {
           Build for the period, not the demo,
         </strong>{" "}
         and you get something that is easier to ship, easier to stand in
-        front of, and actually used.
+        front of, and actually used. The same rule holds for any system that
+        has to last longer than a prototype: a small set of tools other people
+        can keep using, instead of a one-off that only works in the demo.
       </p>
     </div>
   );
