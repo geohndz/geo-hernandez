@@ -8,12 +8,14 @@ export function InViewVideo({
   alt,
   className,
   loop = false,
+  active = true,
   onEnded,
 }: {
   src: string;
   alt: string;
   className?: string;
   loop?: boolean;
+  active?: boolean;
   onEnded?: () => void;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -21,6 +23,11 @@ export function InViewVideo({
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
+
+    if (!active) {
+      video.pause();
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -36,7 +43,7 @@ export function InViewVideo({
       observer.disconnect();
       video.pause();
     };
-  }, [src]);
+  }, [src, active]);
 
   return (
     <video

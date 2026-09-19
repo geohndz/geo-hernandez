@@ -2,7 +2,7 @@
 
 Product design portfolio for Geo Hernandez — accessible experiences across the web, XR, and digital products. Custom-coded rebuild of [geovanyhernandez.com](https://geovanyhernandez.com/) in Next.js, Tailwind CSS, and Motion.
 
-Live: [geo-hernandez.vercel.app](https://geo-hernandez.vercel.app)
+Live: [geohernandez.xyz](https://geohernandez.xyz)
 
 ## Stack
 

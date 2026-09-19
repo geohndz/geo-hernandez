@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState, type MouseEvent } from "react";
 import { cn } from "@/lib/cn";
+import { PlayPauseGlyph } from "./PlayPauseGlyph";
 import { isReallyVisible } from "@/lib/in-view";
 
 const VISOR_PATH =
@@ -201,32 +202,12 @@ export function VisorVideo({
           type="button"
           onClick={togglePlayback}
           aria-label={playing ? "Pause" : "Play"}
-          className="pointer-events-auto absolute z-[2] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[var(--line)] text-white backdrop-blur-[6px] transition-[transform,background-color] duration-200 hover:scale-105 hover:bg-[var(--line-strong)]"
+          className="press-scale pointer-events-auto absolute z-[2] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[var(--line)] text-white backdrop-blur-[6px] hover:bg-[var(--line-strong)]"
           style={{ right: visorLeft, bottom: visorBottom }}
         >
-          {playing ? <PauseIcon /> : <PlayIcon />}
+          <PlayPauseGlyph playing={playing} />
         </button>
       ) : null}
     </div>
-  );
-}
-
-function PauseIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-      <rect x="6.5" y="5.5" width="3.75" height="13" rx="1.2" fill="currentColor" />
-      <rect x="13.75" y="5.5" width="3.75" height="13" rx="1.2" fill="currentColor" />
-    </svg>
-  );
-}
-
-function PlayIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-      <path
-        d="M8.2 5.6c0-.7.76-1.12 1.35-.76l9.1 5.4c.58.35.58 1.17 0 1.52l-9.1 5.4c-.59.36-1.35-.06-1.35-.76V5.6Z"
-        fill="currentColor"
-      />
-    </svg>
   );
 }

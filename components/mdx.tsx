@@ -136,10 +136,19 @@ export function WhyBuildIt() {
           Why Build It?
         </h3>
         <p className="mt-3 text-[16px] leading-[1.75] text-muted">
-          The project started when Abeka&apos;s HESS team (History, English, and
-          Social Studies) brought us a new World Geography curriculum and a
-          big ask: make it feel digital. The temptation was spectacle. The job
-          was a class period.
+          The project started when Abeka&apos;s History, English, and Social
+          Studies team brought a new World Geography curriculum and asked for a
+          digital companion.
+        </p>
+        <p className="mt-3 text-[16px] leading-[1.75] text-muted">
+          I owned the UX/UI and the front-end. Two teammates helped stand up the
+          first layered-map MVP. A year-long pause — the third-party maps failed
+          curriculum review — sat in the middle of the timeline. When work
+          resumed, I designed and built the classroom tools and the internal
+          builder myself.
+        </p>
+        <p className="mt-3 text-[16px] leading-[1.75] text-muted">
+          The temptation was spectacle. The job was a class period.
         </p>
       </div>
       <p className="mt-10 text-center text-[16px] leading-[1.75] text-muted">They imagined:</p>
@@ -156,9 +165,10 @@ export function WhyBuildIt() {
       <p className="mt-10 text-center text-[16px] leading-[1.75] text-muted">
         Meanwhile, teachers were already stuck. A geography period meant a pile
         of paper maps: political, physical, borders, latitude and longitude.
-        They could swap them. They could not stack them. Whatever the last map
-        had shown disappeared the moment the next one went up. That is the
-        interaction they needed: keep the map, shuffle what sits on top.
+        They could swap them, but they could not stack them. Whatever the last
+        map had shown disappeared the moment the next one went up. The
+        interaction they needed was to keep the map and shuffle what sits on
+        top.
       </p>
     </div>
   );
@@ -180,8 +190,8 @@ export function Opportunity() {
       </p>
       <p className="mt-4 text-[16px] leading-[1.75] text-muted">
         A few even sketched it as transparent overlays: keep the map, shuffle
-        what sits on top. That was the opening. Not a new globe. A stack
-        teachers already knew how to teach from, rebuilt as a system.
+        what sits on top. That was the opening — a stack teachers already knew
+        how to teach from, rebuilt as a system.
       </p>
     </div>
   );
@@ -222,9 +232,9 @@ export function ResearchClusters() {
           </div>
         ))}
       </div>
-      <div className="study-card mt-4 border-[#a78bfa]/70 bg-[rgba(112,64,196,0.14)] p-5 md:p-6">
+      <div className="tint-purple mt-4 rounded-[20px] p-5 md:p-6">
         <p className="font-medium tracking-tight text-fg">Key Insight</p>
-        <p className="mt-2 text-[16px] leading-[1.75] text-[#d4c4ff]">
+        <p className="tint-purple-copy mt-2 text-[16px] leading-[1.75]">
           Teachers weren&apos;t asking for more map. They were asking to
           rearrange the one they already had.
         </p>
@@ -235,18 +245,18 @@ export function ResearchClusters() {
 
 export function Pause() {
   return (
-    <div className="study-text mt-12 rounded-[20px] border border-[#c4a574]/55 bg-[#241f14] px-6 py-6 md:px-8 md:py-7">
+    <div className="tint-olive study-text mt-12 rounded-[20px] px-6 py-6 md:px-8 md:py-7">
       <h3 className="font-display text-[20px] font-medium tracking-tight text-fg md:text-[22px]">
         Pause
       </h3>
-      <p className="mt-3 text-[16px] leading-[1.75] text-muted">
+      <p className="tint-olive-copy mt-3 text-[16px] leading-[1.75]">
         Then the third-party maps failed a curriculum review, and work stopped
         for about a year.
       </p>
-      <p className="mt-3 text-[16px] leading-[1.75] text-muted">
-        When it came back, I was the only designer on it, which meant I also
-        owned what it should become: not a more impressive map, but a system a
-        teacher could run a period with, and a team could still update next year.
+      <p className="tint-olive-copy mt-3 text-[16px] leading-[1.75]">
+        When it came back I was the only designer, so I also owned what it
+        should become: tools a teacher could run a period with, and a system a
+        team could still update next year.
       </p>
     </div>
   );
@@ -260,11 +270,11 @@ export function VisualRefinements() {
     },
     {
       title: "Improved Information Hierarchy",
-      body: "The lesson sits in front. Chrome sits behind it.",
+      body: "The lesson sits in front of the chrome.",
     },
     {
       title: "More Flexible Layout",
-      body: "Room for a pen, a pin, and whatever teaching tool came next, without redrawing the product. The layout had to behave like a system, not a mockup of a map.",
+      body: "Room for a pen, a pin, and whatever teaching tool came next, without redrawing the product.",
     },
     {
       title: "Stronger Visual Identity",

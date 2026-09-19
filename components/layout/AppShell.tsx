@@ -35,18 +35,18 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <span className="relative h-3.5 w-5">
               <span
                 className={cn(
-                  "absolute left-0 h-px bg-fg transition-all duration-200",
+                  "absolute left-0 top-1/2 h-px w-5 origin-center bg-fg transition-transform duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]",
                   menuOpen
-                    ? "top-1/2 w-5 -translate-y-1/2 rotate-45"
-                    : "top-0 w-full",
+                    ? "-translate-y-1/2 rotate-45"
+                    : "-translate-y-[7px]",
                 )}
               />
               <span
                 className={cn(
-                  "absolute right-0 h-px bg-fg transition-all duration-200",
+                  "absolute left-0 top-1/2 h-px w-5 origin-center bg-fg transition-transform duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]",
                   menuOpen
-                    ? "top-1/2 w-5 -translate-y-1/2 -rotate-45"
-                    : "bottom-0 w-3.5",
+                    ? "-translate-y-1/2 -rotate-45"
+                    : "translate-y-[7px]",
                 )}
               />
             </span>

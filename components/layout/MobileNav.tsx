@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { duration, easeOutExpo } from "@/lib/motion";
 import { Sidebar } from "./Sidebar";
 
 export function MobileNav({
@@ -11,6 +12,8 @@ export function MobileNav({
   open: boolean;
   onClose: () => void;
 }) {
+  const reduce = useReducedMotion();
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -40,10 +43,14 @@ export function MobileNav({
             onClick={onClose}
           />
           <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
-            transition={{ type: "spring", stiffness: 380, damping: 36 }}
+            initial={reduce ? { opacity: 0 } : { x: "-100%" }}
+            animate={reduce ? { opacity: 1 } : { x: 0 }}
+            exit={reduce ? { opacity: 0 } : { x: "-100%" }}
+            transition={
+              reduce
+                ? { duration: duration.ui, ease: easeOutExpo }
+                : { type: "spring", stiffness: 380, damping: 36 }
+            }
             className="absolute inset-y-0 left-0 w-[min(84vw,320px)] border-r border-line"
           >
             <Sidebar onNavigate={onClose} layoutPrefix="mobile" />

@@ -42,18 +42,23 @@ export const metadata: Metadata = {
     "accessibility",
     "visual design",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: site.title,
     description: site.description,
-    url: site.url,
+    url: "/",
     siteName: site.name,
     locale: "en_US",
     type: "website",
+    images: [{ url: "/opengraph-image.jpg" }],
   },
   twitter: {
     card: "summary_large_image",
     title: site.title,
     description: site.description,
+    images: ["/opengraph-image.jpg"],
   },
   icons: {
     icon: "/logo.svg",

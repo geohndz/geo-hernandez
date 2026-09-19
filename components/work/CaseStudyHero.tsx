@@ -41,9 +41,14 @@ export function CaseStudyHero({
             <span className="mx-2 text-fg/35">·</span>
             {readingMinutes} min read
           </p>
-          <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-white/85">
+          <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-white/90">
             {frontmatter.description ?? frontmatter.subtitle}
           </p>
+          {frontmatter.disclaimer ? (
+            <p className="mt-5 max-w-xl text-[13px] leading-relaxed text-white/80">
+              {frontmatter.disclaimer}
+            </p>
+          ) : null}
         </Reveal>
         <Reveal className="mt-10 grid max-w-4xl gap-6 border-t border-white/10 pt-8 text-sm md:grid-cols-4">
           <Meta label="Role" value={frontmatter.role} />
@@ -60,7 +65,7 @@ export function CaseStudyHero({
 function Meta({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-[13px] text-white/70">{label}</p>
+      <p className="text-[13px] text-white/80">{label}</p>
       <p className="mt-1 text-fg">{value}</p>
     </div>
   );

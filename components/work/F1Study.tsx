@@ -62,9 +62,9 @@ export function F1Why() {
             Why This Project?
           </h3>
           <p className="mt-3 text-[16px] leading-[1.75] text-muted">
-            This did not start with a complaint. It started with a gap. The sport
-            already produces more live information than a rectangle can hold, and
-            there is still no native way to watch it in a headset.
+            This started from a gap in how the sport is watched. Formula 1
+            already produces more live information than a rectangle can hold,
+            and there is still no native way to watch it in a headset.
           </p>
         </div>
         <p className="mt-12 text-center text-[16px] leading-[1.75] text-muted">
@@ -86,9 +86,9 @@ export function F1Why() {
       <p className="study-text mt-12 text-center text-[16px] leading-[1.75] text-muted">
         All of it lands on a rectangle someone else is cutting. There is no
         native Formula 1 experience for a headset. If you want the race in VR
-        today, you are mirroring a desktop or sitting in a virtual cinema:
-        television with extra steps, and none of the spatial advantages the
-        hardware actually has.
+        today, you are mirroring a desktop or sitting in a virtual cinema — a
+        TV picture with none of the spatial advantages the hardware actually
+        has.
       </p>
     </>
   );
@@ -101,9 +101,9 @@ export function F1Opportunity() {
         Opportunity
       </h3>
       <p className="mt-3 text-[16px] leading-[1.75] text-muted">
-        The data already exists. The screen is the bottleneck. Fans are already
-        doing the work of stitching a race together. The opening was to stop
-        asking a television to hold it.
+        The data already exists. Fans are already doing the work of stitching a
+        race together. The opening was to stop asking a television to hold all
+        of it.
       </p>
       <p className="mt-4 border-l border-white/80 pl-5 text-[16px] leading-relaxed text-fg">
         What if Formula 1 viewing was designed for the space around you, not
@@ -148,7 +148,7 @@ export function F1Solution() {
         ))}
       </ul>
       <p className="mt-10 text-center text-[16px] leading-[1.75] text-muted">
-        Those are the jobs. The system is how they stay in reach.
+        The system is how those jobs stay in reach from a seated view.
       </p>
     </div>
   );
@@ -189,14 +189,14 @@ export function F1Constraints() {
           </div>
         ))}
       </div>
-      <div className="mt-8 rounded-[20px] border border-[#c4a574]/55 bg-[#241f14] px-6 py-6 md:px-8 md:py-7">
+      <div className="tint-olive mt-8 rounded-[20px] px-6 py-6 md:px-8 md:py-7">
         <h3 className="font-display text-[20px] font-medium tracking-tight text-fg md:text-[22px]">
           Design for the race, not the demo
         </h3>
-        <p className="mt-3 text-[16px] leading-[1.75] text-muted">
+        <p className="tint-olive-copy mt-3 text-[16px] leading-[1.75]">
           I designed for Meta Quest-class headsets because that is what people
-          actually own. Comfort beat spectacle. If it only looks right for thirty
-          seconds, it is not a viewing system, and it is not a product.
+          actually own. If the layout only works for a thirty-second demo, it
+          is not a viewing system.
         </p>
         <p className="mt-4 border-l border-[#c4a574]/80 pl-5 text-[16px] leading-relaxed text-fg">
           Two hours in a headset only works if you barely have to look around.
@@ -269,14 +269,14 @@ export function F1Validation() {
           Testing the layout on a Quest with someone who already watches the sport.
         </figcaption>
       </figure>
-      <div className="study-text mt-12 rounded-[20px] border border-[#a855f7]/80 bg-[rgba(112,64,196,0.16)] px-6 py-6 md:px-8 md:py-7">
+      <div className="tint-purple study-text mt-12 rounded-[20px] px-6 py-6 md:px-8 md:py-7">
         <h3 className="font-display text-[20px] font-medium tracking-tight text-fg md:text-[22px]">
           From the headset
         </h3>
-        <p className="mt-3 text-[16px] leading-[1.75] text-[#d4c4ff]">
+        <p className="tint-purple-copy mt-3 text-[16px] leading-[1.75]">
           The note that kept coming back:
         </p>
-        <p className="mt-3 border-l border-[#c4b5fd] pl-5 text-[16px] leading-relaxed text-[#d4c4ff]">
+        <p className="tint-purple-copy mt-3 border-l border-[#ddd6ff] pl-5 text-[16px] leading-relaxed">
           &ldquo;Don&apos;t make me look for the race.&rdquo;
         </p>
       </div>
@@ -304,8 +304,8 @@ export function F1Reflection() {
         Spatial Design Is Not Floating Screens
       </h3>
       <p className="mt-5 text-[16px] leading-[1.75] text-muted">
-        Putting windows in 3D is the easy part. The work is hierarchy, a place
-        for everything to live, and a session you can survive. Every interface
+        The work is not placing windows in 3D. It is hierarchy, a place for
+        everything to live, and a session you can survive. Every interface
         decision had to take something off the viewer&apos;s body: less turning,
         less searching, less deciding where to look.
       </p>

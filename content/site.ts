@@ -5,7 +5,7 @@ export const site = {
   description:
     "I'm Geo, a product and interaction designer who codes. I prototype accessible experiences across learning, XR, and the web.",
   email: "geovanyhernandezb@gmail.com",
-  url: "https://geo-hernandez.vercel.app",
+  url: "https://geohernandez.xyz",
   year: 2026,
   links: {
     resume:

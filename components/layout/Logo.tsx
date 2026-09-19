@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { springSoft } from "@/lib/motion";
 
 export const LOGO_VIEWBOX = { width: 138.38, height: 187.5 } as const;
@@ -14,17 +14,27 @@ type LogoProps = {
 };
 
 export function Logo({ className = "h-7 w-5", animated = false }: LogoProps) {
+  const reduce = useReducedMotion();
+  const mark = <path d={LOGO_PATH} fill="currentColor" />;
+  const svgProps = {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: `0 0 ${LOGO_VIEWBOX.width} ${LOGO_VIEWBOX.height}`,
+    "aria-hidden": true as const,
+    className,
+  };
+
+  if (!animated || reduce) {
+    return <svg {...svgProps}>{mark}</svg>;
+  }
+
   return (
     <motion.svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox={`0 0 ${LOGO_VIEWBOX.width} ${LOGO_VIEWBOX.height}`}
-      aria-hidden="true"
-      className={className}
-      initial={animated ? { opacity: 0, scale: 0.86 } : false}
-      animate={animated ? { opacity: 1, scale: 1 } : undefined}
+      {...svgProps}
+      initial={{ opacity: 0, scale: 0.86 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={springSoft}
     >
-      <path d={LOGO_PATH} fill="currentColor" />
+      {mark}
     </motion.svg>
   );
 }

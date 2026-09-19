@@ -14,10 +14,10 @@ export function InternalTools() {
   return (
     <div className="mt-2">
       <p className="study-text text-[16px] leading-[1.75] text-muted">
-        The classroom was only half the problem. Making a new interactive still
-        meant a designer and a developer passing files around for twenty minutes
-        at a time. If the classroom system was going to scale with the
-        curriculum, the internal one had to get simpler too.
+        The classroom was only half the problem. Standing up a new interactive
+        still meant exporting files, converting them, and waiting on a code
+        pass — twenty minutes at a time. If the classroom system was going to
+        scale with the curriculum, the internal workflow had to get simpler too.
       </p>
 
       <div className="mt-12">
@@ -33,11 +33,11 @@ export function InternalTools() {
         <WorkflowClock />
       </div>
 
-      <div className="study-text mt-12 rounded-[20px] border border-[#c4a574]/55 bg-[#241f14] px-6 py-6 md:px-8 md:py-7">
+      <div className="tint-olive study-text mt-12 rounded-[20px] px-6 py-6 md:px-8 md:py-7">
         <h3 className="font-display text-[20px] font-medium tracking-tight text-fg md:text-[22px]">
           Additional Problem
         </h3>
-        <p className="mt-3 text-[16px] leading-[1.75] text-muted">
+        <p className="tint-olive-copy mt-3 text-[16px] leading-[1.75]">
           Legends were printed into the map image. Zoom in and they fell apart.
           Change a symbol and you redesigned the file. Every revision paid that
           tax again.
@@ -52,8 +52,8 @@ export function InternalTools() {
         <p className="mt-3 text-[16px] leading-[1.75] text-muted">
           I pulled the legend out of the artwork and into the interface: a
           panel that sits on the map, stays sharp when you zoom, and updates
-          without a new export. The legend became a component instead of a
-          picture of a legend.
+          without a new export. The legend became a component the interface
+          could update.
         </p>
         <div className="mt-8 space-y-6">
           <div className="overflow-hidden rounded-[16px] bg-[#d0eaf5]">

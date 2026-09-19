@@ -16,10 +16,10 @@ export function FeaturedDeviceCard({ study }: { study: CaseStudyMeta }) {
   return (
     <article
       className={cn(
-        "group relative overflow-hidden rounded-[24px] border border-line bg-card transition-[border-color,background] duration-500 hover:border-line-strong",
+        "group relative overflow-hidden rounded-[24px] border border-line bg-card transition-[border-color,background] duration-200 hover:border-line-strong",
         accent === "purple"
-          ? "hover:[background-image:linear-gradient(145deg,rgba(112,64,196,0.30)_0%,rgba(62,28,118,0.16)_46%,transparent_100%)]"
-          : "hover:[background-image:linear-gradient(145deg,rgba(10,78,82,0.38)_0%,rgba(6,42,46,0.20)_46%,transparent_100%)]",
+          ? "hover:[background-image:linear-gradient(145deg,#2a1848_0%,#1a1428_46%,transparent_100%)]"
+          : "hover:[background-image:linear-gradient(145deg,#0a3030_0%,#0f1c1c_46%,transparent_100%)]",
       )}
     >
       <Link

@@ -34,9 +34,7 @@ export default function AboutPage() {
             <div className="order-3 min-w-0 md:col-start-1 md:row-start-2 md:mt-10">
               <div className="space-y-5 text-[16px] leading-[1.75] text-muted md:text-[17px]">
                 {rest.map((p) => (
-                  <Reveal key={p}>
-                    <p>{p}</p>
-                  </Reveal>
+                  <p key={p}>{p}</p>
                 ))}
               </div>
             </div>

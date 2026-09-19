@@ -10,10 +10,10 @@ import { cn } from "@/lib/cn";
 
 const washes = {
   orange:
-    "[background-image:linear-gradient(145deg,rgba(232,110,40,0.32)_0%,rgba(140,50,16,0.16)_46%,transparent_100%)]",
-  red: "[background-image:linear-gradient(145deg,rgba(196,48,48,0.38)_0%,rgba(120,24,24,0.16)_46%,transparent_100%)]",
-  navy: "[background-image:linear-gradient(145deg,rgba(32,58,140,0.40)_0%,rgba(16,28,82,0.18)_46%,transparent_100%)]",
-  ice: "[background-image:linear-gradient(145deg,rgba(48,140,168,0.38)_0%,rgba(16,52,72,0.18)_46%,transparent_100%)]",
+    "[background-image:linear-gradient(145deg,#3d2414_0%,#1c1612_46%,#141414_100%)]",
+  red: "[background-image:linear-gradient(145deg,#3a1418_0%,#1c1214_46%,#141414_100%)]",
+  navy: "[background-image:linear-gradient(145deg,#1a2450_0%,#141828_46%,#141414_100%)]",
+  ice: "[background-image:linear-gradient(145deg,#0d3038_0%,#12181c_46%,#141414_100%)]",
 } as const;
 
 export function ApplicationArtifactCard({ project }: { project: GalleryProject }) {

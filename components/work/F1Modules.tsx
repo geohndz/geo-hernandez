@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/cn";
 
 const modules = [
@@ -39,7 +39,7 @@ const modules = [
 
 export function F1Modules() {
   const [index, setIndex] = useState(0);
-  const module = modules[index];
+  const reduce = useReducedMotion();
 
   return (
     <div>
@@ -63,11 +63,15 @@ export function F1Modules() {
               )}
             >
               {active ? (
-                <motion.span
-                  layoutId="f1-module-tab"
-                  className="absolute inset-0 rounded-lg bg-white/[0.06]"
-                  transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                />
+                reduce ? (
+                  <span className="absolute inset-0 rounded-lg bg-white/[0.06]" />
+                ) : (
+                  <motion.span
+                    layoutId="f1-module-tab"
+                    className="absolute inset-0 rounded-lg bg-white/[0.06]"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  />
+                )
               ) : null}
               <span className="relative z-10 whitespace-nowrap">{item.tab}</span>
             </button>
@@ -76,18 +80,39 @@ export function F1Modules() {
       </div>
 
       <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[20px] border border-line bg-card">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          key={module.src}
-          src={module.src}
-          alt={module.alt}
-          className="absolute inset-0 m-auto max-h-[78%] max-w-[82%] object-contain"
-        />
+        {modules.map((item, i) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={item.src}
+            src={item.src}
+            alt={item.alt}
+            aria-hidden={i !== index}
+            className={cn(
+              "absolute inset-0 m-auto max-h-[78%] max-w-[82%] object-contain transition-[opacity,transform] duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:transition-none",
+              i === index
+                ? "translate-y-0 opacity-100"
+                : "pointer-events-none translate-y-1.5 opacity-0",
+            )}
+          />
+        ))}
       </div>
 
-      <p className="study-text mx-auto mt-6 text-center text-[16px] leading-[1.75] text-muted">
-        {module.body}
-      </p>
+      <div className="study-text relative mx-auto mt-6 min-h-[4.5rem] text-center">
+        {modules.map((item, i) => (
+          <p
+            key={item.tab}
+            aria-hidden={i !== index}
+            className={cn(
+              "text-[16px] leading-[1.75] text-muted transition-[opacity,transform] duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:transition-none",
+              i === index
+                ? "relative translate-y-0 opacity-100"
+                : "pointer-events-none absolute inset-x-0 top-0 translate-y-1.5 opacity-0",
+            )}
+          >
+            {item.body}
+          </p>
+        ))}
+      </div>
     </div>
   );
 }

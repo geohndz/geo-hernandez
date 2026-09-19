@@ -18,6 +18,7 @@ overview:
   problem: During a race, a fan stitches a broadcast, cameras, radio, and a leaderboard by hand, and the director still chooses the picture.
   solution: Keep the live stream fixed as a spatial anchor, then place cameras, standings, and driver info in reusable zones around it.
   outcome: A modular viewing system that stays readable across a two-hour Grand Prix, checked with fans on a Quest.
+disclaimer: An unaffiliated concept project. Formula 1, team, and driver marks belong to their owners and are used here to illustrate a design exploration.
 toc:
   - { id: overview, label: Overview }
   - { id: problem, label: Problem }
@@ -45,7 +46,7 @@ toc:
 <StudyGroup>
 Hardcore Formula 1 fans already know how to watch a race. What they do not know is how a two-hour Grand Prix feels in a headset: neck, battery, attention, and the second the car leaves the middle of the view.
 
-I wrote the brief before I drew the layout. If you cannot last the race, find the board, and still watch the car, the interface has already failed.
+I wrote the brief before I drew the layout. Success meant lasting the race, finding the board, and still watching the car.
 
 <F1Research />
 </StudyGroup>
@@ -69,7 +70,7 @@ I treated the experience the way a racing game treats a HUD. The broadcast stays
 <StudyGroup>
 ### Constraints
 
-Quest-class headsets were the honest test. Largest consumer install base, limited battery, and a field of view that punishes anything you have to hunt for. Those were not limitations to work around later. They were the design strategy.
+Quest-class headsets were the honest test: largest consumer install base, limited battery, and a field of view that punishes anything you have to hunt for. I treated those as the design strategy from the start.
 
 <F1Constraints />
 </StudyGroup>
@@ -83,7 +84,7 @@ I started on paper: who the layout was for, what a fan reaches for during a stin
 </StudyGroup>
 
 <StudyGroup>
-From paper I took three visual directions to screen. Familiar F1 color and type helped people recognize the sport. Unchecked, they also fought the stream for attention. Some of the work wanted to be a livery more than an interface.
+From paper I took three visual directions to screen. Familiar F1 color and type helped people recognize the sport. Unchecked, they also fought the stream for attention.
 
 <F1VisualDirections />
 
@@ -91,9 +92,9 @@ From paper I took three visual directions to screen. Familiar F1 color and type 
 </StudyGroup>
 
 <StudyGroup>
-The window itself went through the same pass. Early chrome performed identity. The version that shipped is a quieter shell the content can live in: one anatomy, reused across every module.
+The window itself went through the same pass. Early chrome was louder than the content. The version that shipped is a quieter shell: one anatomy, reused across every module.
 
-<Figure src="/media/formula-1/process/window-chrome.png" alt="Four leaderboard chrome iterations, from a sharp navy frame to a rounded window with a top bar and inset content" caption="The leaderboard, four chrome passes in. Identity stayed. The frame got out of the way." />
+<Figure src="/media/formula-1/process/window-chrome.png" alt="Four leaderboard chrome iterations, from a sharp navy frame to a rounded window with a top bar and inset content" caption="The leaderboard, four chrome passes in. Later versions keep the identity and give the content more of the frame." />
 
 The hybrid that shipped kept the identity, borrowed the logic of a racing HUD, and followed the rules of spatial computing: one anchor, quieter chrome, supporting information that knows it is supporting.
 </StudyGroup>
@@ -103,7 +104,7 @@ The hybrid that shipped kept the identity, borrowed the logic of a racing HUD, a
 <StudyGroup>
 <F1SpatialDecision />
 
-A layout that can take a new module without a new frame needs a vocabulary first. Zones decide where things may land. Windows are the shells. Components are the content. Those three stay independent so the interface can change without the system changing underneath it.
+A layout that can take a new module without a new frame needs a vocabulary first. Zones decide where things may land. Windows are the shells. Components are the content. Those three stay independent so a new module does not force a new layout.
 
 <F1SpatialModel />
 </StudyGroup>

@@ -15,12 +15,12 @@ import { cn } from "@/lib/cn";
 
 const hoverWashes: Partial<Record<ChipAccent, string>> = {
   purple:
-    "hover:[background-image:linear-gradient(145deg,rgba(112,64,196,0.30)_0%,rgba(62,28,118,0.16)_46%,transparent_100%)]",
+    "hover:[background-image:linear-gradient(145deg,#2a1848_0%,#1a1428_46%,transparent_100%)]",
   green:
-    "hover:[background-image:linear-gradient(145deg,rgba(32,150,78,0.42)_0%,rgba(14,78,42,0.18)_46%,transparent_100%)]",
+    "hover:[background-image:linear-gradient(145deg,#0d3d22_0%,#122018_46%,transparent_100%)]",
   yellow:
-    "hover:[background-image:linear-gradient(145deg,rgba(234,186,36,0.46)_0%,rgba(150,96,12,0.18)_46%,transparent_100%)]",
-  blue: "hover:[background-image:linear-gradient(145deg,rgba(48,92,210,0.42)_0%,rgba(24,48,130,0.18)_46%,transparent_100%)]",
+    "hover:[background-image:linear-gradient(145deg,#3d3208_0%,#221c10_46%,transparent_100%)]",
+  blue: "hover:[background-image:linear-gradient(145deg,#1a2f6e_0%,#141828_46%,transparent_100%)]",
 };
 
 export function ExplorationDeviceCard({
@@ -50,7 +50,7 @@ export function ExplorationDeviceCard({
         "relative overflow-hidden rounded-[24px] border border-line bg-card",
         linked &&
           cn(
-            "group transition-[border-color,transform,background] duration-500 hover:-translate-y-0.5 hover:border-line-strong",
+            "hover-card group transition-[border-color,background] duration-200 hover:border-line-strong",
             hoverWashes[hoverWash],
           ),
       )}

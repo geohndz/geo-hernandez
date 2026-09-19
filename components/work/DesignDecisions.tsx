@@ -10,18 +10,18 @@ export function DecisionGlobe() {
 
       <p className="mt-5 text-[16px] font-medium text-fg">Stakeholder Vision</p>
       <p className="mt-3 text-[16px] leading-[1.75] text-muted">
-        The HESS team wanted the new World Geography curriculum to feel like a
+        The curriculum team wanted the new World Geography course to feel like a
         leap from paper maps: a 3D globe with live geographic data and
-        immersive interaction. That vision treated the product as a digital
-        spectacle. It did not start from how teachers actually ran a lesson,
-        and it would not have survived the constraints we already knew.
+        immersive interaction. That was a reasonable ambition for a new digital
+        product. It did not start from how teachers actually ran a lesson, and
+        it would not have survived the constraints we already knew.
       </p>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         <div>
           <p className="mb-2 text-[13px] text-muted">Challenge</p>
-          <div className="flex gap-3 rounded-[14px] bg-red-950/45 px-4 py-4 text-[15px] leading-relaxed text-red-200">
-            <Unplug className="mt-0.5 h-4 w-4 shrink-0 text-red-300" />
+          <div className="pair-challenge flex gap-3 rounded-[14px] px-4 py-4 text-[15px] leading-relaxed">
+            <Unplug className="mt-0.5 h-4 w-4 shrink-0 text-[#ffc4c4]" />
             <p>
               Existing tools already provided those experiences. A novel globe
               would also break from the maps students already saw in their books
@@ -31,8 +31,8 @@ export function DecisionGlobe() {
         </div>
         <div>
           <p className="mb-2 text-[13px] text-muted">Solution</p>
-          <div className="flex gap-3 rounded-[14px] bg-emerald-950/45 px-4 py-4 text-[15px] leading-relaxed text-emerald-200">
-            <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300" />
+          <div className="pair-solution flex gap-3 rounded-[14px] px-4 py-4 text-[15px] leading-relaxed">
+            <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-[#b6f0c8]" />
             <p>
               A layered map system built around the exact maps used throughout
               the curriculum.

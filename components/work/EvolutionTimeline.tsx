@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useReducedMotion } from "motion/react";
 import { cn } from "@/lib/cn";
 
 const DURATION = 10000;
@@ -38,6 +38,7 @@ const steps = [
 ] as const;
 
 export function EvolutionTimeline() {
+  const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -172,15 +173,22 @@ export function EvolutionTimeline() {
                 </h3>
               </button>
 
-              <AnimatePresence initial={false}>
-                {active ? (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="overflow-hidden"
-                  >
+              {reduce ? (
+                active ? (
+                  <div className="mt-4 rounded-[18px] border border-line bg-card px-5 py-5 md:px-6">
+                    {item.body.map((paragraph) => (
+                      <p
+                        key={paragraph}
+                        className="mt-3 text-[15px] leading-relaxed text-muted first:mt-0 md:text-[16px] md:leading-[1.75]"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                ) : null
+              ) : (
+                <div className="evolution-body" data-open={active}>
+                  <div className="evolution-body-inner">
                     <div className="mt-4 rounded-[18px] border border-line bg-card px-5 py-5 md:px-6">
                       {item.body.map((paragraph) => (
                         <p
@@ -191,9 +199,9 @@ export function EvolutionTimeline() {
                         </p>
                       ))}
                     </div>
-                  </motion.div>
-                ) : null}
-              </AnimatePresence>
+                  </div>
+                </div>
+              )}
             </li>
           );
         })}

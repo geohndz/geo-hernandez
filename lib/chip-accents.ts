@@ -12,77 +12,81 @@ export const chipTagBase =
 
 /** Tag chip accents always on (no hover). Use on cards without a hover state. */
 export const chipAccentsActive = {
-  purple: "border-[#a855f7]/80 bg-[rgba(112,64,196,0.18)] text-[#d4c4ff]",
-  orange: "border-[#f59e4a]/80 bg-[rgba(232,110,40,0.18)] text-[#ffd2a8]",
-  red: "border-[#f07171]/80 bg-[rgba(196,48,48,0.18)] text-[#ffc4c4]",
-  navy: "border-[#6b8cff]/80 bg-[rgba(32,58,140,0.22)] text-[#c5d2ff]",
-  ice: "border-[#5ec8e0]/80 bg-[rgba(48,140,168,0.20)] text-[#b8eaf5]",
-  green: "border-[#4ade80]/70 bg-[rgba(32,150,78,0.18)] text-[#b6f0c8]",
-  yellow: "border-[#f5c84a]/80 bg-[rgba(234,186,36,0.18)] text-[#ffe9a8]",
-  blue: "border-[#6b8cff]/80 bg-[rgba(48,92,210,0.20)] text-[#c5d2ff]",
-  teal: "border-[#2dd4bf]/70 bg-[rgba(10,78,82,0.22)] text-[#a8f0e8]",
+  purple: "border-[#c4b5fd] bg-[#2a1848] text-[#f3edff]",
+  orange: "border-[#ffb86a] bg-[#3d220e] text-[#ffe8cc]",
+  red: "border-[#f5a8a8] bg-[#3d1414] text-[#ffe8e8]",
+  navy: "border-[#9db4ff] bg-[#1a2a5c] text-[#e8eeff]",
+  ice: "border-[#7ed4e8] bg-[#0d3340] text-[#e3f7fb]",
+  green: "border-[#6ee7a0] bg-[#0d3d22] text-[#dcffe8]",
+  yellow: "border-[#f5d56a] bg-[#3d3208] text-[#fff3c4]",
+  blue: "border-[#9db4ff] bg-[#1a2f6e] text-[#e8eeff]",
+  teal: "border-[#5eead4] bg-[#0a3d3d] text-[#d9faf5]",
 } as const;
 
 /** Default tinted category chip styles (no hover). */
 export const chipCategoryAccents = {
-  purple: "border-[#a855f7]/80 bg-[rgba(112,64,196,0.18)] text-[#d4c4ff]",
-  orange: "border-[#f59e4a]/80 bg-[rgba(232,110,40,0.18)] text-[#ffd2a8]",
-  red: "border-[#f07171]/80 bg-[rgba(196,48,48,0.18)] text-[#ffc4c4]",
-  navy: "border-[#6b8cff]/80 bg-[rgba(32,58,140,0.22)] text-[#c5d2ff]",
-  ice: "border-[#5ec8e0]/80 bg-[rgba(48,140,168,0.20)] text-[#b8eaf5]",
-  green: "border-[#4ade80]/70 bg-[rgba(32,150,78,0.18)] text-[#b6f0c8]",
-  yellow: "border-[#f5c84a]/80 bg-[rgba(234,186,36,0.18)] text-[#ffe9a8]",
-  blue: "border-[#6b8cff]/80 bg-[rgba(48,92,210,0.20)] text-[#c5d2ff]",
-  teal: "border-[#2dd4bf]/70 bg-[rgba(10,78,82,0.22)] text-[#a8f0e8]",
+  purple: "border-[#c4b5fd] bg-[#2a1848] text-[#f3edff]",
+  orange: "border-[#ffb86a] bg-[#3d220e] text-[#ffe8cc]",
+  red: "border-[#f5a8a8] bg-[#3d1414] text-[#ffe8e8]",
+  navy: "border-[#9db4ff] bg-[#1a2a5c] text-[#e8eeff]",
+  ice: "border-[#7ed4e8] bg-[#0d3340] text-[#e3f7fb]",
+  green: "border-[#6ee7a0] bg-[#0d3d22] text-[#dcffe8]",
+  yellow: "border-[#f5d56a] bg-[#3d3208] text-[#fff3c4]",
+  blue: "border-[#9db4ff] bg-[#1a2f6e] text-[#e8eeff]",
+  teal: "border-[#5eead4] bg-[#0a3d3d] text-[#d9faf5]",
 } as const;
 
 /** Tag chip accents that activate on card hover. Only use on cards with a hover state. */
 export const chipAccents = {
   purple:
-    "transition-[border-color,background-color,color] duration-500 group-hover:border-[#a855f7]/80 group-hover:bg-[rgba(112,64,196,0.18)] group-hover:text-[#d4c4ff]",
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#c4b5fd] group-hover:bg-[#2a1848] group-hover:text-[#f3edff]",
   orange:
-    "transition-[border-color,background-color,color] duration-500 group-hover:border-[#f59e4a]/80 group-hover:bg-[rgba(232,110,40,0.18)] group-hover:text-[#ffd2a8]",
-  red: "transition-[border-color,background-color,color] duration-500 group-hover:border-[#f07171]/80 group-hover:bg-[rgba(196,48,48,0.18)] group-hover:text-[#ffc4c4]",
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#ffb86a] group-hover:bg-[#3d220e] group-hover:text-[#ffe8cc]",
+  red: "transition-[border-color,background-color,color] duration-200 group-hover:border-[#f5a8a8] group-hover:bg-[#3d1414] group-hover:text-[#ffe8e8]",
   navy:
-    "transition-[border-color,background-color,color] duration-500 group-hover:border-[#6b8cff]/80 group-hover:bg-[rgba(32,58,140,0.22)] group-hover:text-[#c5d2ff]",
-  ice: "transition-[border-color,background-color,color] duration-500 group-hover:border-[#5ec8e0]/80 group-hover:bg-[rgba(48,140,168,0.20)] group-hover:text-[#b8eaf5]",
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#9db4ff] group-hover:bg-[#1a2a5c] group-hover:text-[#e8eeff]",
+  ice: "transition-[border-color,background-color,color] duration-200 group-hover:border-[#7ed4e8] group-hover:bg-[#0d3340] group-hover:text-[#e3f7fb]",
   green:
-    "transition-[border-color,background-color,color] duration-500 group-hover:border-[#4ade80]/70 group-hover:bg-[rgba(32,150,78,0.18)] group-hover:text-[#b6f0c8]",
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#6ee7a0] group-hover:bg-[#0d3d22] group-hover:text-[#dcffe8]",
   yellow:
-    "transition-[border-color,background-color,color] duration-500 group-hover:border-[#f5c84a]/80 group-hover:bg-[rgba(234,186,36,0.18)] group-hover:text-[#ffe9a8]",
-  blue: "transition-[border-color,background-color,color] duration-500 group-hover:border-[#6b8cff]/80 group-hover:bg-[rgba(48,92,210,0.20)] group-hover:text-[#c5d2ff]",
-  teal: "transition-[border-color,background-color,color] duration-500 group-hover:border-[#2dd4bf]/70 group-hover:bg-[rgba(10,78,82,0.22)] group-hover:text-[#a8f0e8]",
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#f5d56a] group-hover:bg-[#3d3208] group-hover:text-[#fff3c4]",
+  blue:
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#9db4ff] group-hover:bg-[#1a2f6e] group-hover:text-[#e8eeff]",
+  teal:
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#5eead4] group-hover:bg-[#0a3d3d] group-hover:text-[#d9faf5]",
 } as const;
 
 /** Category chips: solid fill always on. Use on cards without a hover state. */
 export const chipCategoryFilled = {
-  purple: "border-[#a855f7] bg-[#a855f7] text-white",
-  orange: "border-[#f59e4a] bg-[#f59e4a] text-white",
-  red: "border-[#f07171] bg-[#f07171] text-white",
-  navy: "border-[#6b8cff] bg-[#6b8cff] text-white",
-  ice: "border-[#5ec8e0] bg-[#5ec8e0] text-white",
-  green: "border-[#4ade80] bg-[#4ade80] text-white",
-  yellow: "border-[#f5c84a] bg-[#f5c84a] text-white",
-  blue: "border-[#6b8cff] bg-[#6b8cff] text-white",
-  teal: "border-[#2dd4bf] bg-[#2dd4bf] text-white",
+  purple: "border-[#6d28d9] bg-[#6d28d9] text-white",
+  orange: "border-[#f59e4a] bg-[#f59e4a] text-[#1c1005]",
+  red: "border-[#c53030] bg-[#c53030] text-white",
+  navy: "border-[#3b5bdb] bg-[#3b5bdb] text-white",
+  ice: "border-[#5ec8e0] bg-[#5ec8e0] text-[#083344]",
+  green: "border-[#4ade80] bg-[#4ade80] text-[#052e16]",
+  yellow: "border-[#f5c84a] bg-[#f5c84a] text-[#1a1400]",
+  blue: "border-[#3b5bdb] bg-[#3b5bdb] text-white",
+  teal: "border-[#2dd4bf] bg-[#2dd4bf] text-[#042f2e]",
 } as const;
 
 /** Category chips: solid fill on card hover. Only use on cards with a hover state. */
 export const chipCategoryHover = {
   purple:
-    "transition-[border-color,background-color,color] duration-500 group-hover:border-[#a855f7] group-hover:bg-[#a855f7] group-hover:text-white",
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#6d28d9] group-hover:bg-[#6d28d9] group-hover:text-white",
   orange:
-    "transition-[border-color,background-color,color] duration-500 group-hover:border-[#f59e4a] group-hover:bg-[#f59e4a] group-hover:text-white",
-  red: "transition-[border-color,background-color,color] duration-500 group-hover:border-[#f07171] group-hover:bg-[#f07171] group-hover:text-white",
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#f59e4a] group-hover:bg-[#f59e4a] group-hover:text-[#1c1005]",
+  red: "transition-[border-color,background-color,color] duration-200 group-hover:border-[#c53030] group-hover:bg-[#c53030] group-hover:text-white",
   navy:
-    "transition-[border-color,background-color,color] duration-500 group-hover:border-[#6b8cff] group-hover:bg-[#6b8cff] group-hover:text-white",
-  ice: "transition-[border-color,background-color,color] duration-500 group-hover:border-[#5ec8e0] group-hover:bg-[#5ec8e0] group-hover:text-white",
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#3b5bdb] group-hover:bg-[#3b5bdb] group-hover:text-white",
+  ice: "transition-[border-color,background-color,color] duration-200 group-hover:border-[#5ec8e0] group-hover:bg-[#5ec8e0] group-hover:text-[#083344]",
   green:
-    "transition-[border-color,background-color,color] duration-500 group-hover:border-[#4ade80] group-hover:bg-[#4ade80] group-hover:text-white",
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#4ade80] group-hover:bg-[#4ade80] group-hover:text-[#052e16]",
   yellow:
-    "transition-[border-color,background-color,color] duration-500 group-hover:border-[#f5c84a] group-hover:bg-[#f5c84a] group-hover:text-white",
-  blue: "transition-[border-color,background-color,color] duration-500 group-hover:border-[#6b8cff] group-hover:bg-[#6b8cff] group-hover:text-white",
-  teal: "transition-[border-color,background-color,color] duration-500 group-hover:border-[#2dd4bf] group-hover:bg-[#2dd4bf] group-hover:text-white",
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#f5c84a] group-hover:bg-[#f5c84a] group-hover:text-[#1a1400]",
+  blue:
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#3b5bdb] group-hover:bg-[#3b5bdb] group-hover:text-white",
+  teal:
+    "transition-[border-color,background-color,color] duration-200 group-hover:border-[#2dd4bf] group-hover:bg-[#2dd4bf] group-hover:text-[#042f2e]",
 } as const;
 
 export type ChipAccent = keyof typeof chipAccents;

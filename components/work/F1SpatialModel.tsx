@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { Lightbulb, Puzzle } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -156,7 +156,7 @@ function Panel({ panel, tier }: { panel: (typeof panels)[number]; tier: Tier }) 
   return (
     <div
       className={cn(
-        "absolute rounded-[7px] border transition-all duration-500",
+        "absolute rounded-[7px] border transition-[opacity,border-color,background-color] duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]",
         tier === "zones"
           ? "border-white/10 bg-white/[0.03]"
           : primary
@@ -172,7 +172,7 @@ function Panel({ panel, tier }: { panel: (typeof panels)[number]; tier: Tier }) 
     >
       <span
         className={cn(
-          "absolute inset-0 flex items-center justify-center px-1 text-center text-[8px] leading-tight transition-opacity duration-300 md:text-[11px]",
+          "absolute inset-0 flex items-center justify-center px-1 text-center text-[8px] leading-tight transition-opacity duration-200 md:text-[11px]",
           primary ? "text-white/85" : "text-white/60",
           label ? "opacity-100" : "opacity-0",
         )}
@@ -196,7 +196,7 @@ function Support({ side, tier }: { side: "top" | "bottom"; tier: Tier }) {
   return (
     <div
       className={cn(
-        "absolute rounded-[7px] border transition-all duration-500",
+        "absolute rounded-[7px] border transition-[opacity,border-color,background-color] duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]",
         tier === "zones"
           ? "border-[#c4a574]/25 bg-[#c4a574]/[0.04]"
           : "border-[#c4a574]/60 bg-[#c4a574]/[0.09]",
@@ -209,7 +209,7 @@ function Support({ side, tier }: { side: "top" | "bottom"; tier: Tier }) {
     >
       <span
         className={cn(
-          "absolute inset-0 flex items-center justify-center text-[8px] text-[#e0cba8] transition-opacity duration-300 md:text-[11px]",
+          "absolute inset-0 flex items-center justify-center text-[8px] text-[#e0cba8] transition-opacity duration-200 md:text-[11px]",
           label ? "opacity-100" : "opacity-0",
         )}
       >
@@ -240,12 +240,12 @@ function DecisionBlock({
       </h4>
 
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        <div className="flex gap-3 rounded-[14px] bg-red-950/45 px-4 py-4 text-[15px] leading-relaxed text-red-200">
-          <Puzzle className="mt-0.5 h-4 w-4 shrink-0 text-red-300" />
+        <div className="pair-challenge flex gap-3 rounded-[14px] px-4 py-4 text-[15px] leading-relaxed">
+          <Puzzle className="mt-0.5 h-4 w-4 shrink-0 text-[#ffc4c4]" />
           <p>{decision.problem}</p>
         </div>
-        <div className="flex gap-3 rounded-[14px] bg-emerald-950/45 px-4 py-4 text-[15px] leading-relaxed text-emerald-200">
-          <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300" />
+        <div className="pair-solution flex gap-3 rounded-[14px] px-4 py-4 text-[15px] leading-relaxed">
+          <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-[#b6f0c8]" />
           <p>{decision.solution}</p>
         </div>
       </div>
@@ -271,6 +271,7 @@ export function F1SpatialDecision() {
 
 export function F1SpatialModel() {
   const [index, setIndex] = useState(0);
+  const reduce = useReducedMotion();
   const tier = tiers[index];
 
   return (
@@ -296,11 +297,15 @@ export function F1SpatialModel() {
                 )}
               >
                 {active ? (
-                  <motion.span
-                    layoutId="f1-spatial-tab"
-                    className="absolute inset-0 rounded-lg bg-white/[0.06]"
-                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                  />
+                  reduce ? (
+                    <span className="absolute inset-0 rounded-lg bg-white/[0.06]" />
+                  ) : (
+                    <motion.span
+                      layoutId="f1-spatial-tab"
+                      className="absolute inset-0 rounded-lg bg-white/[0.06]"
+                      transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                    />
+                  )
                 ) : null}
                 <span className="relative z-10 whitespace-nowrap">{item.tab}</span>
               </button>
@@ -333,7 +338,7 @@ export function F1SpatialModel() {
                 <div
                   key={key}
                   className={cn(
-                    "absolute rounded-[10px] border transition-all duration-500",
+                    "absolute rounded-[10px] border transition-[opacity,border-color,background-color] duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]",
                     tier.id === "zones"
                       ? "border-white/40 bg-white/[0.02]"
                       : "border-white/[0.07] bg-transparent",
@@ -347,7 +352,7 @@ export function F1SpatialModel() {
                 >
                   <div
                     className={cn(
-                      "absolute inset-x-0 top-1/2 -translate-y-1/2 px-1.5 text-center transition-opacity duration-300",
+                      "absolute inset-x-0 top-1/2 -translate-y-1/2 px-1.5 text-center transition-opacity duration-200",
                       tier.id === "zones" ? "opacity-100" : "opacity-0",
                     )}
                   >

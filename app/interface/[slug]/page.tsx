@@ -20,6 +20,22 @@ export async function generateMetadata({
     return {
       title: frontmatter.title,
       description: frontmatter.subtitle,
+      alternates: {
+        canonical: `/interface/${slug}`,
+      },
+      openGraph: {
+        title: frontmatter.title,
+        description: frontmatter.subtitle,
+        url: `/interface/${slug}`,
+        type: "article",
+        images: [{ url: "/opengraph-image.jpg" }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: frontmatter.title,
+        description: frontmatter.subtitle,
+        images: ["/opengraph-image.jpg"],
+      },
     };
   } catch {
     return { title: "Case Study" };

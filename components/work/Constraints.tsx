@@ -112,8 +112,8 @@ function Chip({
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
         "inline-flex h-9 items-center rounded-full border px-4 text-[14px] leading-none md:text-[15px]",
-        state === "vetoed" && "border-red-500/25 bg-red-950/25 text-red-300/80 line-through",
-        state === "cleared" && "border-emerald-500/30 bg-emerald-950/30 text-emerald-200",
+        state === "vetoed" && "border-[#f5a8a8]/40 bg-[#3a1414] text-[#ffd6d6] line-through",
+        state === "cleared" && "border-[#6ee7a0]/40 bg-[#0d2a1c] text-[#d8ffe8]",
         (!state || state === "live") && "border-line bg-card text-fg",
       )}
     >
@@ -170,7 +170,8 @@ function GateFlow() {
   const autoRan = useRef(false);
   const timer = useRef(0);
 
-  const done = useMemo(() => sequence.slice(0, progress), [progress]);
+  const shown = reduce ? target : progress;
+  const done = useMemo(() => sequence.slice(0, shown), [shown]);
 
   function isPlaced(ideaId: string, where: Place) {
     return done.some((step) => step.ideaId === ideaId && step.where === where);
@@ -217,11 +218,7 @@ function GateFlow() {
   }, [reduce]);
 
   useEffect(() => {
-    if (progress === target) return;
-    if (reduce) {
-      setProgress(target);
-      return;
-    }
+    if (reduce || progress === target) return;
     const dir = target > progress ? 1 : -1;
     const next = sequence[dir > 0 ? progress : progress - 1];
     const prev = sequence[dir > 0 ? progress - 1 : progress];
@@ -243,7 +240,7 @@ function GateFlow() {
     setTarget(end);
   }
 
-  const current = sequence[progress - 1];
+  const current = sequence[shown - 1];
   const midCaption =
     current && current.where !== "cleared"
       ? (ideas.find((idea) => idea.id === current.ideaId)?.caption ?? null)
@@ -277,11 +274,15 @@ function GateFlow() {
               )}
             >
               {active ? (
-                <motion.span
-                  layoutId="constraints-tab"
-                  className="absolute inset-0 rounded-lg bg-white/[0.06]"
-                  transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                />
+                reduce ? (
+                  <span className="absolute inset-0 rounded-lg bg-white/[0.06]" />
+                ) : (
+                  <motion.span
+                    layoutId="constraints-tab"
+                    className="absolute inset-0 rounded-lg bg-white/[0.06]"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  />
+                )
               ) : null}
               <span className="relative z-10 whitespace-nowrap">{label}</span>
             </button>
@@ -346,8 +347,7 @@ function GateFlow() {
 
         <div
           className={cn(
-            "rounded-[16px] border border-line px-4 py-4 transition-[margin] duration-500",
-            endCaption ? "mt-3" : "mt-5",
+            "mt-5 rounded-[16px] border border-line px-4 py-4",
           )}
         >
           <p className="text-[13px] text-muted">What could pass every gate</p>
@@ -368,7 +368,7 @@ function GateFlow() {
             )}
           </div>
           {endCaption ? (
-            <p className="mt-3 text-[15px] leading-relaxed text-emerald-200">
+            <p className="mt-3 text-[15px] leading-relaxed text-[#d8ffe8]">
               {endCaption}
             </p>
           ) : null}
@@ -382,8 +382,8 @@ export function Constraints() {
   return (
     <div className="mt-2">
       <p className="study-text text-[16px] leading-[1.75] text-muted">
-        I ran the original vision through those gates. Most of it did not pass.
-        Layered maps did.
+        I ran the original vision through those gates. Layered maps were what
+        survived.
       </p>
       <div className="mt-8">
         <GateFlow />

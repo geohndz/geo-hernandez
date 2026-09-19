@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/cn";
 import { InViewVideo } from "@/components/work/InViewVideo";
 
@@ -42,7 +42,7 @@ const tools = [
 
 function ToolkitGallery() {
   const [index, setIndex] = useState(0);
-  const tool = tools[index];
+  const reduce = useReducedMotion();
 
   return (
     <div className="mt-8">
@@ -66,11 +66,15 @@ function ToolkitGallery() {
               )}
             >
               {active ? (
-                <motion.span
-                  layoutId="toolkit-tab"
-                  className="absolute inset-0 rounded-lg bg-white/[0.06]"
-                  transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                />
+                reduce ? (
+                  <span className="absolute inset-0 rounded-lg bg-white/[0.06]" />
+                ) : (
+                  <motion.span
+                    layoutId="toolkit-tab"
+                    className="absolute inset-0 rounded-lg bg-white/[0.06]"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  />
+                )
               ) : null}
               <span className="relative z-10 whitespace-nowrap">{item.tab}</span>
             </button>
@@ -78,18 +82,48 @@ function ToolkitGallery() {
         })}
       </div>
 
-      <div className="overflow-hidden rounded-[20px] border border-line bg-[#cfe8f4]">
-        <InViewVideo
-          key={tool.src}
-          src={`${tool.src}?v=2`}
-          alt={tool.alt}
-          className="block h-auto w-full"
-          onEnded={() => setIndex((value) => (value + 1) % tools.length)}
-        />
+      <div className="relative overflow-hidden rounded-[20px] border border-line bg-[#cfe8f4]">
+        {tools.map((item, i) => (
+          <div
+            key={item.src}
+            className={cn(
+              i === 0 ? "relative" : "absolute inset-0",
+              "transition-[opacity,transform] duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:transition-none",
+              i === index
+                ? "translate-y-0 opacity-100"
+                : "pointer-events-none translate-y-1.5 opacity-0",
+            )}
+          >
+            <InViewVideo
+              src={`${item.src}?v=2`}
+              alt={item.alt}
+              active={i === index}
+              className="block h-auto w-full"
+              onEnded={
+                i === index
+                  ? () => setIndex((value) => (value + 1) % tools.length)
+                  : undefined
+              }
+            />
+          </div>
+        ))}
       </div>
 
-      <div className="study-text mx-auto mt-6 text-center">
-        <p className="text-[16px] leading-[1.75] text-muted">{tool.body}</p>
+      <div className="study-text relative mx-auto mt-6 min-h-[4.5rem] text-center">
+        {tools.map((item, i) => (
+          <p
+            key={item.tab}
+            aria-hidden={i !== index}
+            className={cn(
+              "text-[16px] leading-[1.75] text-muted transition-[opacity,transform] duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:transition-none",
+              i === index
+                ? "relative translate-y-0 opacity-100"
+                : "pointer-events-none absolute inset-x-0 top-0 translate-y-1.5 opacity-0",
+            )}
+          >
+            {item.body}
+          </p>
+        ))}
       </div>
     </div>
   );
@@ -99,8 +133,8 @@ export function TeacherTools() {
   return (
     <div className="mt-2">
       <p className="study-text text-center text-[16px] leading-[1.75] text-muted">
-        After the year off, I came back asking a different question. The map
-        was no longer the product. The period was.
+        After the year off, I came back asking what a teacher would want to do
+        during class, not what the map should do.
       </p>
 
       <div className="study-text study-card mt-8 px-6 py-6 md:px-8 md:py-7">
@@ -117,7 +151,7 @@ export function TeacherTools() {
         <p className="mt-4 text-[16px] leading-[1.75] text-muted">
           I borrowed the spirit of Figma and FigJam: a small, reusable set of
           tools you don&apos;t have to think about, aimed at a lesson instead of
-          a design file. One anatomy. Four jobs.
+          a design file.
         </p>
       </div>
 

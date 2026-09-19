@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { CircleCheck, CircleX } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -34,7 +34,7 @@ const directions = [
 
 export function F1VisualDirections() {
   const [index, setIndex] = useState(0);
-  const direction = directions[index];
+  const reduce = useReducedMotion();
 
   return (
     <div>
@@ -58,11 +58,15 @@ export function F1VisualDirections() {
               )}
             >
               {active ? (
-                <motion.span
-                  layoutId="f1-direction-tab"
-                  className="absolute inset-0 rounded-lg bg-white/[0.06]"
-                  transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                />
+                reduce ? (
+                  <span className="absolute inset-0 rounded-lg bg-white/[0.06]" />
+                ) : (
+                  <motion.span
+                    layoutId="f1-direction-tab"
+                    className="absolute inset-0 rounded-lg bg-white/[0.06]"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  />
+                )
               ) : null}
               <span className="relative z-10 whitespace-nowrap">{item.tab}</span>
             </button>
@@ -79,40 +83,55 @@ export function F1VisualDirections() {
             alt={item.alt}
             aria-hidden={i !== index}
             className={cn(
-              "pointer-events-none absolute inset-0 h-full w-full object-contain transition-opacity duration-500 ease-out",
-              i === index ? "opacity-100" : "opacity-0",
+              "pointer-events-none absolute inset-0 h-full w-full object-contain transition-[opacity,transform] duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:transition-none",
+              i === index
+                ? "translate-y-0 opacity-100"
+                : "translate-y-1.5 opacity-0",
             )}
           />
         ))}
       </div>
 
-      <div className="mt-3 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-[14px] bg-emerald-950/45 px-4 py-4">
-          <ul className="space-y-2.5">
-            {direction.pros.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-3 text-[15px] leading-relaxed text-emerald-200"
-              >
-                <CircleCheck className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="rounded-[14px] bg-red-950/45 px-4 py-4">
-          <ul className="space-y-2.5">
-            {direction.cons.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-3 text-[15px] leading-relaxed text-red-200"
-              >
-                <CircleX className="mt-0.5 h-4 w-4 shrink-0 text-red-300" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="relative mt-3 min-h-[7.5rem]">
+        {directions.map((item, i) => (
+          <div
+            key={item.tab}
+            aria-hidden={i !== index}
+            className={cn(
+              "grid gap-3 sm:grid-cols-2 transition-[opacity,transform] duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:transition-none",
+              i === index
+                ? "relative translate-y-0 opacity-100"
+                : "pointer-events-none absolute inset-x-0 top-0 translate-y-1.5 opacity-0",
+            )}
+          >
+            <div className="pair-solution rounded-[14px] px-4 py-4">
+              <ul className="space-y-2.5">
+                {item.pros.map((line) => (
+                  <li
+                    key={line}
+                    className="flex items-start gap-3 text-[15px] leading-relaxed"
+                  >
+                    <CircleCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#b6f0c8]" />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="pair-challenge rounded-[14px] px-4 py-4">
+              <ul className="space-y-2.5">
+                {item.cons.map((line) => (
+                  <li
+                    key={line}
+                    className="flex items-start gap-3 text-[15px] leading-relaxed"
+                  >
+                    <CircleX className="mt-0.5 h-4 w-4 shrink-0 text-[#ffc4c4]" />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

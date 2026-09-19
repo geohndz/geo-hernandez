@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { aboutStickers, site } from "@/content/site";
@@ -23,6 +24,7 @@ const bob = [
 
 export function AboutPortrait() {
   const reduce = useReducedMotion();
+  const [hovered, setHovered] = useState<number | null>(null);
 
   return (
     <div className="relative overflow-visible px-9 pb-16 pt-14 sm:px-11 md:px-10 md:pb-20 md:pt-16">
@@ -53,14 +55,33 @@ export function AboutPortrait() {
           >
             <motion.div
               className="flex flex-col items-center"
-              animate={reduce ? undefined : { y: [...motionBob.y] }}
-              transition={{
-                duration: motionBob.duration,
-                delay: motionBob.delay,
-                repeat: Infinity,
-                ease: "easeInOut",
+              animate={
+                reduce
+                  ? undefined
+                  : hovered === i
+                    ? { y: 0, scale: 1.02 }
+                    : { y: [...motionBob.y], scale: 1 }
+              }
+              transition={
+                hovered === i
+                  ? { duration: 0.18, ease: [0.77, 0, 0.175, 1] }
+                  : {
+                      y: {
+                        duration: motionBob.duration,
+                        delay: motionBob.delay,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      },
+                      scale: { duration: 0.18, ease: [0.77, 0, 0.175, 1] },
+                    }
+              }
+              onHoverStart={() => {
+                if (reduce) return;
+                if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+                  setHovered(i);
+                }
               }}
-              whileHover={reduce ? undefined : { scale: 1.05, transition: { duration: 0.25 } }}
+              onHoverEnd={() => setHovered(null)}
             >
               <div
                 className={cn(

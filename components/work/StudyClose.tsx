@@ -9,7 +9,7 @@ function QuoteLine({
     <p
       className={
         accent
-          ? "mt-3 border-l border-[#c4b5fd] pl-5 text-[16px] leading-relaxed text-[#d4c4ff]"
+          ? "tint-purple-copy mt-3 border-l border-[#ddd6ff] pl-5 text-[16px] leading-relaxed"
           : "mt-3 border-l border-white/80 pl-5 text-[16px] leading-relaxed text-fg"
       }
     >
@@ -20,7 +20,7 @@ function QuoteLine({
 
 export function Validation() {
   const findings = [
-    "Flexibility beat spectacle every time we tested.",
+    "Teachers chose flexibility over extra features every time we tested.",
     "Once they had a pen and a pin, those tools weren't extras. They were the lesson.",
     "Layer combinations covered activities that used to require four paper maps.",
   ];
@@ -32,11 +32,11 @@ export function Validation() {
         feedback went straight back into the next pass, which is how a side
         toolbar replaced a bottom one that had been covering the coastline.
       </p>
-      <div className="study-text mt-8 rounded-[20px] border border-[#a855f7]/80 bg-[rgba(112,64,196,0.16)] px-6 py-6 md:px-8 md:py-7">
+      <div className="tint-purple study-text mt-8 rounded-[20px] px-6 py-6 md:px-8 md:py-7">
         <h3 className="font-display text-[20px] font-medium tracking-tight text-fg md:text-[22px]">
           From the classroom
         </h3>
-        <p className="mt-3 text-[16px] leading-[1.75] text-[#d4c4ff]">
+        <p className="tint-purple-copy mt-3 text-[16px] leading-[1.75]">
           One of them said it out loud:
         </p>
         <QuoteLine accent>

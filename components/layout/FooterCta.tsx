@@ -17,7 +17,7 @@ export function FooterCta() {
           <div className="mt-8 flex justify-center gap-3">
             <a
               href={`mailto:${site.email}`}
-              className="rounded-full bg-fg px-5 py-2.5 text-sm font-medium text-bg transition-opacity hover:opacity-80"
+              className="cta-email press-scale rounded-full bg-fg px-5 py-2.5 text-sm font-medium text-bg"
             >
               Email
             </a>
@@ -25,7 +25,7 @@ export function FooterCta() {
               href={site.links.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-line px-5 py-2.5 text-sm font-medium text-fg transition-colors hover:border-white/30"
+              className="cta-linkedin press-scale rounded-full border border-line px-5 py-2.5 text-sm font-medium text-fg"
             >
               LinkedIn
             </a>

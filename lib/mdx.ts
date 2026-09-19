@@ -20,6 +20,7 @@ export type CaseFrontmatter = {
     solution: string;
     outcome: string;
   };
+  disclaimer?: string;
   toc: { id: string; label: string }[];
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { LayoutGroup, motion } from "motion/react";
+import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/cn";
 import { isReallyVisible } from "@/lib/in-view";
 
@@ -159,7 +159,7 @@ function Sticky({
       transition={{
         layout: { type: "spring", stiffness: 380, damping: 34, delay },
       }}
-      className="relative aspect-square w-[7.4rem] overflow-hidden rounded-[3px] bg-[#ffc9d6] px-2 pb-5 pt-2.5 shadow-[0_5px_12px_rgba(30,20,40,0.12)] md:w-[8rem]"
+      className="relative aspect-square w-[7.4rem] overflow-hidden rounded-[3px] bg-[#ffc9d6] px-2 pb-2.5 pt-2.5 shadow-[0_5px_12px_rgba(30,20,40,0.12)] md:w-[8rem]"
       style={{
         rotate: sorted ? 0 : noteTilt(note.id),
         clipPath:
@@ -169,12 +169,12 @@ function Sticky({
       <p className="text-center text-[10px] leading-snug text-[#2a2a2a] md:text-[11px]">
         {note.text}
       </p>
-      <p className="absolute bottom-1.5 left-2 text-[8px] text-[#6b4a55]">Geo Hernandez</p>
     </motion.article>
   );
 }
 
 export function ResearchBoard() {
+  const reduce = useReducedMotion();
   const [sorted, setSorted] = useState(false);
   const boardRef = useRef<HTMLElement>(null);
   const autoSorted = useRef(false);
@@ -244,11 +244,15 @@ export function ResearchBoard() {
               )}
             >
               {active ? (
-                <motion.span
-                  layoutId="research-tab"
-                  className="absolute inset-0 rounded-lg bg-white/[0.06]"
-                  transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                />
+                reduce ? (
+                  <span className="absolute inset-0 rounded-lg bg-white/[0.06]" />
+                ) : (
+                  <motion.span
+                    layoutId="research-tab"
+                    className="absolute inset-0 rounded-lg bg-white/[0.06]"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  />
+                )
               ) : null}
               <span className="relative z-10 whitespace-nowrap">{label}</span>
             </button>
@@ -266,44 +270,51 @@ export function ResearchBoard() {
               backgroundSize: "16px 16px",
             }}
           >
-            {sorted ? (
-              <div className="space-y-3">
-                {grouped.map((bucket, bucketIndex) => (
-                  <motion.section
-                    key={bucket.id}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: bucketIndex * 0.05, duration: 0.35 }}
-                    className={cn("rounded-[16px] border p-3 pt-4 md:p-4", bucket.fill, bucket.border)}
-                  >
-                    <p
-                      className={cn(
-                        "mb-3 inline-flex rounded-full px-3 py-1 text-[11px] font-medium",
-                        bucket.header,
-                      )}
-                    >
-                      {bucket.title}
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-2">
-                      {bucket.notes.map((note, i) => (
-                        <Sticky
-                          key={note.id}
-                          note={note}
-                          sorted
-                          delay={0.04 + bucketIndex * 0.03 + i * 0.02}
-                        />
-                      ))}
-                    </div>
-                  </motion.section>
-                ))}
-              </div>
-            ) : (
-              <div className="flex flex-wrap justify-center gap-2">
-                {notes.map((note, i) => (
-                  <Sticky key={note.id} note={note} sorted={false} delay={i * 0.015} />
-                ))}
-              </div>
-            )}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={sorted ? "sorted" : "loose"}
+                initial={reduce ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={reduce ? undefined : { opacity: 0 }}
+                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {sorted ? (
+                  <div className="space-y-3">
+                    {grouped.map((bucket) => (
+                      <section
+                        key={bucket.id}
+                        className={cn("rounded-[16px] border p-3 pt-4 md:p-4", bucket.fill, bucket.border)}
+                      >
+                        <p
+                          className={cn(
+                            "mb-3 inline-flex rounded-full px-3 py-1 text-[11px] font-medium",
+                            bucket.header,
+                          )}
+                        >
+                          {bucket.title}
+                        </p>
+                        <div className="flex flex-wrap justify-center gap-2">
+                          {bucket.notes.map((note) => (
+                            <Sticky
+                              key={note.id}
+                              note={note}
+                              sorted
+                              delay={0}
+                            />
+                          ))}
+                        </div>
+                      </section>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {notes.map((note) => (
+                      <Sticky key={note.id} note={note} sorted={false} delay={0} />
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </LayoutGroup>
       </div>

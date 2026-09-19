@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import {
   AppWindow,
   ArrowUpRight,
@@ -136,6 +136,8 @@ function NavLink({
   onClick?: () => void;
   layoutPrefix: string;
 }) {
+  const reduce = useReducedMotion();
+
   return (
     <Link
       href={href}
@@ -146,11 +148,15 @@ function NavLink({
       )}
     >
       {active ? (
-        <motion.span
-          layoutId={`${layoutPrefix}-nav-pill`}
-          className="absolute inset-0 rounded-lg bg-white/[0.06]"
-          transition={{ type: "spring", stiffness: 420, damping: 36 }}
-        />
+        reduce ? (
+          <span className="absolute inset-0 rounded-lg bg-white/[0.06]" />
+        ) : (
+          <motion.span
+            layoutId={`${layoutPrefix}-nav-pill`}
+            className="absolute inset-0 rounded-lg bg-white/[0.06]"
+            transition={{ type: "spring", stiffness: 420, damping: 36 }}
+          />
+        )
       ) : null}
       <span className="relative z-10 flex items-center gap-2.5">{children}</span>
     </Link>

@@ -21,7 +21,7 @@ export function ProjectCard({ project }: { project: GalleryProject }) {
         <CardVideo
           src={project.video}
           poster={project.image}
-          className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+          className="hover-media absolute inset-0 h-full w-full object-cover object-top transition-transform duration-200"
         />
       ) : project.image ? (
         <Image
@@ -29,7 +29,7 @@ export function ProjectCard({ project }: { project: GalleryProject }) {
           alt={project.title}
           fill
           sizes={project.kind === "phone" ? "240px" : "80vw"}
-          className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+          className="hover-media object-cover object-top transition-transform duration-200"
         />
       ) : null}
     </div>
@@ -66,7 +66,7 @@ export function ProjectCard({ project }: { project: GalleryProject }) {
   );
 
   const card = (
-    <article className="group overflow-hidden rounded-[24px] border border-line bg-card transition-[border-color,transform,background] duration-500 hover:-translate-y-0.5 hover:border-white/20 hover:[background-image:linear-gradient(145deg,rgba(112,64,196,0.22)_0%,rgba(62,28,118,0.12)_46%,transparent_100%)]">
+    <article className="hover-card group overflow-hidden rounded-[24px] border border-line bg-card transition-[border-color,background] duration-200 hover:border-white/20 hover:[background-image:linear-gradient(145deg,#2a1848_0%,#1a1428_46%,transparent_100%)]">
       {project.kind === "phone" ? (
         <div className="grid items-center gap-8 px-6 py-8 md:grid-cols-[1fr_auto] md:px-10 md:py-10">
           <div>{body}</div>

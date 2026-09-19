@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -68,6 +68,7 @@ export function PhaseCarousel({
 }) {
   const config = phases[Number(phase) === 2 ? 2 : 1];
   const frameRef = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [bleedW, setBleedW] = useState(0);
 
@@ -109,7 +110,11 @@ export function PhaseCarousel({
         <motion.div
           className="flex gap-5"
           animate={{ x: `calc(${-index} * (100cqw + 1.25rem))` }}
-          transition={{ type: "spring", stiffness: 280, damping: 34, mass: 0.8 }}
+          transition={
+            reduce
+              ? { duration: 0 }
+              : { type: "spring", stiffness: 280, damping: 34, mass: 0.8 }
+          }
         >
           {config.slides.map((item, i) => {
             const active = i === index;
@@ -173,8 +178,8 @@ export function PhaseCarousel({
                 aria-label={`Screen ${i + 1}`}
                 onClick={() => setIndex(i)}
                 className={cn(
-                  "h-1.5 rounded-full transition-all",
-                  active ? "w-5 bg-fg" : "w-1.5 bg-white/25 hover:bg-white/45",
+                  "h-1.5 w-5 origin-center rounded-full transition-[transform,background-color] duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]",
+                  active ? "scale-x-100 bg-fg" : "scale-x-[0.3] bg-white/25 hover:bg-white/45",
                 )}
               />
             );
