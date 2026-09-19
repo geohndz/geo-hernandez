@@ -3,7 +3,7 @@ export const site = {
   legalName: "Geovany Hernandez",
   title: "Geo Hernandez | Product & Interaction Designer",
   description:
-    "I'm Geo, a product and interaction designer who codes. I prototype accessible experiences across learning, XR, and the web.",
+    "I'm Geo Hernandez, an Interaction Designer focused on making digital products feel intuitive, purposeful, and a little more human.",
   email: "geovanyhernandezb@gmail.com",
   url: "https://geohernandez.xyz",
   year: 2026,
@@ -40,13 +40,13 @@ export const nav = {
 
 export const about = {
   kicker: "About",
-  seo: "Geovany Hernandez is a product and interaction designer who prototypes accessible digital experiences, design systems, and AI-powered tools.",
+  seo: "I'm Geo Hernandez, an Interaction Designer focused on making digital products feel intuitive, purposeful, and a little more human.",
   paragraphs: [
-    "I'm Geo, a product and interaction designer who likes figuring out how things work, and how they could work better.",
-    "My background started in graphic design, where I learned to think about composition, typography, visual systems, and the details that make an experience feel intentional. Over time, that curiosity pulled me toward UX and product design, where I could apply those same principles to more complex problems and interactive experiences.",
-    "Today, I work across product design, interaction design, prototyping, and front-end development. I enjoy moving between the abstract and the tangible: understanding a problem, mapping out a system, designing the interaction, and then building enough of it to see whether the idea actually works.",
-    "I'm particularly drawn to projects involving complex information, learning, emerging technology, and new ways of interacting with digital products. Whether it's a classroom map, a spatial interface, or a small web experiment, I'm interested in making complicated things feel clear, approachable, and engaging.",
-    "I also like to explore outside of client and product work. I build experiments, play with new technologies, and occasionally make things simply because I'm curious about what happens when I try.",
+    "I'm Geo Hernandez, an Interaction Designer focused on making digital products feel intuitive, purposeful, and a little more human.",
+    "I started in graphic design, learning composition, type, and visual systems. That is still how I tell if an interface feels considered.",
+    "The work that keeps showing up is a real workflow that does not fit on one tidy screen. I sit with how people actually teach, check, or decide. Then I design the interaction and write enough front-end to find where it breaks.",
+    "I want the task to stay louder than the chrome. If someone is in the middle of a lesson or a daily check-in, the product should get out of the way.",
+    "When I am not on a product, I build small tools to test an interaction idea in code, sometimes with AI in the loop.",
   ],
 };
 

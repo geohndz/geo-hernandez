@@ -6,7 +6,7 @@ import { AsciiBackground } from "@/components/home/AsciiBackground";
 import { fadeUp, stagger } from "@/lib/motion";
 import { site } from "@/content/site";
 
-function HeroCopy() {
+function HeroCopy({ matrix }: { matrix?: React.ReactNode }) {
   return (
     <>
       <div className="relative mb-8">
@@ -35,11 +35,12 @@ function HeroCopy() {
           </li>
         ))}
       </ul>
+      {matrix ? <div className="mt-8 w-full">{matrix}</div> : null}
     </>
   );
 }
 
-export function Hero() {
+export function Hero({ matrix }: { matrix?: React.ReactNode }) {
   const reduce = useReducedMotion();
 
   return (
@@ -47,12 +48,12 @@ export function Hero() {
       <AsciiBackground />
 
       {reduce ? (
-        <div className="relative mx-auto flex max-w-2xl flex-col items-center text-center">
-          <HeroCopy />
+        <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
+          <HeroCopy matrix={matrix} />
         </div>
       ) : (
         <motion.div
-          className="relative mx-auto flex max-w-2xl flex-col items-center text-center"
+          className="relative mx-auto flex max-w-3xl flex-col items-center text-center"
           variants={stagger}
           initial="hidden"
           animate="visible"
@@ -86,6 +87,11 @@ export function Hero() {
               </li>
             ))}
           </motion.ul>
+          {matrix ? (
+            <motion.div variants={fadeUp} className="mt-8 w-full">
+              {matrix}
+            </motion.div>
+          ) : null}
         </motion.div>
       )}
     </section>
