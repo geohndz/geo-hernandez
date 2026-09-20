@@ -29,8 +29,8 @@ function formatDay(date: string, count: number) {
   return `${count} contribution${count === 1 ? "" : "s"} on ${label}`;
 }
 
-export async function CommitMatrix() {
-  const calendar = await getContributionCalendar();
+export function CommitMatrix() {
+  const calendar = getContributionCalendar();
   if (!calendar) return null;
 
   const weeks = weeksFromDays(calendar.days);

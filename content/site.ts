@@ -7,6 +7,7 @@ export const site = {
   email: "geovanyhernandezb@gmail.com",
   url: "https://geohernandez.xyz",
   year: 2026,
+  updated: "2026-09-20",
   links: {
     resume:
       "https://drive.google.com/file/d/1k80I14P1EY1aAHVBna9LdYbiGln2Lq5w/view?usp=sharing",
@@ -15,6 +16,14 @@ export const site = {
   },
   portrait: "/media/geo.jpg",
   tags: ["Product Design", "Interaction Design", "Prototyping", "UX Engineering"],
+} as const;
+
+export const pageUpdated = {
+  "": site.updated,
+  "/about": site.updated,
+  "/applications": site.updated,
+  "/websites": site.updated,
+  "/creative-explorations": site.updated,
 } as const;
 
 export const nav = {

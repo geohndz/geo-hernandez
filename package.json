@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/snapshot-contributions.mjs",
+    "snapshot:contributions": "node scripts/snapshot-contributions.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

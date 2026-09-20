@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { DM_Sans, Pixelify_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/content/site";
 import { AppShell } from "@/components/layout/AppShell";
@@ -12,14 +11,19 @@ const sparkling = localFont({
   display: "swap",
 });
 
-const dm = DM_Sans({
-  subsets: ["latin"],
+const dm = localFont({
+  src: [
+    { path: "./fonts/DMSans-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/DMSans-Medium.woff2", weight: "500", style: "normal" },
+  ],
   variable: "--font-dm",
   display: "swap",
 });
 
-const pixelify = Pixelify_Sans({
-  subsets: ["latin"],
+const pixelify = localFont({
+  src: "./fonts/PixelifySans-Regular.woff2",
+  weight: "400",
+  style: "normal",
   variable: "--font-pixelify",
   display: "swap",
 });

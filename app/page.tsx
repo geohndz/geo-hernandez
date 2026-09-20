@@ -6,6 +6,8 @@ import { AwardsTeaser } from "@/components/home/AwardsTeaser";
 import { FooterCta } from "@/components/layout/FooterCta";
 import { caseStudies, workIndex } from "@/content/projects";
 
+export const dynamic = "force-static";
+
 export default function HomePage() {
   return (
     <>

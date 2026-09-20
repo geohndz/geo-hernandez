@@ -1,8 +1,12 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/content/site";
+import { pageUpdated, site } from "@/content/site";
+import { caseStudies } from "@/content/projects";
 import { getCaseStudySlugs } from "@/lib/mdx";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const studyUpdated = Object.fromEntries(
+    caseStudies.map((study) => [study.href, study.updated]),
+  );
   const pages = [
     "",
     "/about",
@@ -14,6 +18,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return pages.map((path) => ({
     url: `${site.url}${path}`,
-    lastModified: new Date(),
+    lastModified:
+      studyUpdated[path] ??
+      pageUpdated[path as keyof typeof pageUpdated] ??
+      site.updated,
   }));
 }

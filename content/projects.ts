@@ -4,6 +4,7 @@ export type CaseStudyMeta = {
   title: string;
   category: string;
   summary: string;
+  updated?: string;
   tags: string[];
   video?: string;
   poster?: string;
@@ -22,6 +23,7 @@ export const caseStudies: CaseStudyMeta[] = [
     href: "/interface/world-geography",
     title: "Interactive Geography Learning Tool",
     category: "EdTech Product Design",
+    updated: "2026-09-20",
     summary:
       "Teachers needed one map they could teach with. Layered curriculum maps, live annotation, and a builder that cut production time in half.",
     tags: ["Interaction Design", "Usability", "UX Engineering"],
@@ -52,6 +54,7 @@ export const caseStudies: CaseStudyMeta[] = [
     href: "/interface/formula-1",
     title: "VR Formula 1 Telemetry Dashboard",
     category: "XR / Data Visualization",
+    updated: "2026-09-20",
     summary:
       "Fans already juggle a broadcast, cameras, and a leaderboard. I designed a VR companion that keeps the race in front of you and the data around you.",
     tags: ["Spatial UX", "Virtual Reality", "Systems Design"],
