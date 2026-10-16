@@ -25,6 +25,19 @@ import {
 } from "@/components/work/F1SpatialModel";
 import { F1Modules } from "@/components/work/F1Modules";
 import { F1Research } from "@/components/work/F1Research";
+import {
+  EngWhy,
+  EngWorkflow,
+  EngOpportunity,
+  EngPhases,
+  EngAuthoring,
+  EngConstraints,
+  EngPipeline,
+  EngImpact,
+  EngRole,
+  EngTeam,
+  EngReflection,
+} from "@/components/work/EngStudy";
 
 function slugify(value: string) {
   return value
@@ -471,6 +484,17 @@ export const mdxComponents: MDXComponents = {
   F1Modules,
   F1Validation,
   F1Reflection,
+  EngWhy,
+  EngWorkflow,
+  EngOpportunity,
+  EngPhases,
+  EngAuthoring,
+  EngConstraints,
+  EngPipeline,
+  EngImpact,
+  EngRole,
+  EngTeam,
+  EngReflection,
   Steps,
   Metrics,
   Constraint,

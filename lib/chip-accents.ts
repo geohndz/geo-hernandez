@@ -91,6 +91,24 @@ export const chipCategoryHover = {
 
 export type ChipAccent = keyof typeof chipAccents;
 
+/** Card hover wash gradients paired with chip accents. */
+export const chipHoverWashes: Record<ChipAccent, string> = {
+  purple:
+    "hover:[background-image:linear-gradient(145deg,#2a1848_0%,#1a1428_46%,transparent_100%)]",
+  orange:
+    "hover:[background-image:linear-gradient(145deg,#3d220e_0%,#1c120a_46%,transparent_100%)]",
+  red: "hover:[background-image:linear-gradient(145deg,#3d1414_0%,#1a0e0e_46%,transparent_100%)]",
+  navy:
+    "hover:[background-image:linear-gradient(145deg,#1a2a5c_0%,#0e1528_46%,transparent_100%)]",
+  ice: "hover:[background-image:linear-gradient(145deg,#0c3a4a_0%,#0a1c26_46%,transparent_100%)]",
+  green:
+    "hover:[background-image:linear-gradient(145deg,#0d3d22_0%,#0a1a12_46%,transparent_100%)]",
+  yellow:
+    "hover:[background-image:linear-gradient(145deg,#3d3208_0%,#1a1608_46%,transparent_100%)]",
+  blue: "hover:[background-image:linear-gradient(145deg,#1a2f6e_0%,#0e1528_46%,transparent_100%)]",
+  teal: "hover:[background-image:linear-gradient(145deg,#0a3030_0%,#0f1c1c_46%,transparent_100%)]",
+};
+
 export const chipBase =
   "rounded-full border border-line bg-card px-2.5 py-1 text-[11px] text-white";
 

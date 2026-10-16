@@ -14,6 +14,7 @@ export type CaseFrontmatter = {
   timeline: string;
   type: string;
   tools: string[];
+  team?: { name: string; role?: string }[];
   overview: {
     background: string;
     problem: string;
@@ -64,6 +65,17 @@ const COMPONENT_COPY: Record<string, string[]> = {
   F1Research: ["components/work/F1Research.tsx"],
   F1SpatialModel: ["components/work/F1SpatialModel.tsx"],
   F1Modules: ["components/work/F1Modules.tsx"],
+  EngWhy: ["components/work/EngStudy.tsx"],
+  EngWorkflow: ["components/work/EngStudy.tsx"],
+  EngOpportunity: ["components/work/EngStudy.tsx"],
+  EngPhases: ["components/work/EngStudy.tsx"],
+  EngAuthoring: ["components/work/EngStudy.tsx"],
+  EngConstraints: ["components/work/EngStudy.tsx"],
+  EngPipeline: ["components/work/EngStudy.tsx"],
+  EngImpact: ["components/work/EngStudy.tsx"],
+  EngRole: ["components/work/EngStudy.tsx"],
+  EngTeam: ["components/work/EngStudy.tsx"],
+  EngReflection: ["components/work/EngStudy.tsx"],
 };
 
 function wordCount(text: string) {

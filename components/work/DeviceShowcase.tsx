@@ -75,9 +75,10 @@ export function DeviceShowcase({
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    video.playbackRate = study.playbackRate ?? 1;
     if (playing) void video.play();
     else video.pause();
-  }, [playing]);
+  }, [playing, study.playbackRate]);
 
   const playToggle = (
     <button

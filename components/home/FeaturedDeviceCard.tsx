@@ -7,19 +7,24 @@ import {
   chipCategoryAccents,
   chipCategoryBase,
   chipCategoryHover,
+  chipHoverWashes,
+  type ChipAccent,
 } from "@/lib/chip-accents";
 import { cn } from "@/lib/cn";
 
+function resolveAccent(study: CaseStudyMeta): ChipAccent {
+  if (study.accent) return study.accent;
+  return study.deviceImage ? "teal" : "purple";
+}
+
 export function FeaturedDeviceCard({ study }: { study: CaseStudyMeta }) {
-  const accent = study.deviceImage ? "teal" : "purple";
+  const accent = resolveAccent(study);
 
   return (
     <article
       className={cn(
         "group relative overflow-hidden rounded-[24px] border border-line bg-card transition-[border-color,background] duration-200 hover:border-line-strong",
-        accent === "purple"
-          ? "hover:[background-image:linear-gradient(145deg,#2a1848_0%,#1a1428_46%,transparent_100%)]"
-          : "hover:[background-image:linear-gradient(145deg,#0a3030_0%,#0f1c1c_46%,transparent_100%)]",
+        chipHoverWashes[accent],
       )}
     >
       <Link

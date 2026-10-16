@@ -1,3 +1,14 @@
+export type CaseStudyAccent =
+  | "purple"
+  | "teal"
+  | "ice"
+  | "blue"
+  | "navy"
+  | "orange"
+  | "red"
+  | "green"
+  | "yellow";
+
 export type CaseStudyMeta = {
   slug: string;
   href: string;
@@ -11,6 +22,10 @@ export type CaseStudyMeta = {
   heroImage?: string;
   deviceImage?: string;
   deviceAspect?: string;
+  /** Chip + hover wash accent for featured cards. */
+  accent?: CaseStudyAccent;
+  /** Playback speed for device/card demos (e.g. 2 for 2×). */
+  playbackRate?: number;
   carousel?: {
     top: string[];
     bottom: string[];
@@ -46,6 +61,39 @@ export const caseStudies: CaseStudyMeta[] = [
         "/media/world-geography/slide-02.jpg",
         "/media/world-geography/slide-01.jpg",
         "/media/world-geography/slide-03.jpg",
+      ],
+    },
+  },
+  {
+    slug: "english-lesson-authoring",
+    href: "/interface/english-lesson-authoring",
+    title: "English Lesson Authoring Tool",
+    category: "EdTech Product Design",
+    updated: "2026-10-16",
+    summary:
+      "Lessons took an hour to build and another to rebuild after feedback. I redesigned authoring so progress persisted and the English team could own the content.",
+    tags: ["UX/UI Design", "Front-End", "Workflow Design"],
+    video: "/media/english-lesson-authoring/demo.mp4",
+    poster: "/media/english-lesson-authoring/poster.jpg",
+    heroImage: "/media/english-lesson-authoring/hero.jpg",
+    accent: "ice",
+    playbackRate: 2,
+    carousel: {
+      top: [
+        "/media/english-lesson-authoring/slide-03.jpg",
+        "/media/english-lesson-authoring/slide-04.jpg",
+        "/media/english-lesson-authoring/slide-07.jpg",
+        "/media/english-lesson-authoring/slide-02.jpg",
+        "/media/english-lesson-authoring/slide-08.jpg",
+        "/media/english-lesson-authoring/slide-01.jpg",
+      ],
+      bottom: [
+        "/media/english-lesson-authoring/slide-05.jpg",
+        "/media/english-lesson-authoring/slide-06.jpg",
+        "/media/english-lesson-authoring/slide-01.jpg",
+        "/media/english-lesson-authoring/slide-08.jpg",
+        "/media/english-lesson-authoring/slide-03.jpg",
+        "/media/english-lesson-authoring/slide-04.jpg",
       ],
     },
   },

@@ -50,7 +50,23 @@ export function CaseStudyHero({
             </p>
           ) : null}
         </Reveal>
-        <Reveal className="mt-10 grid max-w-4xl gap-6 border-t border-white/10 pt-8 text-sm md:grid-cols-4">
+        <Reveal
+          className={
+            frontmatter.team?.length
+              ? "mt-10 grid max-w-5xl gap-6 border-t border-white/10 pt-8 text-sm md:grid-cols-5"
+              : "mt-10 grid max-w-4xl gap-6 border-t border-white/10 pt-8 text-sm md:grid-cols-4"
+          }
+        >
+          {frontmatter.team?.length ? (
+            <div>
+              <p className="text-[13px] text-white/80">Team</p>
+              <ul className="mt-1 space-y-1 text-fg">
+                {frontmatter.team.map((person) => (
+                  <li key={person.name}>{person.name}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
           <Meta label="Role" value={frontmatter.role} />
           <Meta label="Timeline" value={frontmatter.timeline} />
           <Meta label="Type" value={frontmatter.type} />

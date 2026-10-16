@@ -28,8 +28,12 @@ export function CaseStudyView({
   readingMinutes: number;
   children: React.ReactNode;
 }) {
-  const next = caseStudies.find((study) => study.slug !== slug) ?? caseStudies[0];
-  const study = caseStudies.find((item) => item.slug === slug);
+  const studyIndex = caseStudies.findIndex((item) => item.slug === slug);
+  const next =
+    caseStudies.length > 0
+      ? caseStudies[(studyIndex >= 0 ? studyIndex + 1 : 0) % caseStudies.length]
+      : undefined;
+  const study = studyIndex >= 0 ? caseStudies[studyIndex] : undefined;
 
   return (
     <article>
