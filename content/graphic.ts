@@ -10,6 +10,7 @@ export type GraphicFrame = {
 export type GraphicProject = {
   title: string;
   year: string;
+  accent: string;
   summary: string;
   image?: string;
   width?: number;
@@ -75,6 +76,7 @@ export const graphicProjects: GraphicProject[] = [
   {
     title: "Milwaukee Divers | Sports Mascot & Identity",
     year: "",
+    accent: "#B3710B",
     summary:
       "A graduate school project exploring the creation of an original sports mascot with complete creative freedom. Developing the Milwaukee Divers, a fictional lacrosse team inspired by Milwaukee's identity and a vintage diving helmet, I expanded the concept into a visual identity system featuring mascot illustrations, game day graphics, and promotional compositions.",
     images: [
@@ -95,6 +97,7 @@ export const graphicProjects: GraphicProject[] = [
   {
     title: "Delta Psi Delta | Raiders Mascot Expansion",
     year: "",
+    accent: "#CB1F21",
     summary:
       "An illustration project commissioned by the president of Delta Psi Delta to expand the organization's existing Raiders mascot beyond its original bust illustration. I developed a full-body character while preserving the established identity, extending its visual presence through additional poses, color treatments, and promotional compositions.",
     images: [
@@ -121,6 +124,7 @@ export const graphicProjects: GraphicProject[] = [
   {
     title: "Southern Wesleyan | Women's Lacrosse",
     year: "",
+    accent: "#1124BA",
     summary:
       "A social media graphic promoting a women's lacrosse scrimmage for Southern Wesleyan University. Combining bold collegiate typography, layered photography, and a striking monochromatic treatment, the composition brings together athletic identity and visual storytelling to build excitement around the matchup.",
     image: "/media/graphic/southern-wesleyan-lacrosse.jpg",
@@ -130,6 +134,7 @@ export const graphicProjects: GraphicProject[] = [
   {
     title: "Ice Flyers | Game Day Victory",
     year: "",
+    accent: "#3A6B97",
     summary:
       "Inspired by the atmosphere and excitement of my first Pensacola Ice Flyers game, this personal exploration captures the energy of a Friday night victory through bold typography, cinematic composition, and aviation-inspired imagery.",
     image: "/media/graphic/ice-flyers-victory.jpg",
@@ -139,6 +144,7 @@ export const graphicProjects: GraphicProject[] = [
   {
     title: "Formula 1 | Driver Collection",
     year: "",
+    accent: "#8E1524",
     summary:
       "Created as part of my undergraduate Directed Studio course, this poster series explores Formula 1 driver portraits through a collectible card-inspired design system. Each composition combines layered photography, signature details, driver statistics, and team-specific color palettes to create a distinct visual identity while maintaining consistency across the collection.",
     images: [
@@ -165,6 +171,7 @@ export const graphicProjects: GraphicProject[] = [
   {
     title: "Lyssie Metzker | 1,000 Career Digs & Kills",
     year: "",
+    accent: "#14486A",
     summary:
       "A celebratory player graphic for Pensacola Christian College's Lady Eagles Volleyball team, recognizing Lyssie Metzker's milestone of 1,000 career digs. Combining oversized typography, layered photography, and bold team colors, the composition captures the energy of the sport while putting the athlete and her achievement front and center.",
     image: "/media/graphic/lyssie-metzker-digs.jpg",
@@ -174,6 +181,7 @@ export const graphicProjects: GraphicProject[] = [
   {
     title: "Max Verstappen | Visual Explorations",
     year: "",
+    accent: "#E2186A",
     summary:
       "A poster series celebrating Max Verstappen through three distinct visual directions. This exploration focuses on pushing color, composition, typography, and photographic treatments while maintaining a consistent visual essence across each piece. The result is a collection that celebrates the driver's identity through contrasting yet cohesive graphic expressions.",
     images: [
@@ -200,6 +208,7 @@ export const graphicProjects: GraphicProject[] = [
   {
     title: "Beta Psi Delta | Jaguars Athletics",
     year: "",
+    accent: "#0092C9",
     summary:
       "A collection of sports graphics and photography created for Beta Psi Delta throughout my sophomore and junior years of college. As the elected Collegian Representative responsible for the organization's social media, I developed promotional graphics, athletic photography, and visual content for various sports and events. This experience became the foundation of my journey into sports graphic design, providing an opportunity to experiment with typography, color treatments, and athletic storytelling while developing an early understanding of sports branding and visual communication.",
     images: [

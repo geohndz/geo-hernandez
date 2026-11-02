@@ -30,7 +30,7 @@ export const pageUpdated = {
 
 export const nav = {
   about: { href: "/about", label: "About" },
-  graphic: { href: "/graphic-design", label: "Sports graphics" },
+  graphic: { href: "/graphic-design", label: "Graphic Design" },
   groups: [
     {
       label: "Product & Interaction",

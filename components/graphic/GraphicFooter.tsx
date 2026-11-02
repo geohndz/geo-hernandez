@@ -19,7 +19,7 @@ export function GraphicFooter() {
             Product design
           </Link>
         </nav>
-        <p className="text-[var(--gd-muted)]">{graphic.year}</p>
+        <p className="w-full text-center text-[var(--gd-muted)] md:w-auto">{graphic.year}</p>
       </div>
     </footer>
   );

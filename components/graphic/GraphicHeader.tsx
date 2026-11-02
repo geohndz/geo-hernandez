@@ -17,9 +17,6 @@ export function GraphicHeader() {
           <a href={`mailto:${graphic.email}`} className="gd-link">
             Email
           </a>
-          <a href={graphic.instagram} className="gd-link" target="_blank" rel="noreferrer">
-            Instagram
-          </a>
         </nav>
       </div>
     </header>

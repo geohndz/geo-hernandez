@@ -368,10 +368,10 @@ a {
 
 .gd-float-lane {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   min-height: 280px;
   overflow: hidden;
-  padding-bottom: 12px;
+  padding-block: 16px;
 }
 
 .gd-float-track {
@@ -386,8 +386,8 @@ a {
 }
 
 .gd-float-card {
-  width: calc(var(--gd-w) * 0.62);
-  transform: translate3d(0, calc(var(--gd-y) * -0.55), 0) rotate(var(--gd-rot));
+  width: calc(var(--gd-w) * 0.8);
+  transform: translate3d(0, calc((var(--gd-y) - 27px) * -0.55), 0) rotate(var(--gd-rot));
 }
 
 .gd-float-bob {
@@ -421,7 +421,7 @@ a {
 
   .gd-float-card {
     width: var(--gd-w);
-    transform: translate3d(0, calc(var(--gd-y) * -1), 0) rotate(var(--gd-rot));
+    transform: translate3d(0, calc((var(--gd-y) - 27px) * -1), 0) rotate(var(--gd-rot));
   }
 }
 

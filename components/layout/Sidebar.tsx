@@ -13,7 +13,7 @@ import {
   FolderKanban,
   Globe,
   Mail,
-  Square,
+  Paintbrush,
 } from "lucide-react";
 import { BrandLockup } from "./BrandLockup";
 import { nav, site } from "@/content/site";
@@ -61,15 +61,6 @@ export function Sidebar({ onNavigate, layoutPrefix = "desktop" }: SidebarProps) 
               />
             </span>
             {nav.about.label}
-          </NavLink>
-          <NavLink
-            href={nav.graphic.href}
-            active={pathname.startsWith(nav.graphic.href)}
-            onClick={onNavigate}
-            layoutPrefix={layoutPrefix}
-          >
-            <Square className="h-3.5 w-3.5" strokeWidth={1.6} />
-            {nav.graphic.label}
           </NavLink>
         </div>
 
@@ -124,6 +115,23 @@ export function Sidebar({ onNavigate, layoutPrefix = "desktop" }: SidebarProps) 
                 </a>
               </li>
             ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="mb-3 text-[11px] font-medium text-dim">Other</p>
+          <ul className="space-y-0.5">
+            <li>
+              <NavLink
+                href={nav.graphic.href}
+                active={pathname.startsWith(nav.graphic.href)}
+                onClick={onNavigate}
+                layoutPrefix={layoutPrefix}
+              >
+                <Paintbrush className="h-3.5 w-3.5" strokeWidth={1.6} />
+                {nav.graphic.label}
+              </NavLink>
+            </li>
           </ul>
         </div>
       </nav>
