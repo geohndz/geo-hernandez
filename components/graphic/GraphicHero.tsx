@@ -26,7 +26,7 @@ export function GraphicHero({ projects }: { projects: GraphicProject[] }) {
   const sets = [0, 1] as const;
 
   return (
-    <section className="relative flex min-h-[calc(100dvh-3.5rem)] flex-col overflow-hidden">
+    <section className="relative flex min-h-[calc(100svh-3.5rem)] flex-col overflow-hidden">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-5 pb-6 pt-12 md:px-10 md:pb-8 md:pt-16 lg:px-14">
         <h1 className="font-bold leading-[0.96] tracking-[-0.045em] text-[clamp(1.85rem,6.2vw,5.25rem)]">
           {graphic.headline[0]}

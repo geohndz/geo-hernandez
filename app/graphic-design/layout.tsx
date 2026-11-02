@@ -8,7 +8,7 @@ const grotesque = Schibsted_Grotesk({
 
 export default function GraphicLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${grotesque.className} gd min-h-dvh`}>
+    <div className={`${grotesque.className} gd min-h-svh`}>
       <style>{`html,body{background:#F5F5F5 !important;color:#121212 !important}`}</style>
       {children}
     </div>
