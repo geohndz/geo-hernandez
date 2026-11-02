@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { IntroOverlay } from "./IntroOverlay";
 import { Logo } from "./Logo";
 import { MobileNav } from "./MobileNav";
@@ -10,7 +11,12 @@ import { cn } from "@/lib/cn";
 import { site } from "@/content/site";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  if (pathname.startsWith("/graphic-design")) {
+    return <>{children}</>;
+  }
 
   return (
     <>

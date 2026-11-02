@@ -13,6 +13,7 @@ import {
   FolderKanban,
   Globe,
   Mail,
+  Square,
 } from "lucide-react";
 import { BrandLockup } from "./BrandLockup";
 import { nav, site } from "@/content/site";
@@ -44,22 +45,33 @@ export function Sidebar({ onNavigate, layoutPrefix = "desktop" }: SidebarProps) 
       </Link>
 
       <nav className="mt-10 flex min-h-0 flex-1 flex-col gap-8 overflow-y-auto pr-1">
-        <NavLink
-          href={nav.about.href}
-          active={pathname === "/about"}
-          onClick={onNavigate}
-          layoutPrefix={layoutPrefix}
-        >
-          <span className="relative h-4 w-4 overflow-hidden rounded-full border border-white/15">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={site.portrait}
-              alt=""
-              className="h-full w-full object-cover object-[50%_22%]"
-            />
-          </span>
-          {nav.about.label}
-        </NavLink>
+        <div className="flex flex-col gap-0.5">
+          <NavLink
+            href={nav.about.href}
+            active={pathname === "/about"}
+            onClick={onNavigate}
+            layoutPrefix={layoutPrefix}
+          >
+            <span className="relative h-4 w-4 overflow-hidden rounded-full border border-white/15">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={site.portrait}
+                alt=""
+                className="h-full w-full object-cover object-[50%_22%]"
+              />
+            </span>
+            {nav.about.label}
+          </NavLink>
+          <NavLink
+            href={nav.graphic.href}
+            active={pathname.startsWith(nav.graphic.href)}
+            onClick={onNavigate}
+            layoutPrefix={layoutPrefix}
+          >
+            <Square className="h-3.5 w-3.5" strokeWidth={1.6} />
+            {nav.graphic.label}
+          </NavLink>
+        </div>
 
         {nav.groups.map((group) => (
           <div key={group.label}>
@@ -169,5 +181,14 @@ function SocialIcon({ label }: { label: string }) {
   if (label === "Resume") return <FileText className={cls} strokeWidth={1.6} />;
   if (label === "LinkedIn") return <AtSign className={cls} strokeWidth={1.6} />;
   if (label === "Github") return <Code2 className={cls} strokeWidth={1.6} />;
+  if (label === "Instagram") {
+    return (
+      <svg viewBox="0 0 24 24" className={cls} fill="none" stroke="currentColor" strokeWidth={1.6} aria-hidden="true">
+        <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.2" cy="6.8" r="0.8" fill="currentColor" stroke="none" />
+      </svg>
+    );
+  }
   return null;
 }

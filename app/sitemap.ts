@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/applications",
     "/websites",
     "/creative-explorations",
+    "/graphic-design",
     ...getCaseStudySlugs().map((slug) => `/interface/${slug}`),
   ];
 

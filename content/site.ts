@@ -13,6 +13,7 @@ export const site = {
       "https://drive.google.com/file/d/1k80I14P1EY1aAHVBna9LdYbiGln2Lq5w/view?usp=sharing",
     linkedin: "https://www.linkedin.com/in/geovany-hernandez-a517471ba/",
     github: "https://github.com/geohndz",
+    instagram: "https://www.instagram.com/geo.dsgns/",
   },
   portrait: "/media/geo.jpg",
   tags: ["Product Design", "Interaction Design", "Prototyping", "UX Engineering"],
@@ -24,10 +25,12 @@ export const pageUpdated = {
   "/applications": site.updated,
   "/websites": site.updated,
   "/creative-explorations": site.updated,
+  "/graphic-design": site.updated,
 } as const;
 
 export const nav = {
   about: { href: "/about", label: "About" },
+  graphic: { href: "/graphic-design", label: "Sports graphics" },
   groups: [
     {
       label: "Product & Interaction",
@@ -43,6 +46,7 @@ export const nav = {
     { href: site.links.resume, label: "Resume", external: true },
     { href: `mailto:${site.email}`, label: "Email", external: true },
     { href: site.links.linkedin, label: "LinkedIn", external: true },
+    { href: site.links.instagram, label: "Instagram", external: true },
     { href: site.links.github, label: "Github", external: true },
   ],
 } as const;
