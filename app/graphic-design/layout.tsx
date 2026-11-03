@@ -1,8 +1,11 @@
-import { Schibsted_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 
-const grotesque = Schibsted_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+const grotesque = localFont({
+  src: [
+    { path: "../fonts/SchibstedGrotesk-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/SchibstedGrotesk-Medium.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/SchibstedGrotesk-Bold.woff2", weight: "700", style: "normal" },
+  ],
   display: "swap",
 });
 
