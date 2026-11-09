@@ -169,14 +169,31 @@ export const graphicProjects: GraphicProject[] = [
     ],
   },
   {
-    title: "Lyssie Metzker | 1,000 Career Digs & Kills",
+    title: "Pensacola Christian College | Athletics",
     year: "",
-    accent: "#14486A",
+    accent: "#0C3C6C",
     summary:
-      "A celebratory player graphic for Pensacola Christian College's Lady Eagles Volleyball team, recognizing Lyssie Metzker's milestone of 1,000 career digs. Combining oversized typography, layered photography, and bold team colors, the composition captures the energy of the sport while putting the athlete and her achievement front and center.",
-    image: "/media/graphic/lyssie-metzker-digs.jpg",
-    width: 768,
-    height: 1024,
+      "A collection of unofficial athletic graphics created for Pensacola Christian College, spanning volleyball and men's and women's basketball. Combining bold collegiate typography, dynamic player photography, and distinctive color treatments, the designs capture the energy of game day while exploring a cohesive visual approach to collegiate sports communication.",
+    images: [
+      {
+        src: "/media/graphic/lyssie-metzker-digs.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Lyssie Metzker volleyball milestone graphic",
+      },
+      {
+        src: "/media/graphic/pcc-bertinato.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Raul Bertinato men's basketball game day graphic",
+      },
+      {
+        src: "/media/graphic/pcc-sellars.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Maddie Sellars women's basketball game day graphic",
+      },
+    ],
   },
   {
     title: "Max Verstappen | Visual Explorations",
