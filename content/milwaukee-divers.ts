@@ -34,6 +34,8 @@ export const milwaukeeDivers = {
   seo: "A fictional Milwaukee lacrosse identity built from lakefront history and a vintage diving helmet. Mascot system, game-day graphics, and brand applications by Geo Hernandez.",
   hero: mark,
   lede: "A fictional lacrosse club for Milwaukee, built from the lakefront and a vintage diving helmet.",
+  timeline: "3 weeks",
+  tools: "Adobe Illustrator and Adobe Photoshop",
   strategy: {
     brief:
       "Graduate brief with full creative freedom: invent a team, then build the identity before any game-day layout.",

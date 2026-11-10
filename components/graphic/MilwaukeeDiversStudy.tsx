@@ -47,6 +47,16 @@ export function MilwaukeeDiversStudy() {
             {study.title}
           </h1>
           <p className="mt-5 max-w-[36ch] text-[17px] leading-[1.45] text-[var(--gd-muted)]">{study.lede}</p>
+          <dl className="mt-8 grid max-w-xl grid-cols-2 gap-6 border-t border-[var(--gd-rule)] pt-6 text-[15px]">
+            <div>
+              <dt className="text-[13px] text-[var(--gd-muted)]">Timeline</dt>
+              <dd className="mt-1">{study.timeline}</dd>
+            </div>
+            <div>
+              <dt className="text-[13px] text-[var(--gd-muted)]">Tools</dt>
+              <dd className="mt-1">{study.tools}</dd>
+            </div>
+          </dl>
         </div>
 
         <StudySection title="Strategy">
