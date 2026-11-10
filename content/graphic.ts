@@ -97,16 +97,16 @@ export const graphicProjects: GraphicProject[] = [
       "Graduate assignment with full creative freedom: I invented the Milwaukee Divers, a fictional lacrosse club rooted in Milwaukee's lakefront and vintage diving-helmet history. I built the mascot mark and illustration system first, then extended the same brass-and-navy palette into identity boards and game-day posters. The audience is young fans drawn to heritage pride and gritty Midwest energy, not generic college blue.",
     images: [
       {
-        src: "/media/graphic/milwaukee-divers-identity.jpg",
+        src: "/media/graphic/milwaukee-divers-system.jpg",
         width: 768,
         height: 1024,
-        alt: "Milwaukee Divers mascot and identity pieces",
+        alt: "Milwaukee Divers identity system with the primary lockup, wordmark, D monogram, and bust",
       },
       {
-        src: "/media/graphic/milwaukee-divers-gameday.jpg",
+        src: "/media/graphic/milwaukee-divers-helmet.jpg",
         width: 768,
         height: 1024,
-        alt: "Milwaukee Divers game day graphic",
+        alt: "Gold Milwaukee Divers lacrosse helmet with the bust and wordmark",
       },
     ],
   },

@@ -379,8 +379,6 @@ a {
 }
 
 .gd-float-track.is-paused,
-.gd-float-lane:hover .gd-float-track,
-.gd-float-lane:hover .gd-float-bob,
 .gd-float-track.is-paused .gd-float-bob {
   animation-play-state: paused;
 }

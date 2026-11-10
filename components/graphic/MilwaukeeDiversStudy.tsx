@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import localFont from "next/font/local";
+import Image from "next/image";
 import Link from "next/link";
+import { GraphicFooter } from "@/components/graphic/GraphicFooter";
 import { GraphicPosters } from "@/components/graphic/GraphicPosters";
 import { graphic } from "@/content/graphic";
 import { milwaukeeDivers, type DiversAsset } from "@/content/milwaukee-divers";
@@ -30,10 +32,14 @@ export function MilwaukeeDiversStudy() {
       </header>
 
       <main>
-        <GraphicPosters
-          frames={[study.hero]}
-          projectTitle={study.title}
+        <Image
+          src={study.hero.src}
+          alt={study.hero.alt ?? study.title}
+          width={study.hero.width}
+          height={study.hero.height}
           sizes="100vw"
+          priority
+          className="h-auto w-full"
         />
 
         <div className="mx-auto w-full max-w-[1440px] px-5 py-12 md:px-10 md:py-16 lg:px-14">
@@ -55,6 +61,8 @@ export function MilwaukeeDiversStudy() {
         <StudySection title="Process">
           <p className="max-w-[46ch] text-[15px] leading-[1.5] text-[var(--gd-muted)]">{study.process.intro}</p>
           <AssetGrid assets={study.process.assets} columns="sm:grid-cols-2" />
+          <AssetBlock title="Textures" assets={study.process.textures.slice(0, 3)} columns="grid-cols-3" />
+          <AssetGrid assets={study.process.textures.slice(3)} columns="grid-cols-3" />
         </StudySection>
 
         <StudySection title="Identity">
@@ -89,6 +97,7 @@ export function MilwaukeeDiversStudy() {
           ))}
         </StudySection>
       </main>
+      <GraphicFooter />
     </div>
   );
 }
@@ -188,9 +197,8 @@ function ColorPalette({ colors }: { colors: readonly DiversAsset[] }) {
                   borderColor: ink === "#0A1724" ? "rgba(10, 23, 36, 0.16)" : "transparent",
                 }}
               >
-                <p className="text-[12px] leading-[1.35] opacity-80">{color.caption}</p>
                 {color.codes ? (
-                  <ul className="mt-2 space-y-0.5 text-[11px] leading-[1.35] tabular-nums">
+                  <ul className="space-y-0.5 text-[11px] leading-[1.35] tabular-nums">
                     {color.codes.map((code) => (
                       <li key={code}>{code}</li>
                     ))}
@@ -201,17 +209,20 @@ function ColorPalette({ colors }: { colors: readonly DiversAsset[] }) {
           );
         })}
       </ul>
-      <ul className="mt-2.5 grid grid-cols-5 gap-2.5" aria-hidden="true">
+      <ul className="mt-2.5 grid grid-cols-5 gap-2.5">
         {colors.map((color) => {
           const swatch = color.swatch ?? "#FFFFFF";
           return (
-            <li
-              key={color.label}
-              className="h-52 sm:h-72"
-              style={{
-                backgroundImage: `linear-gradient(to bottom, ${swatch} 0%, ${swatch} 12%, color-mix(in srgb, ${swatch} 55%, transparent) 48%, transparent 100%)`,
-              }}
-            />
+            <li key={color.label}>
+              <div
+                className="h-52 sm:h-72"
+                aria-hidden="true"
+                style={{
+                  backgroundImage: `linear-gradient(to bottom, ${swatch} 0%, ${swatch} 12%, color-mix(in srgb, ${swatch} 55%, transparent) 48%, transparent 100%)`,
+                }}
+              />
+              <p className="mt-2 text-[13px] leading-[1.4] text-[var(--gd-muted)]">{color.caption}</p>
+            </li>
           );
         })}
       </ul>

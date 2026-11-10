@@ -242,10 +242,6 @@ export const milwaukeeDivers = {
           alt: "Milwaukee Divers mascot locked into a D badge",
         },
       },
-      {
-        label: "Crest and badge",
-        caption: "Shield and secondary badge, stacked and horizontal.",
-      },
     ] satisfies DiversAsset[],
   },
   applications: {
@@ -324,15 +320,16 @@ export const milwaukeeDivers = {
               alt: "Into the Blue Milwaukee Divers social post with game photography",
             },
           },
-          { label: "Lineup", caption: "Starting lineup card." },
-          { label: "Final and countdown", caption: "Score and countdown templates." },
-        ] satisfies DiversAsset[],
-      },
-      {
-        title: "Stadium",
-        assets: [
-          { label: "Sideline board", caption: "Field-level branding." },
-          { label: "Ticket and banner", caption: "Pass and arena banner." },
+          {
+            label: "Win",
+            caption: "Final score post for social, with the player and the score.",
+            image: {
+              src: "/media/graphic/milwaukee-divers-win.jpg",
+              width: 768,
+              height: 1024,
+              alt: "Milwaukee Divers win graphic, 10 to 6 over Boston Cannons",
+            },
+          },
         ] satisfies DiversAsset[],
       },
     ],
@@ -418,6 +415,68 @@ export const milwaukeeDivers = {
           width: 1012,
           height: 1024,
           alt: "Flat construction of the Milwaukee Divers mascot and wordmark",
+        },
+      },
+    ] satisfies DiversAsset[],
+    textures: [
+      {
+        label: "Waterline texture",
+        caption: "Scratched waterline field for banners and social posts.",
+        image: {
+          src: "/media/graphic/milwaukee-divers-texture-waterline.jpg",
+          width: 768,
+          height: 1024,
+          alt: "Scratched blue waterline texture",
+        },
+      },
+      {
+        label: "Plate texture",
+        caption: "Paper grain for light grounds.",
+        image: {
+          src: "/media/graphic/milwaukee-divers-texture-plate.jpg",
+          width: 768,
+          height: 1024,
+          alt: "Crumpled light paper texture",
+        },
+      },
+      {
+        label: "Brass texture",
+        caption: "Worn metal for brass fields and helmet hardware.",
+        image: {
+          src: "/media/graphic/milwaukee-divers-texture-brass.jpg",
+          width: 768,
+          height: 1024,
+          alt: "Worn brass metal texture",
+        },
+      },
+      {
+        label: "Anchor",
+        caption: "Soft anchor laid over waterline fields.",
+        image: {
+          src: "/media/graphic/milwaukee-divers-anchor.jpg",
+          width: 768,
+          height: 1024,
+          alt: "Blurred anchor on a waterline field",
+        },
+      },
+      {
+        label: "Map",
+        caption: "Milwaukee streets in brass, under the posters.",
+        image: {
+          src: "/media/graphic/milwaukee-divers-map.jpg",
+          width: 768,
+          height: 1024,
+          alt: "Milwaukee street map in brass",
+        },
+      },
+      {
+        label: "City",
+        caption: "Harbor skyline framing the waterline field.",
+        image: {
+          src: "/media/graphic/milwaukee-divers-city.jpg",
+          width: 768,
+          height: 1024,
+          alt: "Distressed Milwaukee skyline in harbor on waterline",
         },
       },
     ] satisfies DiversAsset[],
