@@ -11,12 +11,20 @@ export type GraphicProject = {
   title: string;
   year: string;
   accent: string;
-  summary: string;
+  copy: string;
   image?: string;
   width?: number;
   height?: number;
   images?: GraphicFrame[];
   href?: string;
+  studyHref?: string;
+};
+
+const singleImageAlts: Record<string, string> = {
+  "/media/graphic/southern-wesleyan-lacrosse.jpg":
+    "Southern Wesleyan women's lacrosse scrimmage announcement graphic",
+  "/media/graphic/ice-flyers-victory.jpg":
+    "Pensacola Ice Flyers Friday night victory game-day graphic",
 };
 
 export function projectPoster(project: GraphicProject): GraphicFrame | null {
@@ -26,7 +34,7 @@ export function projectPoster(project: GraphicProject): GraphicFrame | null {
     src: project.image,
     width: project.width ?? 800,
     height: project.height ?? 1000,
-    alt: project.title,
+    alt: singleImageAlts[project.image] ?? project.title,
   };
 }
 
@@ -36,7 +44,14 @@ export const graphic = {
   headline: ["Designing for the love", "of the game."],
   intro:
     "Sports graphics, visual storytelling, and bold creative work inspired by the energy of competition.",
-  seo: "Designing for the love of the game. Sports graphics, visual storytelling, and bold creative work by Geo Hernandez.",
+  seo: "Sports graphics, mascots, and game-day visuals by Geo Hernandez. Collegiate athletics, identity systems, and poster work.",
+  social: {
+    title: "Geo Hernandez | Sports & Graphic Design",
+    description:
+      "Game-day graphics, mascot identity, and sports poster work. Collegiate athletics, visual storytelling, and type-driven campaigns.",
+    image: "/media/graphic/milwaukee-divers-identity.jpg",
+    imageAlt: "Milwaukee Divers lacrosse mascot identity graphic",
+  },
   email: site.email,
   linkedin: site.links.linkedin,
   instagram: site.links.instagram,
@@ -77,8 +92,9 @@ export const graphicProjects: GraphicProject[] = [
     title: "Milwaukee Divers | Sports Mascot & Identity",
     year: "",
     accent: "#B3710B",
-    summary:
-      "A graduate school project exploring the creation of an original sports mascot with complete creative freedom. Developing the Milwaukee Divers, a fictional lacrosse team inspired by Milwaukee's identity and a vintage diving helmet, I expanded the concept into a visual identity system featuring mascot illustrations, game day graphics, and promotional compositions.",
+    studyHref: "/graphic-design/milwaukee-divers",
+    copy:
+      "Graduate assignment with full creative freedom: I invented the Milwaukee Divers, a fictional lacrosse club rooted in Milwaukee's lakefront and vintage diving-helmet history. I built the mascot mark and illustration system first, then extended the same brass-and-navy palette into identity boards and game-day posters. The audience is young fans drawn to heritage pride and gritty Midwest energy, not generic college blue.",
     images: [
       {
         src: "/media/graphic/milwaukee-divers-identity.jpg",
@@ -98,8 +114,8 @@ export const graphicProjects: GraphicProject[] = [
     title: "Delta Psi Delta | Raiders Mascot Expansion",
     year: "",
     accent: "#CB1F21",
-    summary:
-      "An illustration project commissioned by the president of Delta Psi Delta to expand the organization's existing Raiders mascot beyond its original bust illustration. I developed a full-body character while preserving the established identity, extending its visual presence through additional poses, color treatments, and promotional compositions.",
+    copy:
+      "Delta Psi Delta commissioned an expansion of their Raiders mascot from a bust illustration into a full character, without breaking what members already wore on shirts and banners. I matched horn curvature, scar placement, and red values from the original, then delivered full-body poses for social posts and tighter marks for embroidery. The tone stays loyal, competitive, and tradition-first for members and recruits.",
     images: [
       {
         src: "/media/graphic/raiders-3.jpg",
@@ -125,8 +141,8 @@ export const graphicProjects: GraphicProject[] = [
     title: "Southern Wesleyan | Women's Lacrosse",
     year: "",
     accent: "#1124BA",
-    summary:
-      "A social media graphic promoting a women's lacrosse scrimmage for Southern Wesleyan University. Combining bold collegiate typography, layered photography, and a striking monochromatic treatment, the composition brings together athletic identity and visual storytelling to build excitement around the matchup.",
+    copy:
+      "Social graphic promoting a women's lacrosse scrimmage for Southern Wesleyan. Schedule, opponent, and location had to read in one thumb-scroll on Instagram, so I used a split duotone on action photography to let navy carry the frame while date and matchup lead the type hierarchy. Built for SWU students and local families: upbeat, collegiate, and photo-forward within a 4:5 crop.",
     image: "/media/graphic/southern-wesleyan-lacrosse.jpg",
     width: 768,
     height: 1024,
@@ -135,8 +151,8 @@ export const graphicProjects: GraphicProject[] = [
     title: "Ice Flyers | Game Day Victory",
     year: "",
     accent: "#3A6B97",
-    summary:
-      "Inspired by the atmosphere and excitement of my first Pensacola Ice Flyers game, this personal exploration captures the energy of a Friday night victory through bold typography, cinematic composition, and aviation-inspired imagery.",
+    copy:
+      "Personal exploration after my first Pensacola Ice Flyers game, trying to bottle Friday night SPHL energy in one victory graphic. Aviation-inspired typography and jet-wing motifs echo the team name without copying official assets; the scoreline reads like a broadcast lower third. Cool steel blues and ice-white type target hockey die-hards and Gulf Coast locals who want loud, cinematic, arena-dark graphics.",
     image: "/media/graphic/ice-flyers-victory.jpg",
     width: 768,
     height: 1024,
@@ -145,8 +161,8 @@ export const graphicProjects: GraphicProject[] = [
     title: "Formula 1 | Driver Collection",
     year: "",
     accent: "#8E1524",
-    summary:
-      "Created as part of my undergraduate Directed Studio course, this poster series explores Formula 1 driver portraits through a collectible card-inspired design system. Each composition combines layered photography, signature details, driver statistics, and team-specific color palettes to create a distinct visual identity while maintaining consistency across the collection.",
+    copy:
+      "Directed Studio poster series treating Formula 1 drivers like collectible trading cards. A shared grid and typography hold the layout together while constructor color becomes the frame; layered cutouts, signatures, and stat chips create a hierarchy F1 fans can scan quickly. Hamilton, Norris, and Russell show the system stretching across different personalities without losing a premium, team-coded feel.",
     images: [
       {
         src: "/media/graphic/f1-hamilton.jpg",
@@ -172,15 +188,9 @@ export const graphicProjects: GraphicProject[] = [
     title: "Pensacola Christian College | Athletics",
     year: "",
     accent: "#0C3C6C",
-    summary:
-      "A collection of unofficial athletic graphics created for Pensacola Christian College, spanning volleyball and men's and women's basketball. Combining bold collegiate typography, dynamic player photography, and distinctive color treatments, the designs capture the energy of game day while exploring a cohesive visual approach to collegiate sports communication.",
+    copy:
+      "Unofficial athletics graphics for Pensacola Christian College across volleyball milestones and men's and women's basketball game days. One template family ties the set together: milestone posts let big stat typography lead, while hoops graphics share layout DNA with sport-specific accent bars. Navy overlays stay legible on busy gym photos for spirited, celebration-ready posts aimed at PCC students and alumni.",
     images: [
-      {
-        src: "/media/graphic/lyssie-metzker-digs.jpg",
-        width: 768,
-        height: 1024,
-        alt: "Lyssie Metzker volleyball milestone graphic",
-      },
       {
         src: "/media/graphic/pcc-bertinato.jpg",
         width: 768,
@@ -193,14 +203,26 @@ export const graphicProjects: GraphicProject[] = [
         height: 1024,
         alt: "Maddie Sellars women's basketball game day graphic",
       },
+      {
+        src: "/media/graphic/pcc-matney-gameday.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Abby Matney women's basketball game day graphic vs. Ozark",
+      },
+      {
+        src: "/media/graphic/lyssie-metzker-digs.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Lyssie Metzker volleyball milestone graphic",
+      },
     ],
   },
   {
     title: "Max Verstappen | Visual Explorations",
     year: "",
     accent: "#E2186A",
-    summary:
-      "A poster series celebrating Max Verstappen through three distinct visual directions. This exploration focuses on pushing color, composition, typography, and photographic treatments while maintaining a consistent visual essence across each piece. The result is a collection that celebrates the driver's identity through contrasting yet cohesive graphic expressions.",
+    copy:
+      "Three posters on Max Verstappen, each with a different art direction: celebration type as noise, RB19 geometry as backdrop, and a tight portrait with neon accent like a magazine cover. Color, composition, and photo treatment shift, but Max stays recognizable so the set reads as a series on a wall. Made for Red Bull fans and poster collectors who like high-contrast, editorial experiments.",
     images: [
       {
         src: "/media/graphic/verstappen-1.jpg",
@@ -226,8 +248,8 @@ export const graphicProjects: GraphicProject[] = [
     title: "Beta Psi Delta | Jaguars Athletics",
     year: "",
     accent: "#0092C9",
-    summary:
-      "A collection of sports graphics and photography created for Beta Psi Delta throughout my sophomore and junior years of college. As the elected Collegian Representative responsible for the organization's social media, I developed promotional graphics, athletic photography, and visual content for various sports and events. This experience became the foundation of my journey into sports graphic design, providing an opportunity to experiment with typography, color treatments, and athletic storytelling while developing an early understanding of sports branding and visual communication.",
+    copy:
+      "Two years as Beta Psi Delta's collegian representative running social for a multi-sport organization: schedules, lineups, welcome posts, and championship graphics. Softball title art centers the trophy moment for story reshares; soccer schedules collapse into one screenshot-friendly grid. Jaguar blue, schedule-first layouts, and hype-forward tone for members and anyone following rivals online. This role shaped how I still approach sports branding.",
     images: [
       {
         src: "/media/graphic/bpd-softball-champions.jpg",

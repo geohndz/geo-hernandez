@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { PlayPauseGlyph } from "@/components/work/PlayPauseGlyph";
 import { cn } from "@/lib/cn";
-import { graphic, projectPoster, type GraphicProject } from "@/content/graphic";
+import { graphic, projectPoster, type GraphicFrame, type GraphicProject } from "@/content/graphic";
+import { GRAPHIC_OPEN_ATTR, graphicOpenPayload } from "@/components/graphic/GraphicLightboxContext";
 
 const float = [
   { y: 18, rot: -6.5, bob: -14, sway: 7, dur: 5.8, delay: 0.1, w: 280 },
@@ -21,7 +22,9 @@ export function GraphicHero({ projects }: { projects: GraphicProject[] }) {
   const [paused, setPaused] = useState(false);
   const posters = projects.flatMap((project) => {
     const poster = projectPoster(project);
-    return poster ? [{ title: project.title, ...poster }] : [];
+    if (!poster) return [];
+    const frames: GraphicFrame[] = project.images?.length ? project.images : [poster];
+    return [{ title: project.title, frames, poster }];
   });
   const sets = [0, 1] as const;
 
@@ -48,12 +51,13 @@ export function GraphicHero({ projects }: { projects: GraphicProject[] }) {
         <PlayPauseGlyph playing={!paused} />
       </button>
 
-      <div className="gd-float-lane mt-auto min-h-0 flex-1" aria-hidden="true">
+      <div className="gd-float-lane mt-auto min-h-0 flex-1">
         <div className={cn("gd-float-track flex w-max items-center", paused && "is-paused")}>
           {sets.map((copy) => (
             <div key={copy} className="flex shrink-0 items-center gap-6 pr-6 md:gap-10 md:pr-10">
-              {posters.map((poster, i) => {
+              {posters.map((item, i) => {
                 const spec = float[i % float.length];
+                const { poster } = item;
                 return (
                   <div
                     key={`${copy}-${poster.src}`}
@@ -69,15 +73,23 @@ export function GraphicHero({ projects }: { projects: GraphicProject[] }) {
                     }}
                   >
                     <div className="gd-float-bob">
-                      <Image
-                        src={poster.src}
-                        alt=""
-                        width={poster.width}
-                        height={poster.height}
-                        sizes="320px"
-                        priority={copy === 0 && i < 4}
-                        className="h-auto w-full"
-                      />
+                      <button
+                        type="button"
+                        tabIndex={copy === 0 ? 0 : -1}
+                        className="block w-full cursor-zoom-in border-0 bg-transparent p-0"
+                        aria-label={`View ${poster.alt ?? item.title} full size`}
+                        {...{ [GRAPHIC_OPEN_ATTR]: graphicOpenPayload(item.frames, 0, item.title) }}
+                      >
+                        <Image
+                          src={poster.src}
+                          alt=""
+                          width={poster.width}
+                          height={poster.height}
+                          sizes="320px"
+                          priority={copy === 0 && i < 4}
+                          className="pointer-events-none h-auto w-full"
+                        />
+                      </button>
                     </div>
                   </div>
                 );

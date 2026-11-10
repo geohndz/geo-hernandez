@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/websites",
     "/creative-explorations",
     "/graphic-design",
+    "/graphic-design/milwaukee-divers",
     ...getCaseStudySlugs().map((slug) => `/interface/${slug}`),
   ];
 

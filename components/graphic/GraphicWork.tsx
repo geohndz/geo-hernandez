@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
-import { projectPoster, type GraphicFrame, type GraphicProject } from "@/content/graphic";
+import { GraphicPosters } from "@/components/graphic/GraphicPosters";
+import { projectPoster, type GraphicProject } from "@/content/graphic";
 
 export function GraphicWork({ projects }: { projects: GraphicProject[] }) {
   return (
@@ -52,32 +52,38 @@ function ProjectRow({ project, index }: { project: GraphicProject; index: number
       <h3 className="mt-5 font-medium text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.05] tracking-[-0.03em]">
         {project.title}
       </h3>
-      <p className="mt-4 max-w-[46ch] text-[15px] leading-[1.55] text-[var(--gd-muted)]">
-        {project.summary}
-      </p>
+      <ProjectCopy project={project} />
+      {project.studyHref ? (
+        <Link
+          href={project.studyHref}
+          className="mt-6 inline-flex items-center border border-[var(--gd-ink)] px-4 py-2.5 text-[13px] font-medium tracking-[-0.01em] transition-colors hover:bg-[var(--gd-ink)] hover:text-[var(--gd-paper)]"
+        >
+          Case study
+        </Link>
+      ) : null}
     </div>
   );
 
   const gallery = series ? (
-    <ul
-      className={cn(
-        "grid gap-3 sm:gap-4 md:col-span-12 md:mt-2",
-        pair ? "grid-cols-2" : "grid-cols-2 md:grid-cols-3",
-      )}
-    >
-      {frames.map((frame) => (
-        <li key={frame.src}>
-          <Poster
-            frame={frame}
-            sizes={pair ? "(min-width: 768px) 45vw, 50vw" : "(min-width: 768px) 30vw, 50vw"}
-          />
-        </li>
-      ))}
-    </ul>
+    <div className="md:col-span-12 md:mt-2">
+      <GraphicPosters
+        frames={frames}
+        projectTitle={project.title}
+        gridClassName={cn(
+          "grid gap-3 sm:gap-4",
+          pair ? "grid-cols-2" : "grid-cols-2 md:grid-cols-3",
+        )}
+        sizes={pair ? "(min-width: 768px) 45vw, 50vw" : "(min-width: 768px) 30vw, 50vw"}
+      />
+    </div>
   ) : (
     <div className={cn("md:col-span-7 md:row-start-1", flip ? "md:col-start-1" : "md:col-start-6")}>
       {frames[0] ? (
-        <Poster frame={{ ...frames[0], alt: "" }} sizes="(min-width: 768px) 55vw, 100vw" />
+        <GraphicPosters
+          frames={frames}
+          projectTitle={project.title}
+          sizes="(min-width: 768px) 55vw, 100vw"
+        />
       ) : (
         <div aria-hidden className="aspect-[5/4] border border-[var(--gd-rule)]" />
       )}
@@ -108,16 +114,9 @@ function ProjectRow({ project, index }: { project: GraphicProject; index: number
   );
 }
 
-function Poster({ frame, sizes }: { frame: GraphicFrame; sizes: string }) {
+function ProjectCopy({ project }: { project: GraphicProject }) {
   return (
-    <Image
-      src={frame.src}
-      alt={frame.alt ?? ""}
-      width={frame.width}
-      height={frame.height}
-      sizes={sizes}
-      className="h-auto w-full"
-    />
+    <p className="mt-4 max-w-[46ch] text-[15px] leading-[1.55] text-[var(--gd-muted)]">{project.copy}</p>
   );
 }
 
