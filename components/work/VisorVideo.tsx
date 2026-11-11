@@ -144,7 +144,7 @@ export function VisorVideo({
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           poster={poster}
         >
           <source src={src} type="video/mp4" />

@@ -136,7 +136,7 @@ export function DeviceShowcase({
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload="none"
                 poster={study.poster}
               >
                 <source src={study.video} type="video/mp4" />

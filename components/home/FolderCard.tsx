@@ -1,7 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePlayWhenVisible } from "@/lib/in-view";
 import { cn } from "@/lib/cn";
 
 export type FolderAccent = "red" | "green" | "blue";
@@ -105,15 +107,10 @@ export function FolderCard({
           )}
         >
           {item.video ? (
-            <video
+            <LoopVideo
               className="h-full w-full object-cover object-top"
               src={item.video}
               poster={item.image}
-              autoPlay
-              muted
-              loop
-              playsInline
-              aria-hidden
             />
           ) : item.image ? (
             <Image
@@ -221,19 +218,36 @@ function Sheet({
   );
 }
 
+function LoopVideo({
+  src,
+  poster,
+  className,
+}: {
+  src: string;
+  poster?: string;
+  className?: string;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+  usePlayWhenVisible(ref);
+
+  return (
+    <video
+      ref={ref}
+      className={className}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="none"
+      aria-hidden
+    />
+  );
+}
+
 function SheetMedia({ media }: { media: { image?: string; video?: string } }) {
   if (media.video) {
-    return (
-      <video
-        className="h-full w-full object-cover object-top"
-        src={media.video}
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-hidden
-      />
-    );
+    return <LoopVideo className="h-full w-full object-cover object-top" src={media.video} />;
   }
 
   if (media.image) {

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { PlayPauseGlyph } from "@/components/work/PlayPauseGlyph";
+import { usePlayWhenVisible } from "@/lib/in-view";
 
 type CardVideoProps = {
   src: string;
@@ -11,7 +12,8 @@ type CardVideoProps = {
 
 export function CardVideo({ src, poster, className = "" }: CardVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(true);
+  const pausedByUser = usePlayWhenVisible(videoRef);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -35,8 +37,10 @@ export function CardVideo({ src, poster, className = "" }: CardVideoProps) {
     const video = videoRef.current;
     if (!video) return;
     if (video.paused) {
+      pausedByUser.current = false;
       void video.play();
     } else {
+      pausedByUser.current = true;
       video.pause();
     }
   }
@@ -46,10 +50,10 @@ export function CardVideo({ src, poster, className = "" }: CardVideoProps) {
       <video
         ref={videoRef}
         className={className}
-        autoPlay
         muted
         loop
         playsInline
+        preload="none"
         poster={poster}
       >
         <source src={src} type="video/mp4" />
