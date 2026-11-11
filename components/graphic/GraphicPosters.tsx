@@ -33,18 +33,18 @@ export function GraphicPosters({
         className,
       )}
       {...{ [GRAPHIC_OPEN_ATTR]: graphicOpenPayload(frames, i, projectTitle) }}
-      aria-label={`View ${frame.alt ?? projectTitle} full size`}
     >
       <span className="pointer-events-none block overflow-hidden">
         <Image
           src={frame.src}
-          alt=""
+          alt={frame.alt ?? ""}
           width={frame.width}
           height={frame.height}
           sizes={posterSizes(sizes, i)}
           className="h-auto w-full transition-[transform,filter] duration-300 ease-out group-hover:brightness-[1.02] [@media(hover:hover)]:group-hover:scale-[1.01]"
         />
       </span>
+      <span className="sr-only">{frame.alt ? "View full size" : `View ${projectTitle} full size`}</span>
     </button>
   );
 

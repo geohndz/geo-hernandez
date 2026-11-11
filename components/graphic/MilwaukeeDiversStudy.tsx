@@ -47,7 +47,7 @@ export function MilwaukeeDiversStudy() {
             {study.title}
           </h1>
           <p className="mt-5 max-w-[36ch] text-[17px] leading-[1.45] text-[var(--gd-muted)]">{study.lede}</p>
-          <dl className="mt-8 grid max-w-xl grid-cols-2 gap-6 border-t border-[var(--gd-rule)] pt-6 text-[15px]">
+          <dl className="mt-8 grid max-w-3xl grid-cols-2 gap-6 border-t border-[var(--gd-rule)] pt-6 text-[15px] md:grid-cols-3">
             <div>
               <dt className="text-[13px] text-[var(--gd-muted)]">Timeline</dt>
               <dd className="mt-1">{study.timeline}</dd>
@@ -56,21 +56,35 @@ export function MilwaukeeDiversStudy() {
               <dt className="text-[13px] text-[var(--gd-muted)]">Tools</dt>
               <dd className="mt-1">{study.tools}</dd>
             </div>
+            <div>
+              <dt className="text-[13px] text-[var(--gd-muted)]">Type</dt>
+              <dd className="mt-1">{study.course}</dd>
+            </div>
           </dl>
         </div>
 
         <StudySection title="Strategy">
           <p className="max-w-[46ch] text-[16px] leading-[1.5]">{study.strategy.brief}</p>
-          <ul className="mt-6 max-w-[48ch] space-y-2 text-[15px] leading-[1.5] text-[var(--gd-muted)]">
+          <div className="mt-8 max-w-[48ch] space-y-5 text-[15px] leading-[1.5]">
             {study.strategy.points.map((point) => (
-              <li key={point}>{point}</li>
+              <p key={point.label}>
+                <span className="font-medium text-[var(--gd-ink)]">{point.label}</span>{" "}
+                <span className="text-[var(--gd-muted)]">{point.body}</span>
+              </p>
             ))}
-          </ul>
+          </div>
         </StudySection>
 
         <StudySection title="Process">
-          <p className="max-w-[46ch] text-[15px] leading-[1.5] text-[var(--gd-muted)]">{study.process.intro}</p>
-          <AssetGrid assets={study.process.assets} columns="sm:grid-cols-2" />
+          <div className="space-y-14">
+            {study.process.steps.map((step) => (
+              <div key={step.title}>
+                <h3 className="text-[15px] font-medium tracking-[-0.02em]">{step.title}</h3>
+                <p className="mt-3 max-w-[46ch] text-[15px] leading-[1.5] text-[var(--gd-muted)]">{step.body}</p>
+                <AssetGrid assets={step.assets} columns="sm:grid-cols-2" captions />
+              </div>
+            ))}
+          </div>
           <AssetBlock title="Textures" assets={study.process.textures.slice(0, 3)} columns="grid-cols-3" />
           <AssetGrid assets={study.process.textures.slice(3)} columns="grid-cols-3" />
         </StudySection>
@@ -79,11 +93,17 @@ export function MilwaukeeDiversStudy() {
           <p className="max-w-[46ch] text-[15px] leading-[1.5] text-[var(--gd-muted)]">{study.identity.intro}</p>
           <AssetBlock title="Mascot" assets={[study.identity.mascot]} />
           <AssetBlock
-            title="Team name on its own, for jerseys, headlines, and the header."
+            title="Wordmark"
+            caption={study.identity.wordmark}
             assets={study.identity.wordmarks}
-            columns="grid-cols-3"
+            columns="sm:grid-cols-2"
           />
-          <AssetBlock title="Monogram" assets={study.identity.monograms} columns="grid-cols-3" />
+          <AssetBlock
+            title="Monogram"
+            caption={study.identity.monogram}
+            assets={study.identity.monograms}
+            columns="grid-cols-2 lg:grid-cols-4"
+          />
         </StudySection>
 
         <StudySection title="Typography">
@@ -100,11 +120,18 @@ export function MilwaukeeDiversStudy() {
         </StudySection>
 
         <StudySection title="In use">
-          <p className="max-w-[46ch] text-[15px] leading-[1.5] text-[var(--gd-muted)]">{study.applications.intro}</p>
-          <AssetBlock title="Logos and marks" assets={study.identity.logos} />
+          <AssetBlock className="mt-0" title="Logos and marks" assets={study.identity.logos} />
           {study.applications.groups.map((group) => (
-            <AssetBlock key={group.title} title={group.title} assets={group.assets} />
+            <AssetBlock key={group.title} title={group.title} caption={group.body} assets={group.assets} />
           ))}
+        </StudySection>
+
+        <StudySection title="Reflection">
+          <div className="max-w-[46ch] space-y-4 text-[16px] leading-[1.5]">
+            {study.reflection.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
         </StudySection>
       </main>
       <GraphicFooter />
@@ -238,16 +265,23 @@ function swatchText(hex: string) {
 
 function AssetBlock({
   title,
+  caption,
   assets,
   columns,
+  className = "mt-12",
 }: {
   title: string;
+  caption?: string;
   assets: readonly DiversAsset[];
   columns?: string;
+  className?: string;
 }) {
   return (
-    <div className="mt-12">
+    <div className={className}>
       <h3 className="text-[15px] font-medium tracking-[-0.02em]">{title}</h3>
+      {caption ? (
+        <p className="mt-3 max-w-[46ch] text-[15px] leading-[1.5] text-[var(--gd-muted)]">{caption}</p>
+      ) : null}
       <AssetGrid assets={assets} columns={columns} />
     </div>
   );
@@ -256,9 +290,11 @@ function AssetBlock({
 function AssetGrid({
   assets,
   columns = "sm:grid-cols-2 lg:grid-cols-3",
+  captions = false,
 }: {
   assets: readonly DiversAsset[];
   columns?: string;
+  captions?: boolean;
 }) {
   return (
     <ul className={`mt-5 grid gap-x-4 gap-y-8 ${columns}`}>
@@ -284,6 +320,9 @@ function AssetGrid({
               <p className="text-[13px] font-medium tracking-[-0.01em]">{asset.label}</p>
             </div>
           )}
+          {captions && asset.caption ? (
+            <p className="mt-2 max-w-[36ch] text-[13px] leading-[1.45] text-[var(--gd-muted)]">{asset.caption}</p>
+          ) : null}
         </li>
       ))}
     </ul>

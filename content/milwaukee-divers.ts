@@ -31,22 +31,42 @@ const mark: GraphicFrame = {
 
 export const milwaukeeDivers = {
   title: "Milwaukee Divers",
-  seo: "A fictional Milwaukee lacrosse identity built from lakefront history and a vintage diving helmet. Mascot system, game-day graphics, and brand applications by Geo Hernandez.",
+  seo: "A fictional lacrosse club for Milwaukee, built around a vintage diving helmet and a lot of tracing paper. Mascot system and brand applications by Geo Hernandez.",
   hero: mark,
-  lede: "A fictional lacrosse club for Milwaukee, built from the lakefront and a vintage diving helmet.",
+  lede: "A fictional lacrosse club for Milwaukee, built around a vintage diving helmet and a lot of tracing paper.",
   timeline: "3 weeks",
-  tools: "Adobe Illustrator and Adobe Photoshop",
+  tools: "Adobe Illustrator, Adobe Photoshop",
+  course: "Graduate coursework, expanded into a brand system",
   strategy: {
     brief:
-      "Graduate brief with full creative freedom: invent a team, then build the identity before any game-day layout.",
+      "The assignment was just a mascot. The final graphic needed highlights and shadows, a dynamic pose, type that matched the style, and a cohesive look throughout. I wanted to see how far the mascot could go, so I expanded it into a small brand system.",
     points: [
-      "Prompt: a lacrosse club rooted in Milwaukee's maritime and industrial history.",
-      "Audience: fans 18 to 35 who want heritage pride, not a generic college mark.",
-      "Tone: gritty Midwest energy. Brass, navy, and helmet hardware over glossy sports blue.",
+      {
+        label: "Who it's for.",
+        body: "Fans 18 to 35 who want a team with personality and local pride, not another generic sports mark.",
+      },
+      {
+        label: "Why lacrosse.",
+        body: "My sister has played since high school and now plays in college. This one's for her.",
+      },
+      {
+        label: "Why a diver.",
+        body: "I'd been in a diving-themed era, and the old-school brass helmet suits looked meaner than anything modern. That edge was what I wanted for a contact sport.",
+      },
+      {
+        label: "Why Milwaukee.",
+        body: "The city came to mind first, and when I looked into it, it turned out to have a real history with diving. I took that as a sign. The Pensacola Pelicans and the Galapagos Hammerheads were also on the table.",
+      },
     ],
   },
+  reflection: [
+    "This project taught me that a mascot is only the beginning. The real work is making it hold up at every size and on every surface. Class critique also changed how I draw: I now push proportions for emotion instead of stopping at correct.",
+    "With more time, I'd expand the logo suite, design environmental pieces like arena signage and a stadium takeover, and build out a merch line.",
+  ],
   identity: {
-    intro: "The mark came first. Wordmark, crest, and mascot share one brass-and-navy system.",
+    intro: "Before building the system, I studied how pro teams apply their branding across different mediums. Since this wasn't a full brand, I focused on what a team needs most: the mascot in large, medium, and small sizes, and a wordmark with a full version and a monogram.",
+    wordmark: "The team name on its own, for jerseys, headlines, and headers.",
+    monogram: "A compact mark for small spaces, like avatars, embroidery, and merch tags.",
     logos: [
       {
         label: "System",
@@ -125,9 +145,11 @@ export const milwaukeeDivers = {
           alt: "Milwaukee Divers wordmark with the anchor, no city name",
         },
       },
+    ] satisfies DiversAsset[],
+    monograms: [
       {
         label: "MD",
-        caption: "MD mark for caps, avatars, and one-color print.",
+        caption: "",
         image: {
           src: "/media/graphic/milwaukee-divers-monogram.jpg",
           width: 1012,
@@ -135,8 +157,6 @@ export const milwaukeeDivers = {
           alt: "Milwaukee Divers MD monogram with the anchor",
         },
       },
-    ] satisfies DiversAsset[],
-    monograms: [
       {
         label: "Monogram",
         caption: "White D with the mascot, for one-color print and dark grounds.",
@@ -171,7 +191,8 @@ export const milwaukeeDivers = {
     type: [
       {
         label: "Display",
-        caption: "Numbers, player names, and headlines.",
+        caption:
+          "Norches is blocky and heavy, like the bolted brass of a diving helmet. It gives numbers and headlines the weight the mascot has.",
       },
       {
         label: "Functional",
@@ -212,7 +233,7 @@ export const milwaukeeDivers = {
     ] satisfies DiversAsset[],
   },
   architecture: {
-    intro: "One mascot, several locks. It has to work as a crest, a full character, and a small badge.",
+    intro: "One mascot, three sizes. It has to work as a full character, a bust, and a small badge without losing its attitude.",
     assets: [
       {
         label: "Mascot",
@@ -247,10 +268,10 @@ export const milwaukeeDivers = {
     ] satisfies DiversAsset[],
   },
   applications: {
-    intro: "The system has to live where fans actually see it.",
     groups: [
       {
         title: "Uniforms and apparel",
+        body: "The helmets are gold to echo the diver's brass helmet, so the mascot's signature detail carries onto the field.",
         assets: [
           {
             label: "Helmet",
@@ -306,6 +327,7 @@ export const milwaukeeDivers = {
       },
       {
         title: "Digital and social",
+        body: "I chose photos with raw emotion and motion, so the graphics feel like the game: fast, physical, and a little chaotic.",
         assets: [
           {
             label: "Game day",
@@ -337,89 +359,138 @@ export const milwaukeeDivers = {
     ],
   },
   process: {
-    intro: "The helmet came before the wordmark. These sketches test whether a diver could read as a lacrosse athlete.",
-    assets: [
+    steps: [
       {
-        label: "Ink studies",
-        caption: "Helmet thumbs and a first ink pose, before a lockup existed.",
-        image: {
-          src: "/media/graphic/milwaukee-divers-sketch-1.jpg",
-          width: 1024,
-          height: 921,
-          alt: "Ink sketch of the Milwaukee Divers mascot with pencil helmet studies",
-        },
+        title: "Research",
+        body: "I had never played or watched lacrosse, so I started with reference photos to learn how players hold the stick, how they move, and how physical the game actually is. It finally made sense why my sister thrives at it.",
+        assets: [
+          {
+            label: "Reference",
+            caption: "Reference photos for how players hold the stick and move.",
+            image: {
+              src: "/media/graphic/milwaukee-divers-reference.png",
+              width: 655,
+              height: 441,
+              alt: "Lacrosse reference photos of players holding sticks and checking each other",
+            },
+          },
+        ] satisfies DiversAsset[],
       },
       {
-        label: "Wordmark pass",
-        caption: "DIVERS blocked in under the mascot. The bird above did not make the team.",
-        image: {
-          src: "/media/graphic/milwaukee-divers-sketch-2.jpg",
-          width: 848,
-          height: 880,
-          alt: "Pencil sketch of the diver mascot with a hand-lettered Divers wordmark",
-        },
+        title: "Sketching",
+        body: "I built the pose up in layers on tracing paper, refining each round on top of the last. A lot of trial and error.",
+        assets: [
+          {
+            label: "Ink studies",
+            caption: "Early pose studies from lacrosse reference photos.",
+            image: {
+              src: "/media/graphic/milwaukee-divers-sketch-1.jpg",
+              width: 1024,
+              height: 921,
+              alt: "Pencil and ink pose studies of the diver mascot holding a lacrosse stick",
+            },
+          },
+          {
+            label: "Wordmark pass",
+            caption: "Building the pose in layers on tracing paper.",
+            image: {
+              src: "/media/graphic/milwaukee-divers-sketch-2.jpg",
+              width: 848,
+              height: 880,
+              alt: "Tracing-paper sketch of the diver mascot layered over a Divers wordmark",
+            },
+          },
+        ] satisfies DiversAsset[],
       },
       {
-        label: "Clean line",
-        caption: "The stick angle and suit panels tightened into one pose.",
-        image: {
-          src: "/media/graphic/milwaukee-divers-sketch-3.jpg",
-          width: 1024,
-          height: 921,
-          alt: "Clean line drawing of the Milwaukee Divers mascot",
-        },
+        title: "Critique",
+        body: "I presented the sketches to my class for feedback. The biggest lesson: anatomically correct isn't always right. Exaggerating proportions pushes the drama and attitude that a mascot needs.",
+        assets: [
+          {
+            label: "Clean line",
+            caption: "The version I brought to class critique.",
+            image: {
+              src: "/media/graphic/milwaukee-divers-sketch-3.jpg",
+              width: 1024,
+              height: 921,
+              alt: "Clean line drawing of the diver mascot brought to class critique",
+            },
+          },
+        ] satisfies DiversAsset[],
       },
       {
-        label: "Lockup",
-        caption: "Mascot and wordmark drawn together, close to the final mark.",
-        image: {
-          src: "/media/graphic/milwaukee-divers-sketch-4.jpg",
-          width: 1024,
-          height: 921,
-          alt: "Pencil lockup of the Milwaukee Divers mascot over the wordmark",
-        },
+        title: "Refinement",
+        body: "I took the feedback back to the tracing paper and developed the final mascot from there.",
+        assets: [
+          {
+            label: "Lockup",
+            caption: "Post-critique revision with exaggerated proportions for more drama.",
+            image: {
+              src: "/media/graphic/milwaukee-divers-sketch-4.jpg",
+              width: 1024,
+              height: 921,
+              alt: "Revised pencil lockup of the diver mascot over the Divers wordmark",
+            },
+          },
+          {
+            label: "Illustrator explorations",
+            caption: "",
+            image: {
+              src: "/media/graphic/milwaukee-divers-explorations.jpg",
+              width: 1024,
+              height: 608,
+              alt: "Illustrator explorations of Milwaukee Divers wordmarks, monograms, and mascot colorways",
+            },
+          },
+          {
+            label: "Reversed",
+            caption: "",
+            image: {
+              src: "/media/graphic/milwaukee-divers-one-color-white.jpg",
+              width: 1012,
+              height: 1024,
+              alt: "White one-color Milwaukee Divers mascot on black",
+            },
+          },
+          {
+            label: "One color",
+            caption: "",
+            image: {
+              src: "/media/graphic/milwaukee-divers-one-color-harbor.jpg",
+              width: 1012,
+              height: 1024,
+              alt: "Harbor one-color Milwaukee Divers mascot on white",
+            },
+          },
+          {
+            label: "Flat construction",
+            caption: "",
+            image: {
+              src: "/media/graphic/milwaukee-divers-mascot-base.jpg",
+              width: 1012,
+              height: 1024,
+              alt: "Flat construction of the Milwaukee Divers mascot and wordmark",
+            },
+          },
+        ] satisfies DiversAsset[],
       },
       {
-        label: "Illustrator explorations",
-        caption: "Wordmarks, monograms, and mascot colorways tested before a final lockup.",
-        image: {
-          src: "/media/graphic/milwaukee-divers-explorations.jpg",
-          width: 1024,
-          height: 608,
-          alt: "Illustrator explorations of Milwaukee Divers wordmarks, monograms, and mascot colorways",
-        },
+        title: "Type",
+        body: "I tested sport display faces for the wordmark. Norches is the one that carries the helmet's weight.",
+        assets: [
+          {
+            label: "Type options",
+            caption: "Sport font options for the Divers wordmark.",
+            image: {
+              src: "/media/graphic/milwaukee-divers-type-options.png",
+              width: 1024,
+              height: 706,
+              alt: "Sport font options for the Divers wordmark, including Enforce, Grasher, Mineros, Norches, Baxerys, Aeroxer, Overward, and Gameont",
+            },
+          },
+        ] satisfies DiversAsset[],
       },
-      {
-        label: "Reversed",
-        caption: "",
-        image: {
-          src: "/media/graphic/milwaukee-divers-one-color-white.jpg",
-          width: 1012,
-          height: 1024,
-          alt: "White one-color Milwaukee Divers mascot on black",
-        },
-      },
-      {
-        label: "One color",
-        caption: "Harbor mascot for light grounds and one-color print.",
-        image: {
-          src: "/media/graphic/milwaukee-divers-one-color-harbor.jpg",
-          width: 1012,
-          height: 1024,
-          alt: "Harbor one-color Milwaukee Divers mascot on white",
-        },
-      },
-      {
-        label: "Flat construction",
-        caption: "Flat shapes under the finished mascot. The wordmark stays white before shading.",
-        image: {
-          src: "/media/graphic/milwaukee-divers-mascot-base.jpg",
-          width: 1012,
-          height: 1024,
-          alt: "Flat construction of the Milwaukee Divers mascot and wordmark",
-        },
-      },
-    ] satisfies DiversAsset[],
+    ],
     textures: [
       {
         label: "Waterline texture",
