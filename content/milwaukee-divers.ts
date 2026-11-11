@@ -391,7 +391,7 @@ export const milwaukeeDivers = {
       },
       {
         label: "Reversed",
-        caption: "White mascot for dark grounds and one-color print.",
+        caption: "",
         image: {
           src: "/media/graphic/milwaukee-divers-one-color-white.jpg",
           width: 1012,

@@ -215,23 +215,9 @@ function ColorPalette({ colors }: { colors: readonly DiversAsset[] }) {
                   </ul>
                 ) : null}
               </div>
-            </li>
-          );
-        })}
-      </ul>
-      <ul className="mt-2.5 grid grid-cols-5 gap-2.5">
-        {colors.map((color) => {
-          const swatch = color.swatch ?? "#FFFFFF";
-          return (
-            <li key={color.label}>
-              <div
-                className="h-52 sm:h-72"
-                aria-hidden="true"
-                style={{
-                  backgroundImage: `linear-gradient(to bottom, ${swatch} 0%, ${swatch} 12%, color-mix(in srgb, ${swatch} 55%, transparent) 48%, transparent 100%)`,
-                }}
-              />
-              <p className="mt-2 text-[13px] leading-[1.4] text-[var(--gd-muted)]">{color.caption}</p>
+              {color.caption ? (
+                <p className="mt-2 text-[13px] leading-[1.4] text-[var(--gd-muted)]">{color.caption}</p>
+              ) : null}
             </li>
           );
         })}
@@ -298,7 +284,6 @@ function AssetGrid({
               <p className="text-[13px] font-medium tracking-[-0.01em]">{asset.label}</p>
             </div>
           )}
-          <p className="mt-2 max-w-[36ch] text-[13px] leading-[1.45] text-[var(--gd-muted)]">{asset.caption}</p>
         </li>
       ))}
     </ul>
