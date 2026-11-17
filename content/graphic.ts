@@ -128,7 +128,7 @@ export const graphicProjects: GraphicProject[] = [
       {
         src: "/media/graphic/pepsi-gracias-leo-label.jpg",
         width: 1024,
-        height: 455,
+        height: 497,
         alt: "Gracias Leo can label with Messi, the World Cup, and the number 10",
       },
     ],
