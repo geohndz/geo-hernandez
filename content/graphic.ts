@@ -7,6 +7,12 @@ export type GraphicFrame = {
   alt?: string;
 };
 
+export type GraphicStat = {
+  icon: "views" | "likes" | "shares" | "reshares";
+  value: string;
+  label: string;
+};
+
 export type GraphicProject = {
   title: string;
   year: string;
@@ -18,6 +24,10 @@ export type GraphicProject = {
   images?: GraphicFrame[];
   href?: string;
   studyHref?: string;
+  presentation?: "collage" | "band";
+  stats?: readonly GraphicStat[];
+  group?: "featured" | "more" | "story";
+  lede?: string;
 };
 
 const singleImageAlts: Record<string, string> = {
@@ -89,9 +99,45 @@ export const graphic = {
 
 export const graphicProjects: GraphicProject[] = [
   {
+    title: "Pepsi | Gracias Leo",
+    year: "",
+    accent: "#005EB8",
+    group: "featured",
+    presentation: "band",
+    copy:
+      "A class project exploring a conceptual collaboration between Pepsi and Lionel Messi, created as a tribute to his legacy with the Argentina national team. The limited-edition packaging, titled Gracias Leo, celebrates the moments, achievements, and emotions that defined his journey through a series of collectible can designs. Combining Pepsi's iconic visual identity with Argentina's colors, custom illustrations, and football-inspired graphic elements, the concept transforms a familiar product into a celebration of one of the game's most memorable careers.",
+    images: [
+      {
+        src: "/media/graphic/pepsi-gracias-leo-cans.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Six Gracias Leo Pepsi cans with Messi illustrations and the special edition label",
+      },
+      {
+        src: "/media/graphic/pepsi-gracias-leo-pile.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Pile of Gracias Leo Pepsi cans",
+      },
+      {
+        src: "/media/graphic/pepsi-gracias-leo-pair.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Two Gracias Leo Pepsi cans, one with Messi and one with the Pepsi globe",
+      },
+      {
+        src: "/media/graphic/pepsi-gracias-leo-label.jpg",
+        width: 1024,
+        height: 455,
+        alt: "Gracias Leo can label with Messi, the World Cup, and the number 10",
+      },
+    ],
+  },
+  {
     title: "Milwaukee Divers | Sports Mascot & Identity",
     year: "",
     accent: "#B3710B",
+    group: "featured",
     studyHref: "/graphic-design/milwaukee-divers",
     copy:
       "Graduate assignment with full creative freedom: I invented the Milwaukee Divers, a fictional lacrosse club rooted in Milwaukee's lakefront and vintage diving-helmet history. I built the mascot mark and illustration system first, then extended the same brass-and-navy palette into identity boards and game-day posters. The audience is young fans drawn to heritage pride and gritty Midwest energy, not generic college blue.",
@@ -111,9 +157,10 @@ export const graphicProjects: GraphicProject[] = [
     ],
   },
   {
-    title: "Delta Psi Delta | Raiders Mascot Expansion",
+    title: "Delta Psi Delta Raiders | Mascot Expansion",
     year: "",
     accent: "#CB1F21",
+    group: "featured",
     copy:
       "Delta Psi Delta commissioned an expansion of their Raiders mascot from a bust illustration into a full character, without breaking what members already wore on shirts and banners. I matched horn curvature, scar placement, and red values from the original, then delivered full-body poses for social posts and tighter marks for embroidery. The tone stays loyal, competitive, and tradition-first for members and recruits.",
     images: [
@@ -138,19 +185,48 @@ export const graphicProjects: GraphicProject[] = [
     ],
   },
   {
+    title: "Zeta Nu Rho Gators | Turkey Bowl",
+    year: "",
+    accent: "#0F7A3A",
+    group: "more",
+    copy:
+      "A game-day graphic created for Zeta Nu Rho's Gators, promoting their matchup in the annual Turkey Bowl, Pensacola Christian College's intramural soccer championship. Following the success of my previous athletics graphics, I was approached by the organization to create a design for their team. The composition brings together team photography, layered player imagery, bold collegiate typography, and a textured green color palette to build excitement around the championship.",
+    images: [
+      {
+        src: "/media/graphic/znr-turkey-bowl.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Zeta Nu Rho Gators Turkey Bowl game-day graphic at Eagle Field",
+      },
+    ],
+  },
+  {
     title: "Southern Wesleyan | Women's Lacrosse",
     year: "",
     accent: "#1124BA",
+    group: "more",
     copy:
       "Social graphic promoting a women's lacrosse scrimmage for Southern Wesleyan. Schedule, opponent, and location had to read in one thumb-scroll on Instagram, so I used a split duotone on action photography to let navy carry the frame while date and matchup lead the type hierarchy. Built for SWU students and local families: upbeat, collegiate, and photo-forward within a 4:5 crop.",
-    image: "/media/graphic/southern-wesleyan-lacrosse.jpg",
-    width: 768,
-    height: 1024,
+    images: [
+      {
+        src: "/media/graphic/southern-wesleyan-lacrosse.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Southern Wesleyan women's lacrosse scrimmage announcement graphic",
+      },
+      {
+        src: "/media/graphic/southern-wesleyan-scrimmage.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Southern Wesleyan women's lacrosse scrimmage graphic versus Mars Hill",
+      },
+    ],
   },
   {
     title: "Ice Flyers | Game Day Victory",
     year: "",
     accent: "#3A6B97",
+    group: "more",
     copy:
       "Personal exploration after my first Pensacola Ice Flyers game, trying to bottle Friday night SPHL energy in one victory graphic. Aviation-inspired typography and jet-wing motifs echo the team name without copying official assets; the scoreline reads like a broadcast lower third. Cool steel blues and ice-white type target hockey die-hards and Gulf Coast locals who want loud, cinematic, arena-dark graphics.",
     image: "/media/graphic/ice-flyers-victory.jpg",
@@ -161,6 +237,7 @@ export const graphicProjects: GraphicProject[] = [
     title: "Formula 1 | Driver Collection",
     year: "",
     accent: "#8E1524",
+    group: "more",
     copy:
       "Directed Studio poster series treating Formula 1 drivers like collectible trading cards. A shared grid and typography hold the layout together while constructor color becomes the frame; layered cutouts, signatures, and stat chips create a hierarchy F1 fans can scan quickly. Hamilton, Norris, and Russell show the system stretching across different personalities without losing a premium, team-coded feel.",
     images: [
@@ -188,9 +265,23 @@ export const graphicProjects: GraphicProject[] = [
     title: "Pensacola Christian College | Athletics",
     year: "",
     accent: "#0C3C6C",
+    group: "featured",
     copy:
       "Unofficial athletics graphics for Pensacola Christian College across volleyball milestones and men's and women's basketball game days. One template family ties the set together: milestone posts let big stat typography lead, while hoops graphics share layout DNA with sport-specific accent bars. Navy overlays stay legible on busy gym photos for spirited, celebration-ready posts aimed at PCC students and alumni.",
+    presentation: "collage",
+    stats: [
+      { icon: "views", value: "15k+", label: "views" },
+      { icon: "likes", value: "300+", label: "likes" },
+      { icon: "shares", value: "40+", label: "shares" },
+      { icon: "reshares", value: "12+", label: "reshares" },
+    ],
     images: [
+      {
+        src: "/media/graphic/pcc-doubleheader.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Pensacola Christian College basketball doubleheader game day graphic",
+      },
       {
         src: "/media/graphic/pcc-bertinato.jpg",
         width: 768,
@@ -198,16 +289,16 @@ export const graphicProjects: GraphicProject[] = [
         alt: "Raul Bertinato men's basketball game day graphic",
       },
       {
-        src: "/media/graphic/pcc-sellars.jpg",
-        width: 768,
-        height: 1024,
-        alt: "Maddie Sellars women's basketball game day graphic",
-      },
-      {
         src: "/media/graphic/pcc-matney-gameday.jpg",
         width: 768,
         height: 1024,
         alt: "Abby Matney women's basketball game day graphic vs. Ozark",
+      },
+      {
+        src: "/media/graphic/pcc-sellars.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Maddie Sellars women's basketball game day graphic",
       },
       {
         src: "/media/graphic/lyssie-metzker-digs.jpg",
@@ -221,6 +312,7 @@ export const graphicProjects: GraphicProject[] = [
     title: "Max Verstappen | Visual Explorations",
     year: "",
     accent: "#E2186A",
+    group: "more",
     copy:
       "Three posters on Max Verstappen, each with a different art direction: celebration type as noise, RB19 geometry as backdrop, and a tight portrait with neon accent like a magazine cover. Color, composition, and photo treatment shift, but Max stays recognizable so the set reads as a series on a wall. Made for Red Bull fans and poster collectors who like high-contrast, editorial experiments.",
     images: [
@@ -245,9 +337,11 @@ export const graphicProjects: GraphicProject[] = [
     ],
   },
   {
-    title: "Beta Psi Delta | Jaguars Athletics",
+    title: "Beta Psi Delta Jaguars | Where It Started",
     year: "",
     accent: "#0092C9",
+    group: "story",
+    lede: "The story of how I ended up doing sports design.",
     copy:
       "Two years as Beta Psi Delta's collegian representative running social for a multi-sport organization: schedules, lineups, welcome posts, and championship graphics. Softball title art centers the trophy moment for story reshares; soccer schedules collapse into one screenshot-friendly grid. Jaguar blue, schedule-first layouts, and hype-forward tone for members and anyone following rivals online. This role shaped how I still approach sports branding.",
     images: [

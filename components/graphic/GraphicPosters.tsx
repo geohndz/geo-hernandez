@@ -15,12 +15,14 @@ export function GraphicPosters({
   projectTitle,
   className,
   gridClassName,
+  layout,
 }: {
   frames: GraphicFrame[];
   sizes: string | ((index: number) => string);
   projectTitle: string;
   className?: string;
   gridClassName?: string;
+  layout?: "collage" | "band";
 }) {
   if (!frames.length) return null;
 
@@ -40,13 +42,50 @@ export function GraphicPosters({
           alt={frame.alt ?? ""}
           width={frame.width}
           height={frame.height}
-          sizes={posterSizes(sizes, i)}
+          sizes={
+            layout === "collage"
+              ? i === 0
+                ? "(min-width: 768px) 46vw, 100vw"
+                : "(min-width: 768px) 22vw, 50vw"
+              : layout === "band"
+                ? i === frames.length - 1
+                  ? "(min-width: 768px) 92vw, 100vw"
+                  : "(min-width: 768px) 30vw, 33vw"
+                : posterSizes(sizes, i)
+          }
           className="h-auto w-full transition-[transform,filter] duration-300 ease-out group-hover:brightness-[1.02] [@media(hover:hover)]:group-hover:scale-[1.01]"
         />
       </span>
       <span className="sr-only">{frame.alt ? "View full size" : `View ${projectTitle} full size`}</span>
     </button>
   );
+
+  if (layout === "band" && frames.length > 1) {
+    const row = frames.slice(0, -1);
+    const wide = frames[frames.length - 1];
+    return (
+      <ul className="grid grid-cols-3 gap-3 sm:gap-4">
+        {row.map((frame, i) => (
+          <li key={frame.src}>{tile(frame, i)}</li>
+        ))}
+        <li key={wide.src} className="col-span-3">
+          {tile(wide, row.length)}
+        </li>
+      </ul>
+    );
+  }
+
+  if (layout === "collage" && frames.length > 1) {
+    const [lead, ...rest] = frames;
+    return (
+      <ul className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
+        <li className="col-span-2 md:row-span-2">{tile(lead, 0)}</li>
+        {rest.map((frame, i) => (
+          <li key={frame.src}>{tile(frame, i + 1)}</li>
+        ))}
+      </ul>
+    );
+  }
 
   if (gridClassName) {
     return (
