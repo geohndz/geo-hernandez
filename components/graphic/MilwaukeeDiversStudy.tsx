@@ -85,8 +85,6 @@ export function MilwaukeeDiversStudy() {
               </div>
             ))}
           </div>
-          <AssetBlock title="Textures" assets={study.process.textures.slice(0, 3)} columns="grid-cols-3" />
-          <AssetGrid assets={study.process.textures.slice(3)} columns="grid-cols-3" />
         </StudySection>
 
         <StudySection title="Identity">
@@ -104,14 +102,20 @@ export function MilwaukeeDiversStudy() {
             assets={study.identity.monograms}
             columns="grid-cols-2 lg:grid-cols-4"
           />
-        </StudySection>
-
-        <StudySection title="Typography">
-          <TypeSpecimen />
-        </StudySection>
-
-        <StudySection title="Color">
-          <ColorPalette colors={study.identity.colors} />
+          <div className="mt-12">
+            <h3 className="text-[15px] font-medium tracking-[-0.02em]">Typography</h3>
+            <div className="mt-5">
+              <TypeSpecimen />
+            </div>
+          </div>
+          <div className="mt-12">
+            <h3 className="text-[15px] font-medium tracking-[-0.02em]">Color</h3>
+            <div className="mt-5">
+              <ColorPalette colors={study.identity.colors} />
+            </div>
+          </div>
+          <AssetBlock title="Textures" assets={study.process.textures.slice(0, 3)} columns="grid-cols-3" />
+          <AssetGrid assets={study.process.textures.slice(3)} columns="grid-cols-3" />
         </StudySection>
 
         <StudySection title="Mascot system">
